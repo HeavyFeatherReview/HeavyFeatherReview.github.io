@@ -11,6 +11,11 @@ body {
   color: grey;
 }
 
+.calmWaves {
+	background: radial-gradient( circle cover, hsl( 210, 90%, 90% ), hsl( 210, 90%, 70% ) );
+	overflow: hidden;
+}
+
 
 /* -- Egg --*/
 #egg { 
@@ -142,7 +147,7 @@ body {
 #canvas-rain,
 #caveVoid,
 #featherScene,
-#rainWaterCanvas
+#calmCanvas
 {
     position:absolute; 
     top:0; 

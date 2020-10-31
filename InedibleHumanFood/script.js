@@ -59,21 +59,26 @@ $("p, div").hover(function() {
             cancelAnimations(this);
             createFeathers();
         } else if (currentlyHoveredID == "water" || className == "water") {
+            $(".water").css("font-weight", "bold");
             cancelAnimations(this);
             createWater();
-        } else {
+        } else if (currentlyHoveredID == "calm"){
+            cancelAnimations(this);
+            createCalmWaves();
+        }
+        else {
             console.debug("Unsupported thing hovered, keep doing what we were doing");
             return;
         }
         $(this).css("font-weight", "bold");
     },
     function() {
-        // if (debugMode)
-        // {
-        //     return;
-        // }
-        // Mouse leaves
+        let className = this.className;
         $(this).css("font-weight", "normal");
+        if (className == "water")
+        {
+            $(".water").css("font-weight", "normal");
+        }
     });
 
 function cancelAnimations(element) {
@@ -90,6 +95,8 @@ function cancelAnimations(element) {
     } else if (id == "feathers" || id == "death") {
         window.removeEventListener("resize", onWindowResize);
         window.removeEventListener("mousemove", onMouseMove);
+    } else if (id == "calm"){
+        $("body").removeClass("calmWaves");
     }
 }
 
@@ -333,7 +340,7 @@ function createFeathers() {
     window.addEventListener("mousemove", onMouseMove);
 
     $("body").css("background-color", "#F5CC70");
-    animationReq = requestAnimationFrame(renderFeathers);
+    animationReq = window.requestAnimationFrame(renderFeathers);
 }
 
 function onWindowResize() {
@@ -391,7 +398,7 @@ function Feather(i) {
 };
 
 var renderFeathers = function(a) {
-    animationReq = requestAnimationFrame(renderFeathers);
+    animationReq = window.requestAnimationFrame(renderFeathers);
 
     for (var i = 0; i < featherAmount; i++) {
         var feather = feathers.children[i];
@@ -448,7 +455,7 @@ function createWater() {
         let relX = event.pageX - $(this).offset().left;
         let relY = event.pageY - $(this).offset().top;
         let relBoxCoords = "(" + relX + "," + relY + ")";
-        console.debug("Rel box coord: " + relBoxCoords + ", Total: " + $(this).offset().top+ ", " + event.pageY);
+        //console.debug("Rel box coord: " + relBoxCoords + ", Total: " + $(this).offset().top+ ", " + event.pageY);
         waterValue = Math.round(100 - ((relY/$(this).offset().top) * 100));
 
         $(".progress").parent().removeClass();
@@ -461,4 +468,118 @@ function createWater() {
         else
             $(".progress").parent().addClass("green");
     });
+}
+
+
+// Final paragraph calm
+const Wave = {};
+
+/*========================================
+              Utility
+              ========================================*/
+
+Wave.PI = Math.PI;
+Wave.TAU = Wave.PI * 2;
+
+Wave.rand = function (min, max) {
+  if (!max) {
+    var max = min;
+    min = 0;
+  }
+  return Math.random() * (max - min) + min;
+};
+
+/*========================================
+   Initialize
+   ========================================*/
+
+Wave.init = () => {
+  Wave.c = document.getElementById("calmCanvas");
+  Wave.ctx = Wave.c.getContext('2d');
+  Wave.simplex = new SimplexNoise();
+  Wave.events();
+  Wave.reset();
+  Wave.loop();
+};
+
+/*========================================
+   Reset
+   ========================================*/
+
+Wave.reset = () => {
+  Wave.dpr = window.devicePixelRatio;
+  Wave.w = window.innerWidth;
+  Wave.h = window.innerHeight;
+  Wave.cx = Wave.w / 2;
+  Wave.cy = Wave.h / 2;
+  Wave.c.width = Wave.w * Wave.dpr;
+  Wave.c.height = Wave.h * Wave.dpr;
+  Wave.c.style.width = `Wave{Wave.w}px`;
+  Wave.c.style.height = `Wave{Wave.h}px`;
+  Wave.ctx.scale(Wave.dpr, Wave.dpr);
+
+  Wave.count = Math.floor(Wave.w / 50);
+  Wave.xoff = 0;
+  Wave.xinc = 0.05;
+  Wave.yoff = 0;
+  Wave.yinc = 0.003;
+  Wave.goff = 0;
+  Wave.ginc = 0.003;
+  Wave.y = Wave.h * 0.66;
+  Wave.length = Wave.w + 10;
+  Wave.amp = 40;
+};
+
+/*========================================
+   Event
+   ========================================*/
+
+Wave.events = () => {
+  window.addEventListener('resize', Wave.reset.bind(this));
+};
+
+/*========================================
+   Wave
+   ========================================*/
+
+Wave.wave = () => {
+  Wave.ctx.beginPath();
+  let sway = Wave.simplex.noise2D(Wave.goff, 0) * Wave.amp;
+  for (let i = 0; i <= Wave.count; i++) {
+    Wave.xoff += Wave.xinc;
+    let x = Wave.cx - Wave.length / 2 + Wave.length / Wave.count * i;
+    let y = Wave.y + Wave.simplex.noise2D(Wave.xoff, Wave.yoff) * Wave.amp + sway;
+    Wave.ctx[i === 0 ? 'moveTo' : 'lineTo'](x, y);
+  }
+  Wave.ctx.lineTo(Wave.w, Wave.h);
+  Wave.ctx.lineTo(0, Wave.h);
+  Wave.ctx.closePath();
+  Wave.ctx.fillStyle = 'hsla(210, 90%, 50%, 0.2)';
+  Wave.ctx.fill();
+};
+
+/*========================================
+   Loop
+   ========================================*/
+
+Wave.loop = () => {
+  animationReq = window.requestAnimationFrame(Wave.loop);
+  Wave.ctx.clearRect(0, 0, Wave.w, Wave.h);
+  Wave.xoff = 0;
+  Wave.wave();
+  Wave.wave();
+  Wave.wave();
+  Wave.wave();
+  Wave.yoff += Wave.yinc;
+  Wave.goff += Wave.ginc;
+};
+
+/*========================================
+   Start
+   ========================================*/
+function createCalmWaves()
+{
+    $("#calm").append("<canvas id='calmCanvas' class = 'removable'></canvas>");
+    $("body").addClass("calmWaves");
+    Wave.init();
 }
