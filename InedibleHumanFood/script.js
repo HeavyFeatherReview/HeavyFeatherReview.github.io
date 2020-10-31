@@ -43,22 +43,32 @@ var animationReq;
 
 $("p, div").hover(function() {
         // Mouse enters
-        $(this).css("font-weight", "bold");
         currentlyHoveredID = this.id;
         var className = this.className;
         console.log("Hovered over: " + this.id + className);
         if (currentlyHoveredID == "eggs") {
+            cancelAnimations(this);
             createEgg();
         } else if (currentlyHoveredID == "rainsnakes") {
+            cancelAnimations(this);
             rain();
         } else if (currentlyHoveredID == "void") {
+            cancelAnimations(this);
             createVoid();
         } else if (currentlyHoveredID == "feathers" || currentlyHoveredID == "death") {
+            cancelAnimations(this);
             createFeathers();
         }
-        else if (className == "water"){
+        else if (currentlyHoveredID == "water"){
+            cancelAnimations(this);
             createWater();
         }
+        else
+        {
+            console.log("Unsupported thing hovered, keep doing what we were doing");
+            return;
+        }
+        $(this).css("font-weight", "bold");
     },
     function() {
         // if (debugMode)
@@ -67,8 +77,6 @@ $("p, div").hover(function() {
         // }
         // Mouse leaves
         $(this).css("font-weight", "normal");
-        cancelAnimations(this);
-
     });
 
 function cancelAnimations(element) {
