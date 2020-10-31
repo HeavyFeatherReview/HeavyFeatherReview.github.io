@@ -62,7 +62,8 @@ $("p, div").hover(function() {
         } else if (currentlyHoveredID == "void") {
             cancelAnimations(this);
             createVoid();
-        } else if (currentlyHoveredID == "feathers" || currentlyHoveredID == "death") {
+        } else if (currentlyHoveredID == "feathers") {
+            $(".feathers").css("font-weight", "bold");
             cancelAnimations(this);
             createFeathers();
         } else if (currentlyHoveredID == "water" || className == "water") {
@@ -86,6 +87,10 @@ $("p, div").hover(function() {
         if (className == "water")
         {
             $(".water").css("font-weight", "normal");
+        }
+        else if (className == "feathers")
+        {
+            $(".feathers").css("font-weight", "normal");
         }
     });
 
