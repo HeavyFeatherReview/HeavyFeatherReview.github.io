@@ -2,7 +2,7 @@ var currentlyHoveredID = null;
 var debugMode = true;
 var numTimes = 0;
 
-// Rain snakes var
+// Rain snakes variables
 var c;
 var ctx;
 var w;
@@ -10,6 +10,17 @@ var h;
 var clearColor = 'rgba(0, 0, 0, .1)';
 var max = 30;
 var drops = [];
+
+// Void variables
+var vertexHeight = 125000;
+var planeDefinition = 20;
+var planeSize = 1245000;
+var totalObjects = 500;
+var camera;
+var renderer;
+var scene;
+
+var animationReq;
 
 $("p").hover(function()
 {
@@ -26,7 +37,7 @@ $("p").hover(function()
     }
     else if (currentlyHoveredID == "void")
     {
-
+        createVoid();
     }
     else if (currentlyHoveredID == "feathers")
     {
@@ -40,31 +51,38 @@ function()
     //     return;
     // }
     // Mouse leaves
-    let id = this.id;
-    $(this).children(".removable").remove();
+    cancelAnimations(this);
+
+});
+
+function cancelAnimations(element)
+{
+    let id = element.id;
+    $(element).children(".removable").remove();
+
+    // Cancel any animation
+    window.cancelAnimationFrame();
 
     if (id == "rainsnakes")
     {
         window.removeEventListener("resize", resize);
-        window.cancelAnimationFrame()
     }
-});
-
+}
 
 // Egg
 function createEgg()
 {
     $("#eggs").append('<div class = "removable" id="egg">' +
       '<div id="eyeCont">' +
-        '<div class="eye a"></div>' +
-        '<div class="eye b"></div>' +
+      '<div class="eye a"></div>' +
+      '<div class="eye b"></div>' +
       '</div>' +
       '<div id="mouthCont">' +
-        '<div class="timido left"></div>' +
-        '<div id="mouth" ></div>' +
-        '<div class="timido right"></div>' +
+      '<div class="timido left"></div>' +
+      '<div id="mouth" ></div>' +
+      '<div class="timido right"></div>' +
       '</div>' +
-    '</div>');
+      '</div>');
 
     setTimeout(() => { 
         console.log("Timed out, hover over eggs")
@@ -188,9 +206,78 @@ function anim() {
     for(var i in drops){
         drops[i].draw();
     }
-    requestAnimationFrame(anim);
+    animationReq = requestAnimationFrame(anim);
 }
 
+// Void
+function createVoid()
+{
+    $("#void").append("<div class='removable' id='caveVoid'></div>");
+    var container = document.getElementById("caveVoid");
+
+    camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight,1, 2500000)
+    camera.position.z = 670000;
+    camera.position.y =10000;
+    camera.lookAt( new THREE.Vector3(0,6000,0) );
+
+
+    scene = new THREE.Scene();
+    scene.fog = new THREE.Fog( 0x000000, 100000, 400000 );
+
+
+    var plane = new THREE.Mesh( new THREE.PlaneGeometry( planeSize, planeSize, planeDefinition, planeDefinition ), new THREE.MeshBasicMaterial( { color: 0x555555, wireframe: false } ) );
+    plane.rotation.x -=Math.PI*1.5;
+    plane.position.y = 20000;
+    scene.add( plane );
+
+    var plane2 = new THREE.Mesh( new THREE.PlaneGeometry( planeSize, planeSize, planeDefinition, planeDefinition ), new THREE.MeshBasicMaterial( { color: 0x555555, wireframe: false } ) );
+    plane2.rotation.x -=Math.PI*.5;
+    //plane2.position.z = 100000;
+    scene.add( plane2 );
+
+    var geometry = new THREE.Geometry();
+
+    for (i = 0; i < totalObjects; i ++) 
+    { 
+      var vertex = new THREE.Vector3();
+      vertex.x = Math.random()*planeSize-(planeSize*.5);
+      vertex.y = (Math.random()*100000)-10000;
+      vertex.z = Math.random()*planeSize-(planeSize*.5);
+      geometry.vertices.push( vertex );
+    }
+
+    var material = new THREE.ParticleBasicMaterial( { size: 200 });
+    var particles = new THREE.ParticleSystem( geometry, material );
+
+    scene.add( particles ); 
+
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild( renderer.domElement );
+
+    updatePlane(plane);
+    updatePlane(plane2);
+
+    renderVoid();
+}
+
+function updatePlane(obj) { 
+    for (var i = 0; i < obj.geometry.vertices.length; i++) 
+    { 
+        obj.geometry.vertices[i].z += Math.random()*vertexHeight -vertexHeight; 
+    } 
+};
+
+function renderVoid() {
+    animationReq = requestAnimationFrame( renderVoid );
+    camera.position.z -= 150;
+    renderer.render( scene, camera );
+}
+
+
+
+
+// Feathers
 function createFeathers()
 {
 
