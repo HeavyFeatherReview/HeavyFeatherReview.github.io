@@ -138,10 +138,11 @@ body {
   }
 
 
-/* --- Rain snakes, Cave void, feathers ---- */
+/* --- Rain snakes, Cave void, feathers, water ---- */
 #canvas-rain,
 #caveVoid,
-#featherScene
+#featherScene,
+#rainWaterCanvas
 {
     position:absolute; 
     top:0; 
@@ -149,4 +150,9 @@ body {
     z-index:-10;
     width:100%;
    	height: 100%;
+}
+
+#texture {
+	position: absolute;
+	visibility: hidden;
 }
