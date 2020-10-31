@@ -45,7 +45,7 @@ $("p, div").hover(function() {
         // Mouse enters
         currentlyHoveredID = this.id;
         var className = this.className;
-        console.log("Hovered over: " + this.id + className);
+        console.log("Hovered over: " + this.id + ", " + className);
         if (currentlyHoveredID == "eggs") {
             cancelAnimations(this);
             createEgg();
@@ -576,7 +576,8 @@ function createWater() {
     // ---- source image ----
     var img = document.getElementById("texture");
     img.crossOrigin = "Anonymous";
-    const texture = document.createElement("canvas");
+    $("#water").append("<canvas id='textureCanvas' class='removable'></canvas>");
+    const texture = document.getElementById("textureCanvas");
     texture.width = canvas.width;
     texture.height = canvas.height;
     const ctx = texture.getContext("2d");
