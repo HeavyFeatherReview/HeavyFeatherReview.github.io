@@ -138,9 +138,10 @@ body {
   }
 
 
-/* --- Rain snakes, Cave void ---- */
+/* --- Rain snakes, Cave void, feathers ---- */
 #canvas-rain,
-#caveVoid
+#caveVoid,
+#featherScene
 {
     position:absolute; 
     top:0; 
