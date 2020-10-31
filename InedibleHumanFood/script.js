@@ -22,11 +22,6 @@ $("p").hover(function()
     }
     else if (currentlyHoveredID == "rainsnakes")
     {
-                if (numTimes > 0)
-        {
-            return;
-        }
-        numTimes+=1;
         rain();
     }
     else if (currentlyHoveredID == "void")
@@ -40,10 +35,10 @@ $("p").hover(function()
 }, 
 function()
 {
-    if (debugMode)
-    {
-        return;
-    }
+    // if (debugMode)
+    // {
+    //     return;
+    // }
     // Mouse leaves
     let id = this.id;
     $(this).children(".removable").remove();
