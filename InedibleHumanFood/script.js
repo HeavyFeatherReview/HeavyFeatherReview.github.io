@@ -26,6 +26,7 @@ var ww = window.innerWidth;
 var wh = window.innerHeight;
 
 // Feathers
+var featherCamera;
 var featherAmount = 400;
 var feathers;
 var featherTexture,
@@ -39,6 +40,7 @@ var animationReq;
 $("p").hover(function()
 {
     // Mouse enters
+    $(this).css("font-weight", "bold");
     currentlyHoveredID = this.id;
     console.log("Hovered over: " + this.id);
     if (currentlyHoveredID == "eggs")
@@ -53,7 +55,7 @@ $("p").hover(function()
     {
         createVoid();
     }
-    else if (currentlyHoveredID == "feathers")
+    else if (currentlyHoveredID == "feathers" || currentlyHoveredID == "death")
     {
         createFeathers();
     }
@@ -65,6 +67,7 @@ function()
     //     return;
     // }
     // Mouse leaves
+    $(this).css("font-weight", "normal");
     cancelAnimations(this);
 
 });
@@ -72,7 +75,8 @@ function()
 function cancelAnimations(element)
 {
     let id = element.id;
-    $(element).children(".removable").remove();
+    console.log("Cancel for " + id);
+    $(".removable").remove();
 
     // Cancel any animation
     if (animationReq)
@@ -82,7 +86,7 @@ function cancelAnimations(element)
     {
         window.removeEventListener("resize", resize);
     }
-    else if (id == "feathers")
+    else if (id == "feathers" || id == "death")
     {
         window.removeEventListener("resize", onWindowResize);
         window.removeEventListener("mousemove", onMouseMove);
@@ -324,10 +328,10 @@ function createFeathers()
 
     scene.add(feathers);
 
-    camera = new THREE.PerspectiveCamera(50, ww / wh, 1, 10000);
-    camera.position.set(0, 0, 500);
-    camera.lookAt(center);
-    scene.add(camera);
+    featherCamera = new THREE.PerspectiveCamera(50, ww / wh, 1, 10000);
+    featherCamera.position.set(0, 0, 500);
+    featherCamera.lookAt(center);
+    scene.add(featherCamera);
 
     var light = new THREE.HemisphereLight(yellowOrange, 0xF2676B, 1.5);
     scene.add(light);
@@ -345,8 +349,8 @@ function onWindowResize() {
   wh = window.innerHeight;
 
   renderer.setSize(ww, wh);
-  camera.aspect = ww / wh;
-  camera.updateProjectionMatrix();
+  featherCamera.aspect = ww / wh;
+  featherCamera.updateProjectionMatrix();
 }
 
 function onMouseMove(e) {
@@ -394,7 +398,7 @@ function Feather(i) {
 };
 
 var renderFeathers = function(a) {
-  requestAnimationFrame(renderFeathers);
+  animationReq = requestAnimationFrame(renderFeathers);
 
   for (var i = 0; i < featherAmount; i++) {
     var feather = feathers.children[i];
@@ -413,11 +417,11 @@ var renderFeathers = function(a) {
   }
 
   position += mouse.x;
-  camera.position.x = Math.sin(position) * 800;
-  camera.position.z = Math.cos(position) * 800;
-  camera.lookAt(center);
+  featherCamera.position.x = Math.sin(position) * 800;
+  featherCamera.position.z = Math.cos(position) * 800;
+  featherCamera.lookAt(center);
 
-  renderer.render(scene, camera);
+  renderer.render(scene, featherCamera);
 };
 
 var featherImage = new Image();
