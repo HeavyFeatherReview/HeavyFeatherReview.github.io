@@ -575,6 +575,7 @@ function createWater() {
     canvas = document.getElementById("rainWaterCanvas")
     // ---- source image ----
     var img = document.getElementById("texture");
+    img.crossOrigin = "Anonymous";
     const texture = document.createElement("canvas");
     texture.width = canvas.width;
     texture.height = canvas.height;
