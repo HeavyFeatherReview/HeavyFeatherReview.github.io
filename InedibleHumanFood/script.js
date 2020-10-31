@@ -579,6 +579,7 @@ Wave.loop = () => {
    ========================================*/
 function createCalmWaves()
 {
+    $("body").css("background-color", "white");
     $("#calm").append("<canvas id='calmCanvas' class = 'removable'></canvas>");
     $("body").addClass("calmWaves");
     Wave.init();

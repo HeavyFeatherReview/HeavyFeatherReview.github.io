@@ -4,51 +4,46 @@
 }
 
 body {
-  background-color: var(--background);
-  margin: 100px;
-  margin-left: 200px;
-  margin-right: 200px;
-  color: grey;
-}
-
-.calmWaves {
-	background: radial-gradient( circle cover, hsl( 210, 90%, 90% ), hsl( 210, 90%, 70% ) );
-	overflow: hidden;
+    background-color: var(--background);
+    margin: 100px;
+    margin-left: 200px;
+    margin-right: 200px;
+    color: grey;
 }
 
 
 /* -- Egg --*/
-#egg { 
-  display:block;
-  margin: auto;
-  margin-top: 20px;
-  top: 1vh;
-  width: 126px; 
-  height: 180px; 
-  background-color: var(--egg); 
-  -webkit-border-radius: 63px 63px 63px 63px / 108px 108px 72px 72px; 
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;     
+#egg {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    top: 1vh;
+    width: 126px;
+    height: 180px;
+    background-color: var(--egg);
+    -webkit-border-radius: 63px 63px 63px 63px / 108px 108px 72px 72px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
 }
 
 #egg:hover .timido,
 #egg.hover .timido {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 
 #egg:hover #mouth,
 #egg.hover #mouth {
-  border-radius: 20px;
-  border-bottom: 15px solid var(--background);
-  transform-origin: null;
-  transform: rotate(0deg);
+    border-radius: 20px;
+    border-bottom: 15px solid var(--background);
+    transform-origin: null;
+    transform: rotate(0deg);
 }
 
 #mouthCont {
-  position: relative;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  width: 100px;
+    position: relative;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100px;
 }
 
 .timido {
@@ -60,9 +55,9 @@ body {
     background-color: #D68A72;
     border-radius: 20px;
     /*box-shadow: 0px 0px 20px #D68A72;*/
-    -webkit-box-shadow: 0px 0px 26px 4px rgba(214,138,114,1);
-    -moz-box-shadow: 0px 0px 26px 4px rgba(214,138,114,1);
-    box-shadow: 0px 0px 6px 6px rgba(214,138,114,1);
+    -webkit-box-shadow: 0px 0px 26px 4px rgba(214, 138, 114, 1);
+    -moz-box-shadow: 0px 0px 26px 4px rgba(214, 138, 114, 1);
+    box-shadow: 0px 0px 6px 6px rgba(214, 138, 114, 1);
 }
 
 .right {
@@ -108,281 +103,375 @@ body {
     height: 40px;
     width: 80px;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
-      "a b";
-} 
+    grid-template-areas:
+        "a b";
+}
 
-.eye { 
+.eye {
     margin: 14px;
     border-radius: 10px;
     background-color: var(--background);
 }
 
 @-webkit-keyframes wiggling {
-    0% {transform: rotate(5deg);}
-    25% {transform: rotate(-3deg);}
-    50% {transform: rotate(5deg);}
-    75% {transform: rotate(-3deg);}
-    100% {transform: rotate(0deg);}
-  }
-  
-  @-ms-keyframes wiggling {
-    0% {transform: rotate(5deg);}
-    25% {transform: rotate(-3deg);}
-    50% {transform: rotate(5deg);}
-    75% {transform: rotate(-3deg);}
-    100% {transform: rotate(0deg);}
-  }
-  
-  @keyframes wiggling {
-    0% {transform: rotate(5deg);}
-    25% {transform: rotate(-3deg);}
-    50% {transform: rotate(5deg);}
-    75% {transform: rotate(-3deg);}
-    100% {transform: rotate(0deg);}
-  }
+    0% {
+        transform: rotate(5deg);
+    }
+
+    25% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+
+    75% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@-ms-keyframes wiggling {
+    0% {
+        transform: rotate(5deg);
+    }
+
+    25% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+
+    75% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes wiggling {
+    0% {
+        transform: rotate(5deg);
+    }
+
+    25% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+
+    75% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
 
 
 /* --- Rain snakes, Cave void, feathers, water ---- */
 #canvas-rain,
 #caveVoid,
-#featherScene,
+#featherScene{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -10;
+    width: 100%;
+    height: 100%;
+}
+
 #calmCanvas
 {
-    position:absolute; 
-    top:0; 
-    left:0; 
-    z-index:-10;
-    width:100%;
-   	height: 100%;
+	position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -10;
+    width: 100%;
 }
 
 /*Water*/
 
 .wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: box;
-  display: flex;
-  -webkit-box-align: center;
-  -o-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -o-box-pack: center;
-  justify-content: center;
-  -webkit-box-orient: vertical;
-  -o-box-orient: vertical;
-  flex-direction: column;
-  height: 100%;
-}
-.green {
-  margin-top: 15px;
-}
-.green .progress,
-.red .progress,
-.orange .progress {
-  position: relative;
-  border-radius: 50%;
-}
-.green .progress,
-.red .progress,
-.orange .progress {
-  width: 250px;
-  height: 250px;
-}
-.green .progress {
-  border: 5px solid #53fc53;
-}
-.green .progress {
-  box-shadow: 0 0 20px #029502;
-}
-.green .progress,
-.red .progress,
-.orange .progress {
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
-}
-.green .progress .inner,
-.red .progress .inner,
-.orange .progress .inner {
-  position: absolute;
-  overflow: hidden;
-  z-index: 2;
-  border-radius: 50%;
-}
-.green .progress .inner,
-.red .progress .inner,
-.orange .progress .inner {
-  width: 240px;
-  height: 240px;
-}
-.green .progress .inner,
-.red .progress .inner,
-.orange .progress .inner {
-  border: 5px solid #1a1a1a;
-}
-.green .progress .inner,
-.red .progress .inner,
-.orange .progress .inner {
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
-}
-.green .progress .inner .water,
-.red .progress .inner .water,
-.orange .progress .inner .water {
-  position: absolute;
-  z-index: 1;
-  width: 200%;
-  height: 200%;
-  left: -50%;
-  border-radius: 40%;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-name: spin;
-  animation-name: spin;
-}
-.green .progress .inner .water {
-  top: 25%;
-}
-.green .progress .inner .water {
-  background: rgba(83,252,83,0.5);
-}
-.green .progress .inner .water,
-.red .progress .inner .water,
-.orange .progress .inner .water {
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
-}
-.green .progress .inner .water,
-.red .progress .inner .water,
-.orange .progress .inner .water {
-  -webkit-animation-duration: 10s;
-  animation-duration: 10s;
-}
-.green .progress .inner .water {
-  box-shadow: 0 0 20px #03bc03;
-}
-.green .progress .inner .glare,
-.red .progress .inner .glare,
-.orange .progress .inner .glare {
-  position: absolute;
-  top: -120%;
-  left: -120%;
-  z-index: 5;
-  width: 200%;
-  height: 200%;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-  border-radius: 50%;
-}
-.green .progress .inner .glare,
-.red .progress .inner .glare,
-.orange .progress .inner .glare {
-  background-color: rgba(255,255,255,0.15);
-}
-.green .progress .inner .glare,
-.red .progress .inner .glare,
-.orange .progress .inner .glare {
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
-}
-.green .progress .inner .percent,
-.red .progress .inner .percent,
-.orange .progress .inner .percent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-weight: bold;
-  text-align: center;
-}
-.green .progress .inner .percent,
-.red .progress .inner .percent,
-.orange .progress .inner .percent {
-  line-height: 240px;
-  font-size: 92.3076923076923px;
-}
-.green .progress .inner .percent {
-  color: #03c603;
-}
-.green .progress .inner .percent {
-  text-shadow: 0 0 10px #029502;
-}
-.green .progress .inner .percent,
-.red .progress .inner .percent,
-.orange .progress .inner .percent {
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
-}
-.red {
-  margin-top: 15px;
-}
-.red .progress {
-  border: 5px solid #ed3b3b;
-}
-.red .progress {
-  box-shadow: 0 0 20px #7a0b0b;
-}
-.red .progress .inner .water {
-  top: 75%;
-}
-.red .progress .inner .water {
-  background: rgba(237,59,59,0.5);
-}
-.red .progress .inner .water {
-  box-shadow: 0 0 20px #9b0e0e;
-}
-.red .progress .inner .percent {
-  color: #a30f0f;
-}
-.red .progress .inner .percent {
-  text-shadow: 0 0 10px #7a0b0b;
-}
-.orange {
-  margin-top: 15px;
-}
-.orange .progress {
-  border: 5px solid #f07c3e;
-}
-.orange .progress {
-  box-shadow: 0 0 20px #7e320a;
-}
-.orange .progress .inner .water {
-  top: 50%;
-}
-.orange .progress .inner .water {
-  background: rgba(240,124,62,0.5);
-}
-.orange .progress .inner .water {
-  box-shadow: 0 0 20px #a0400c;
-}
-.orange .progress .inner .percent {
-  color: #a8430d;
-}
-.orange .progress .inner .percent {
-  text-shadow: 0 0 10px #7e320a;
-}
-@-webkit-keyframes spin {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@keyframes spin {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-align: center;
+    -o-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -o-box-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -o-box-orient: vertical;
+    flex-direction: column;
+    height: 100%;
 }
 
+.green {
+    margin-top: 15px;
+}
+
+.green .progress,
+.red .progress,
+.orange .progress {
+    position: relative;
+    border-radius: 50%;
+}
+
+.green .progress,
+.red .progress,
+.orange .progress {
+    width: 250px;
+    height: 250px;
+}
+
+.green .progress {
+    border: 5px solid #53fc53;
+}
+
+.green .progress {
+    box-shadow: 0 0 20px #029502;
+}
+
+.green .progress,
+.red .progress,
+.orange .progress {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.green .progress .inner,
+.red .progress .inner,
+.orange .progress .inner {
+    position: absolute;
+    overflow: hidden;
+    z-index: 2;
+    border-radius: 50%;
+}
+
+.green .progress .inner,
+.red .progress .inner,
+.orange .progress .inner {
+    width: 240px;
+    height: 240px;
+}
+
+.green .progress .inner,
+.red .progress .inner,
+.orange .progress .inner {
+    border: 5px solid #1a1a1a;
+}
+
+.green .progress .inner,
+.red .progress .inner,
+.orange .progress .inner {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.green .progress .inner .water,
+.red .progress .inner .water,
+.orange .progress .inner .water {
+    position: absolute;
+    z-index: 1;
+    width: 200%;
+    height: 200%;
+    left: -50%;
+    border-radius: 40%;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-name: spin;
+    animation-name: spin;
+}
+
+.green .progress .inner .water {
+    top: 25%;
+}
+
+.green .progress .inner .water {
+    background: rgba(83, 252, 83, 0.5);
+}
+
+.green .progress .inner .water,
+.red .progress .inner .water,
+.orange .progress .inner .water {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.green .progress .inner .water,
+.red .progress .inner .water,
+.orange .progress .inner .water {
+    -webkit-animation-duration: 10s;
+    animation-duration: 10s;
+}
+
+.green .progress .inner .water {
+    box-shadow: 0 0 20px #03bc03;
+}
+
+.green .progress .inner .glare,
+.red .progress .inner .glare,
+.orange .progress .inner .glare {
+    position: absolute;
+    top: -120%;
+    left: -120%;
+    z-index: 5;
+    width: 200%;
+    height: 200%;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border-radius: 50%;
+}
+
+.green .progress .inner .glare,
+.red .progress .inner .glare,
+.orange .progress .inner .glare {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.green .progress .inner .glare,
+.red .progress .inner .glare,
+.orange .progress .inner .glare {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.green .progress .inner .percent,
+.red .progress .inner .percent,
+.orange .progress .inner .percent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    text-align: center;
+}
+
+.green .progress .inner .percent,
+.red .progress .inner .percent,
+.orange .progress .inner .percent {
+    line-height: 240px;
+    font-size: 92.3076923076923px;
+}
+
+.green .progress .inner .percent {
+    color: #03c603;
+}
+
+.green .progress .inner .percent {
+    text-shadow: 0 0 10px #029502;
+}
+
+.green .progress .inner .percent,
+.red .progress .inner .percent,
+.orange .progress .inner .percent {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.red {
+    margin-top: 15px;
+}
+
+.red .progress {
+    border: 5px solid #ed3b3b;
+}
+
+.red .progress {
+    box-shadow: 0 0 20px #7a0b0b;
+}
+
+.red .progress .inner .water {
+    top: 75%;
+}
+
+.red .progress .inner .water {
+    background: rgba(237, 59, 59, 0.5);
+}
+
+.red .progress .inner .water {
+    box-shadow: 0 0 20px #9b0e0e;
+}
+
+.red .progress .inner .percent {
+    color: #a30f0f;
+}
+
+.red .progress .inner .percent {
+    text-shadow: 0 0 10px #7a0b0b;
+}
+
+.orange {
+    margin-top: 15px;
+}
+
+.orange .progress {
+    border: 5px solid #f07c3e;
+}
+
+.orange .progress {
+    box-shadow: 0 0 20px #7e320a;
+}
+
+.orange .progress .inner .water {
+    top: 50%;
+}
+
+.orange .progress .inner .water {
+    background: rgba(240, 124, 62, 0.5);
+}
+
+.orange .progress .inner .water {
+    box-shadow: 0 0 20px #a0400c;
+}
+
+.orange .progress .inner .percent {
+    color: #a8430d;
+}
+
+.orange .progress .inner .percent {
+    text-shadow: 0 0 10px #7e320a;
+}
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
