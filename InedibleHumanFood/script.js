@@ -1,4 +1,5 @@
 var currentlyHoveredID = null;
+var previouslyHoveredElement = null;
 var debugMode = true;
 var numTimes = 0;
 
@@ -46,6 +47,12 @@ $("p, div").hover(function() {
         currentlyHoveredID = this.id;
         var className = this.className;
         console.debug("Hovered over: " + this.id + ", " + className);
+        if (previouslyHoveredElement != null && 
+            previouslyHoveredElement.id == currentlyHoveredID)
+        {
+            console.debug("Already hovered over this, do nothing: " + previouslyHoveredElement.id + ", " + this.id);
+            return;
+        }
         if (currentlyHoveredID == "eggs") {
             cancelAnimations(this);
             createEgg();
@@ -70,6 +77,7 @@ $("p, div").hover(function() {
             console.debug("Unsupported thing hovered, keep doing what we were doing");
             return;
         }
+        previouslyHoveredElement = this;
         $(this).css("font-weight", "bold");
     },
     function() {
