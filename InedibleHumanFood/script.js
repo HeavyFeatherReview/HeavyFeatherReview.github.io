@@ -177,7 +177,7 @@ function setup(){
                 var o = new O();
                 o.init();
                 drops.push(o);
-            }, j * 200)
+            }, j * 400)
         }(i));
     }
 }
