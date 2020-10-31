@@ -36,16 +36,16 @@ var featherTexture,
 var position = 0;
 
 // Water
-var pointer;
-var canvas;
+var colorInc = 100 / 3;
 
+// Animation
 var animationReq;
 
 $("p, div").hover(function() {
         // Mouse enters
         currentlyHoveredID = this.id;
         var className = this.className;
-        console.log("Hovered over: " + this.id + ", " + className);
+        console.debug("Hovered over: " + this.id + ", " + className);
         if (currentlyHoveredID == "eggs") {
             cancelAnimations(this);
             createEgg();
@@ -62,7 +62,7 @@ $("p, div").hover(function() {
             cancelAnimations(this);
             createWater();
         } else {
-            console.log("Unsupported thing hovered, keep doing what we were doing");
+            console.debug("Unsupported thing hovered, keep doing what we were doing");
             return;
         }
         $(this).css("font-weight", "bold");
@@ -78,7 +78,7 @@ $("p, div").hover(function() {
 
 function cancelAnimations(element) {
     let id = element.id;
-    console.log("Cancel for " + id);
+    console.debug("Cancel for " + id);
     $(".removable").remove();
 
     // Cancel any animation
@@ -108,7 +108,7 @@ function createEgg() {
         '</div>');
 
     setTimeout(() => {
-        console.log("Timed out, hover over eggs")
+        console.debug("Timed out, hover over eggs")
         $("#egg").addClass("hover");
 
         setTimeout(() => {
@@ -297,7 +297,7 @@ function renderVoid() {
 // Feathers
 function createFeathers() {
     if (!featherImage.complete) {
-        console.log("Feather image is not yet loaded, bail");
+        console.debug("Feather image is not yet loaded, bail");
         return;
     }
     let yellowOrange = 0xF5CC70;
@@ -429,8 +429,36 @@ featherImage.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAA
 
 
 // Create water
+var waterValue = 7;
+function createWater() {
+    $("body").css("background-color", "black");
+    $("#water").append('<div class = "wrapper removable">' +
+        '<div class="green">' +
+        '<div class="progress">' +
+        '<div class="inner">' +
+        '<div class="percent"><span>' + waterValue + '</span>%</div>' +
+        '<div class="water"></div>' +
+        '<div class="glare"></div>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>');
 
-function createWater()
-{
+    $("#water").mousemove(function(event) {
+        let relX = event.pageX - $(this).offset().left;
+        let relY = event.pageY - $(this).offset().top;
+        let relBoxCoords = "(" + relX + "," + relY + ")";
+        console.debug("Rel box coord: " + relBoxCoords + ", Total: " + $(this).offset().top+ ", " + event.pageY);
+        waterValue = Math.round(100 - ((relY/$(this).offset().top) * 100));
 
+        $(".progress").parent().removeClass();
+        $(".progress .water").css("top", waterValue + "%");
+        $(".progress .percent").text((100 - waterValue) + "%")
+        if (waterValue < colorInc * 1)
+            $(".progress").parent().addClass("red");
+        else if (waterValue < colorInc * 2)
+            $(".progress").parent().addClass("orange");
+        else
+            $(".progress").parent().addClass("green");
+    });
 }
