@@ -11,6 +11,7 @@ var h;
 var clearColor = 'rgba(0, 0, 0, .1)';
 var max = 30;
 var drops = [];
+const rainHeight = 500;
 
 // Void variables
 var vertexHeight = 125000;
@@ -23,7 +24,7 @@ var camera;
 var renderer;
 var scene;
 var center;
-var ww = window.innerWidth;
+var ww = document.body.clientWidth;
 var wh = window.innerHeight;
 
 // Feathers
@@ -149,7 +150,7 @@ function rain() {
     c = document.getElementById("canvas-rain");
     ctx = c.getContext("2d");
     w = c.width = document.body.clientWidth;
-    h = c.height = document.body.clientHeight;
+    h = c.height = rainHeight;
     clearColor = 'rgba(0, 0, 0, .1)';
     max = 30;
     drops = [];
@@ -257,7 +258,7 @@ function createVoid() {
     $("#void").append("<div class='removable' id='caveVoid'></div>");
     var container = document.getElementById("caveVoid");
 
-    camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 1, 2500000)
+    camera = new THREE.PerspectiveCamera(55, document.body.clientWidth / window.innerHeight, 1, 2500000)
     camera.position.z = 670000;
     camera.position.y = 10000;
     camera.lookAt(new THREE.Vector3(0, 6000, 0));
@@ -293,7 +294,7 @@ function createVoid() {
     scene.add(particles);
 
     renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(document.body.clientWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
 
     updatePlane(plane);
@@ -358,7 +359,7 @@ function createFeathers() {
 
 function onWindowResize() {
 
-    ww = window.innerWidth;
+    ww = document.body.clientWidth;
     wh = window.innerHeight;
 
     renderer.setSize(ww, wh);

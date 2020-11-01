@@ -182,12 +182,11 @@ body {
 
 /* --- Rain snakes, Cave void, feathers, water ---- */
 #canvas-rain,
-#caveVoid,
 #featherScene{
-    position: absolute;
+/*    position: absolute;
     top: 0;
     left: 0;
-    bottom: 0;
+    bottom: 0;*/
     z-index: -10;
     width: 100%;
     height: 100%;
@@ -195,10 +194,10 @@ body {
 
 #calmCanvas
 {
-	position: absolute;
+/*	position: absolute;
     top: 0;
     left: 0;
-    bottom: 0;
+    bottom: 0;*/
     z-index: -10;
     width: 100%;
 }
