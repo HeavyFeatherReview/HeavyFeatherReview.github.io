@@ -145,7 +145,7 @@ function createEgg() {
 
 // Crazy rain
 function rain() {
-    $("body").css("background-color", "black");
+    //$("body").css("background-color", "black");
     $("#rainsnakes").append('<canvas class = "removable" id="canvas-rain"></canvas>');
     c = document.getElementById("canvas-rain");
     ctx = c.getContext("2d");
@@ -254,7 +254,7 @@ function anim() {
 
 // Void
 function createVoid() {
-    $("body").css("background-color", "black");
+    //$("body").css("background-color", "black");
     $("#void").append("<div class='removable' id='caveVoid'></div>");
     var container = document.getElementById("caveVoid");
 
@@ -353,7 +353,7 @@ function createFeathers() {
     window.addEventListener("resize", onWindowResize);
     window.addEventListener("mousemove", onMouseMove);
 
-    $("body").css("background-color", "#F5CC70");
+    //$("body").css("background-color", "#F5CC70");
     animationReq = window.requestAnimationFrame(renderFeathers);
 }
 
@@ -452,7 +452,7 @@ featherImage.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAA
 // Create water
 var waterValue = 7;
 function createWater() {
-    $("body").css("background-color", "black");
+    //$("body").css("background-color", "black");
     $("#water").append('<div class = "wrapper removable">' +
         '<div class="green">' +
         '<div class="progress">' +
@@ -593,7 +593,7 @@ Wave.loop = () => {
    ========================================*/
 function createCalmWaves()
 {
-    $("body").css("background-color", "white");
+    //$("body").css("background-color", "white");
     $("#calm").append("<canvas id='calmCanvas' class = 'removable'></canvas>");
     $("body").addClass("calmWaves");
     Wave.init();
