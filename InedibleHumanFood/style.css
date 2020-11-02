@@ -182,7 +182,7 @@ body {
 
 /* --- Rain snakes, Cave void, feathers, water ---- */
 #canvas-rain,
-#featherScene{
+#featherScene,{
 /*    position: absolute;
     top: 0;
     left: 0;

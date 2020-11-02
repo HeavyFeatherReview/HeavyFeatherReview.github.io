@@ -109,7 +109,7 @@ function cancelAnimations(element) {
     } else if (id == "feathers" || id == "death") {
         window.removeEventListener("resize", onWindowResize);
         window.removeEventListener("mousemove", onMouseMove);
-    } else if (id == "calm"){
+    } else if (id == "calm") {
         $("body").removeClass("calmWaves");
     }
 }
@@ -253,55 +253,49 @@ function anim() {
 }
 
 // Void
-function createVoid() {
-    //$("body").css("background-color", "black");
-    $("#void").append("<div class='removable' id='caveVoid'></div>");
-    var container = document.getElementById("caveVoid");
+var caveContainer = document.getElementById("caveVoid");
 
-    camera = new THREE.PerspectiveCamera(55, document.body.clientWidth / window.innerHeight, 1, 2500000)
-    camera.position.z = 670000;
-    camera.position.y = 10000;
-    camera.lookAt(new THREE.Vector3(0, 6000, 0));
+var caveCamera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 1, 2500000)
+caveCamera.position.z = 670000;
+caveCamera.position.y = 10000;
+caveCamera.lookAt(new THREE.Vector3(0, 6000, 0));
 
 
-    scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0x000000, 100000, 400000);
+var caveScene = new THREE.Scene();
+caveScene.fog = new THREE.Fog(0x000000, 100000, 400000);
 
 
-    var plane = new THREE.Mesh(new THREE.PlaneGeometry(planeSize, planeSize, planeDefinition, planeDefinition), new THREE.MeshBasicMaterial({ color: 0x555555, wireframe: false }));
-    plane.rotation.x -= Math.PI * 1.5;
-    plane.position.y = 20000;
-    scene.add(plane);
+var plane = new THREE.Mesh(new THREE.PlaneGeometry(planeSize, planeSize, planeDefinition, planeDefinition), new THREE.MeshBasicMaterial({ color: 0x555555, wireframe: false }));
+plane.rotation.x -= Math.PI * 1.5;
+plane.position.y = 20000;
+caveScene.add(plane);
 
-    var plane2 = new THREE.Mesh(new THREE.PlaneGeometry(planeSize, planeSize, planeDefinition, planeDefinition), new THREE.MeshBasicMaterial({ color: 0x555555, wireframe: false }));
-    plane2.rotation.x -= Math.PI * .5;
-    //plane2.position.z = 100000;
-    scene.add(plane2);
+var plane2 = new THREE.Mesh(new THREE.PlaneGeometry(planeSize, planeSize, planeDefinition, planeDefinition), new THREE.MeshBasicMaterial({ color: 0x555555, wireframe: false }));
+plane2.rotation.x -= Math.PI * .5;
+//plane2.position.z = 100000;
+caveScene.add(plane2);
 
-    var geometry = new THREE.Geometry();
+var geometry = new THREE.Geometry();
 
-    for (i = 0; i < totalObjects; i++) {
-        var vertex = new THREE.Vector3();
-        vertex.x = Math.random() * planeSize - (planeSize * .5);
-        vertex.y = (Math.random() * 100000) - 10000;
-        vertex.z = Math.random() * planeSize - (planeSize * .5);
-        geometry.vertices.push(vertex);
-    }
-
-    var material = new THREE.ParticleBasicMaterial({ size: 200 });
-    var particles = new THREE.ParticleSystem(geometry, material);
-
-    scene.add(particles);
-
-    renderer = new THREE.WebGLRenderer();
-    renderer.setSize(document.body.clientWidth, window.innerHeight);
-    container.appendChild(renderer.domElement);
-
-    updatePlane(plane);
-    updatePlane(plane2);
-
-    renderVoid();
+for (i = 0; i < totalObjects; i++) {
+    var vertex = new THREE.Vector3();
+    vertex.x = Math.random() * planeSize - (planeSize * .5);
+    vertex.y = (Math.random() * 100000) - 10000;
+    vertex.z = Math.random() * planeSize - (planeSize * .5);
+    geometry.vertices.push(vertex);
 }
+
+var material = new THREE.ParticleBasicMaterial({ size: 200 });
+var particles = new THREE.ParticleSystem(geometry, material);
+
+caveScene.add(particles);
+
+var caveRenderer = new THREE.WebGLRenderer();
+caveRenderer.setSize(document.body.clientWidth, window.innerHeight);
+caveContainer.appendChild(caveRenderer.domElement);
+
+updatePlane(plane);
+updatePlane(plane2);
 
 function updatePlane(obj) {
     for (var i = 0; i < obj.geometry.vertices.length; i++) {
@@ -309,11 +303,18 @@ function updatePlane(obj) {
     }
 };
 
-function renderVoid() {
-    animationReq = requestAnimationFrame(renderVoid);
-    camera.position.z -= 150;
-    renderer.render(scene, camera);
+function render() {
+    requestAnimationFrame(render);
+    caveCamera.position.z -= 150;
+    //  dateVerts();
+    caveRenderer.render(caveScene, caveCamera);
 }
+
+function createVoid()
+{
+    render();
+}
+
 
 // Feathers
 function createFeathers() {
@@ -452,13 +453,14 @@ featherImage.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAA
 
 // Create water
 var waterValue = 7;
+
 function createWater() {
     $("body").mousemove(function(event) {
         let relX = event.pageX;
         let relY = event.pageY;
         let relBoxCoords = "(" + relX + "," + relY + ")";
         //console.debug("Rel box coord: " + relBoxCoords + ", Total: " + $(this).offset().top+ ", " + event.pageY);
-        waterValue = Math.round(100 - ((relY/$(this).height()) * 100));
+        waterValue = Math.round(100 - ((relY / $(this).height()) * 100));
 
         $(".progress").parent().removeClass();
         $(".progress .water").css("top", waterValue + "%");
@@ -483,12 +485,12 @@ const Wave = {};
 Wave.PI = Math.PI;
 Wave.TAU = Wave.PI * 2;
 
-Wave.rand = function (min, max) {
-  if (!max) {
-    var max = min;
-    min = 0;
-  }
-  return Math.random() * (max - min) + min;
+Wave.rand = function(min, max) {
+    if (!max) {
+        var max = min;
+        min = 0;
+    }
+    return Math.random() * (max - min) + min;
 };
 
 /*========================================
@@ -496,12 +498,12 @@ Wave.rand = function (min, max) {
    ========================================*/
 
 Wave.init = () => {
-  Wave.c = document.getElementById("calmCanvas");
-  Wave.ctx = Wave.c.getContext('2d');
-  Wave.simplex = new SimplexNoise();
-  Wave.events();
-  Wave.reset();
-  Wave.loop();
+    Wave.c = document.getElementById("calmCanvas");
+    Wave.ctx = Wave.c.getContext('2d');
+    Wave.simplex = new SimplexNoise();
+    Wave.events();
+    Wave.reset();
+    Wave.loop();
 };
 
 /*========================================
@@ -509,27 +511,27 @@ Wave.init = () => {
    ========================================*/
 
 Wave.reset = () => {
-  Wave.dpr = window.devicePixelRatio;
-  Wave.w = window.innerWidth;
-  Wave.h = window.innerHeight;
-  Wave.cx = Wave.w / 2;
-  Wave.cy = Wave.h / 2;
-  Wave.c.width = Wave.w * Wave.dpr;
-  Wave.c.height = Wave.h * Wave.dpr;
-  Wave.c.style.width = `Wave{Wave.w}px`;
-  Wave.c.style.height = `Wave{Wave.h}px`;
-  Wave.ctx.scale(Wave.dpr, Wave.dpr);
+    Wave.dpr = window.devicePixelRatio;
+    Wave.w = window.innerWidth;
+    Wave.h = window.innerHeight;
+    Wave.cx = Wave.w / 2;
+    Wave.cy = Wave.h / 2;
+    Wave.c.width = Wave.w * Wave.dpr;
+    Wave.c.height = Wave.h * Wave.dpr;
+    Wave.c.style.width = `Wave{Wave.w}px`;
+    Wave.c.style.height = `Wave{Wave.h}px`;
+    Wave.ctx.scale(Wave.dpr, Wave.dpr);
 
-  Wave.count = Math.floor(Wave.w / 50);
-  Wave.xoff = 0;
-  Wave.xinc = 0.05;
-  Wave.yoff = 0;
-  Wave.yinc = 0.003;
-  Wave.goff = 0;
-  Wave.ginc = 0.003;
-  Wave.y = Wave.h * 0.66;
-  Wave.length = Wave.w + 10;
-  Wave.amp = 40;
+    Wave.count = Math.floor(Wave.w / 50);
+    Wave.xoff = 0;
+    Wave.xinc = 0.05;
+    Wave.yoff = 0;
+    Wave.yinc = 0.003;
+    Wave.goff = 0;
+    Wave.ginc = 0.003;
+    Wave.y = Wave.h * 0.66;
+    Wave.length = Wave.w + 10;
+    Wave.amp = 40;
 };
 
 /*========================================
@@ -537,7 +539,7 @@ Wave.reset = () => {
    ========================================*/
 
 Wave.events = () => {
-  window.addEventListener('resize', Wave.reset.bind(this));
+    window.addEventListener('resize', Wave.reset.bind(this));
 };
 
 /*========================================
@@ -545,19 +547,19 @@ Wave.events = () => {
    ========================================*/
 
 Wave.wave = () => {
-  Wave.ctx.beginPath();
-  let sway = Wave.simplex.noise2D(Wave.goff, 0) * Wave.amp;
-  for (let i = 0; i <= Wave.count; i++) {
-    Wave.xoff += Wave.xinc;
-    let x = Wave.cx - Wave.length / 2 + Wave.length / Wave.count * i;
-    let y = Wave.y + Wave.simplex.noise2D(Wave.xoff, Wave.yoff) * Wave.amp + sway;
-    Wave.ctx[i === 0 ? 'moveTo' : 'lineTo'](x, y);
-  }
-  Wave.ctx.lineTo(Wave.w, Wave.h);
-  Wave.ctx.lineTo(0, Wave.h);
-  Wave.ctx.closePath();
-  Wave.ctx.fillStyle = 'hsla(210, 90%, 50%, 0.2)';
-  Wave.ctx.fill();
+    Wave.ctx.beginPath();
+    let sway = Wave.simplex.noise2D(Wave.goff, 0) * Wave.amp;
+    for (let i = 0; i <= Wave.count; i++) {
+        Wave.xoff += Wave.xinc;
+        let x = Wave.cx - Wave.length / 2 + Wave.length / Wave.count * i;
+        let y = Wave.y + Wave.simplex.noise2D(Wave.xoff, Wave.yoff) * Wave.amp + sway;
+        Wave.ctx[i === 0 ? 'moveTo' : 'lineTo'](x, y);
+    }
+    Wave.ctx.lineTo(Wave.w, Wave.h);
+    Wave.ctx.lineTo(0, Wave.h);
+    Wave.ctx.closePath();
+    Wave.ctx.fillStyle = 'hsla(210, 90%, 50%, 0.2)';
+    Wave.ctx.fill();
 };
 
 /*========================================
@@ -565,22 +567,21 @@ Wave.wave = () => {
    ========================================*/
 
 Wave.loop = () => {
-  animationReq = window.requestAnimationFrame(Wave.loop);
-  Wave.ctx.clearRect(0, 0, Wave.w, Wave.h);
-  Wave.xoff = 0;
-  Wave.wave();
-  Wave.wave();
-  Wave.wave();
-  Wave.wave();
-  Wave.yoff += Wave.yinc;
-  Wave.goff += Wave.ginc;
+    animationReq = window.requestAnimationFrame(Wave.loop);
+    Wave.ctx.clearRect(0, 0, Wave.w, Wave.h);
+    Wave.xoff = 0;
+    Wave.wave();
+    Wave.wave();
+    Wave.wave();
+    Wave.wave();
+    Wave.yoff += Wave.yinc;
+    Wave.goff += Wave.ginc;
 };
 
 /*========================================
    Start
    ========================================*/
-function createCalmWaves()
-{
+function createCalmWaves() {
     //$("body").css("background-color", "white");
     $("#calm").append("<canvas id='calmCanvas' class = 'removable'></canvas>");
     $("body").addClass("calmWaves");
