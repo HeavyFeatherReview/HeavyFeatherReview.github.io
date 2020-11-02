@@ -73,19 +73,14 @@ function createEgg() {
             $("#egg").removeClass("hover");
         }, 2000);
     }, 500);
-    
-    $("#egg-container").hover(
-        function() {
-            $("#egg").addClass("hover");
-        },
-        function() {
-            $("#egg").removeClass("hover");
-        }
-    );
 
-    $("#egg").mouseleave(function() {
+    var eggContainer = document.getElementById("egg-container");
+    eggContainer.onmouseover = function() {
+        $("#egg").addClass("hover");
+    };
+    eggContainer.onmouseout = function() {
         $("#egg").removeClass("hover");
-    });
+    };
 }
 
 
@@ -236,10 +231,10 @@ var particles = new THREE.ParticleSystem(geometry, material);
 caveScene.add(particles);
 
 var caveRenderer = new THREE.WebGLRenderer();
-caveRenderer.setSize(document.body.clientWidth, window.innerHeight);
+caveRenderer.setSize(document.body.clientWidth / 1.5, document.body.clientHeight / 2);
 caveContainer.appendChild(caveRenderer.domElement);
 
-var controls = new THREE.TrackballControls(caveCamera);
+var controls = new THREE.TrackballControls(caveCamera, caveRenderer.domElement);
 console.log("Controls: " + controls);
 controls.rotateSpeed = 1.0;
 controls.zoomSpeed = 1.2;
@@ -256,13 +251,12 @@ function updatePlane(obj) {
     }
 };
 
-var caveMoveY = 40;
+var voidMove = 0;
 
 function render() {
     requestAnimationFrame(render);
     controls.update();
-    //console.debug("caveMoveY: " + caveMoveY);
-    caveCamera.position.z -= caveMoveY;
+    caveCamera.position.z -= voidMove;
     //  dateVerts();
     caveRenderer.render(caveScene, caveCamera);
 }
@@ -270,9 +264,15 @@ function render() {
 var mY = 0;
 
 function createVoid() {
+    var voidContainer = document.getElementById("void-container");
+    voidContainer.onmouseover = function() {
+        voidMove = 150;
+    };
+    voidContainer.onmouseout = function() {
+        voidMove = 0;
+    };
     render();
 }
-
 
 // Feathers
 function createFeathers() {
