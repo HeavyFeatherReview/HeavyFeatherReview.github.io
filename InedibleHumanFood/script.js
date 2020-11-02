@@ -65,18 +65,6 @@ function cancelAnimations(element) {
 
 // Egg
 function createEgg() {
-    $("#eggs").append('<div class = "removable" id="egg">' +
-        '<div id="eyeCont">' +
-        '<div class="eye a"></div>' +
-        '<div class="eye b"></div>' +
-        '</div>' +
-        '<div id="mouthCont">' +
-        '<div class="timido left"></div>' +
-        '<div id="mouth" ></div>' +
-        '<div class="timido right"></div>' +
-        '</div>' +
-        '</div>');
-
     setTimeout(() => {
         console.debug("Timed out, hover over eggs")
         $("#egg").addClass("hover");
@@ -85,6 +73,15 @@ function createEgg() {
             $("#egg").removeClass("hover");
         }, 2000);
     }, 500);
+    
+    $("#egg-container").hover(
+        function() {
+            $("#egg").addClass("hover");
+        },
+        function() {
+            $("#egg").removeClass("hover");
+        }
+    );
 
     $("#egg").mouseleave(function() {
         $("#egg").removeClass("hover");
@@ -259,7 +256,7 @@ function updatePlane(obj) {
     }
 };
 
-var caveMoveY = 150;
+var caveMoveY = 40;
 
 function render() {
     requestAnimationFrame(render);
@@ -273,21 +270,6 @@ function render() {
 var mY = 0;
 
 function createVoid() {
-    // $(document).bind('mousemove', function(e) {
-    //     // moving upward
-    //     if (e.pageY < mY) {
-    //         canMoveY = e.pageY;
-    //         console.debug('From Bottom' + canMoveY);
-    //         // moving downward
-    //     } else {
-    //         canMoveY = -1*e.pageY;
-    //         console.log('From Top: ' + canMoveY);
-    //     }
-
-    //     // set new mY after doing test above
-    //     mY = e.pageY;
-    //     caveMoveY = e.pageY;
-    // });
     render();
 }
 

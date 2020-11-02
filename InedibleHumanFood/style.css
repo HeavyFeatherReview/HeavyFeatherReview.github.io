@@ -11,13 +11,24 @@ body {
     color: grey;
 }
 
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+}  
+
+.flex-child:first-child {
+    margin-right: 20px;
+} 
 
 /* -- Egg --*/
 #egg {
-/*    display: block;
+    display: block;
     margin: auto;
     margin-top: 20px;
-    top: 1vh;*/
+    top: 1vh;
     width: 126px;
     height: 180px;
     background-color: var(--egg);
