@@ -43,57 +43,6 @@ var colorInc = 100 / 3;
 // Animation
 var animationReq;
 
-$("p, div").hover(function() {
-        // Mouse enters
-        // currentlyHoveredID = this.id;
-        // var className = this.className;
-        // console.debug("Hovered over: " + this.id + ", " + className);
-        // if (previouslyHoveredElement != null && 
-        //     previouslyHoveredElement.id == currentlyHoveredID)
-        // {
-        //     console.debug("Already hovered over this, do nothing: " + previouslyHoveredElement.id + ", " + this.id);
-        //     return;
-        // }
-        // if (currentlyHoveredID == "eggs") {
-        //     cancelAnimations(this);
-        //     createEgg();
-        // } else if (currentlyHoveredID == "rainsnakes") {
-        //     cancelAnimations(this);
-        //     rain();
-        // } else if (currentlyHoveredID == "void") {
-        //     cancelAnimations(this);
-        //     createVoid();
-        // } else if (currentlyHoveredID == "feathers") {
-        //     $(".feathers").css("font-weight", "bold");
-        //     cancelAnimations(this);
-        //     createFeathers();
-        // } else if (currentlyHoveredID == "water" || className == "water") {
-        //     $(".water").css("font-weight", "bold");
-        //     cancelAnimations(this);
-        //     createWater();
-        // } else if (currentlyHoveredID == "calm"){
-        //     cancelAnimations(this);
-        //     createCalmWaves();
-        // }
-        // else {
-        //     console.debug("Unsupported thing hovered, keep doing what we were doing");
-        //     return;
-        // }
-        // previouslyHoveredElement = this;
-        // $(this).css("font-weight", "bold");
-    },
-    function() {
-        // let className = this.className;
-        // $(this).css("font-weight", "normal");
-        // if (className == "water")
-        // {
-        //     $(".water").css("font-weight", "normal");
-        // }
-        // else if (className == "feathers")
-        // {
-        // $(".feathers").css("font-weight", "normal");
-        //}
-    });
 
 function cancelAnimations(element) {
     let id = element.id;
@@ -293,7 +242,7 @@ var caveRenderer = new THREE.WebGLRenderer();
 caveRenderer.setSize(document.body.clientWidth, window.innerHeight);
 caveContainer.appendChild(caveRenderer.domElement);
 
-var controls = THREE.TrackballControls(caveCamera);
+var controls = new THREE.TrackballControls(caveCamera);
 console.log("Controls: " + controls);
 controls.rotateSpeed = 1.0;
 controls.zoomSpeed = 1.2;
