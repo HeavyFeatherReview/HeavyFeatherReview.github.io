@@ -337,6 +337,9 @@ function onWindowResize() {
     renderer.setSize(ww, wh);
     featherCamera.aspect = ww / wh;
     featherCamera.updateProjectionMatrix();
+
+    // Update void as well
+    caveRenderer.setSize(document.body.clientWidth, caveHeight);
 }
 
 function onMouseMove(e) {
