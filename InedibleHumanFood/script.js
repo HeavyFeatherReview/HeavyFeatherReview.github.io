@@ -260,7 +260,6 @@ caveCamera.position.z = 670000;
 caveCamera.position.y = 10000;
 caveCamera.lookAt(new THREE.Vector3(0, 6000, 0));
 
-
 var caveScene = new THREE.Scene();
 caveScene.fog = new THREE.Fog(0x000000, 100000, 400000);
 
@@ -294,6 +293,14 @@ var caveRenderer = new THREE.WebGLRenderer();
 caveRenderer.setSize(document.body.clientWidth, window.innerHeight);
 caveContainer.appendChild(caveRenderer.domElement);
 
+var controls = THREE.TrackballControls(caveCamera);
+console.log("Controls: " + controls);
+controls.rotateSpeed = 1.0;
+controls.zoomSpeed = 1.2;
+controls.panSpeed = 0.8;
+
+controls.keys = [65, 83, 68];
+
 updatePlane(plane);
 updatePlane(plane2);
 
@@ -303,15 +310,35 @@ function updatePlane(obj) {
     }
 };
 
+var caveMoveY = 150;
+
 function render() {
     requestAnimationFrame(render);
-    caveCamera.position.z -= 150;
+    controls.update();
+    //console.debug("caveMoveY: " + caveMoveY);
+    caveCamera.position.z -= caveMoveY;
     //  dateVerts();
     caveRenderer.render(caveScene, caveCamera);
 }
 
-function createVoid()
-{
+var mY = 0;
+
+function createVoid() {
+    // $(document).bind('mousemove', function(e) {
+    //     // moving upward
+    //     if (e.pageY < mY) {
+    //         canMoveY = e.pageY;
+    //         console.debug('From Bottom' + canMoveY);
+    //         // moving downward
+    //     } else {
+    //         canMoveY = -1*e.pageY;
+    //         console.log('From Top: ' + canMoveY);
+    //     }
+
+    //     // set new mY after doing test above
+    //     mY = e.pageY;
+    //     caveMoveY = e.pageY;
+    // });
     render();
 }
 
