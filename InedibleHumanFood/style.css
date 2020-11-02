@@ -8,20 +8,40 @@ body {
     margin: 100px;
     margin-left: 200px;
     margin-right: 200px;
-    color: grey;
+    color: lightgrey;
+    font-family: "Work Sans", sans-serif;
+    font-weight: normal;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
 .flex-container {
+	display: -ms-flex;
+	display: -webkit-flex;
     display: flex;
 }
 
 .flex-child {
     flex: 1;
-}  
+}
+
+.flexbox-container > .flexbox-child
+{
+	width: 50%;
+	padding: 10px;
+}
 
 .flex-child:first-child {
     margin-right: 20px;
-} 
+}
+
+.hover-container:hover {
+    cursor: pointer;
+}
+
+.section {
+    margin-bottom: 100px;
+}
 
 /* -- Egg --*/
 #egg {
@@ -193,8 +213,9 @@ body {
 
 /* --- Rain snakes, Cave void, feathers, water ---- */
 #canvas-rain,
-#featherScene,{
-/*    position: absolute;
+#featherScene,
+    {
+    /*    position: absolute;
     top: 0;
     left: 0;
     bottom: 0;*/
@@ -203,9 +224,12 @@ body {
     height: 100%;
 }
 
-#calmCanvas
-{
-/*	position: absolute;
+#featherScene {
+    min-width: 100px;
+}
+
+#calmCanvas {
+    /*	position: absolute;
     top: 0;
     left: 0;
     bottom: 0;*/

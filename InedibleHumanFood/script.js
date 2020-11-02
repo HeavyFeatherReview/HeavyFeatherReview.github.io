@@ -18,6 +18,8 @@ var vertexHeight = 125000;
 var planeDefinition = 20;
 var planeSize = 1245000;
 var totalObjects = 500;
+var caveWidth = document.body.clientWidth;
+var caveHeight = 500;
 
 // Three.js variables
 var camera;
@@ -25,7 +27,7 @@ var renderer;
 var scene;
 var center;
 var ww = document.body.clientWidth;
-var wh = window.innerHeight;
+var wh = 500;
 
 // Feathers
 var featherCamera;
@@ -85,9 +87,9 @@ function createEgg() {
 
 
 // Crazy rain
+var rainSpeed = 400;
+
 function rain() {
-    //$("body").css("background-color", "black");
-    $("#rainsnakes").append('<canvas class = "removable" id="canvas-rain"></canvas>');
     c = document.getElementById("canvas-rain");
     ctx = c.getContext("2d");
     w = c.width = document.body.clientWidth;
@@ -98,7 +100,16 @@ function rain() {
 
     window.addEventListener("resize", resize);
     setup();
-    anim();
+    animateRain();
+
+    // Move faster on hover
+    var rainContainer = document.getElementById("rain-container");
+    rainContainer.onmouseover = function() {
+        rainSpeed = 800;
+    };
+    rainContainer.onmouseout = function() {
+        rainSpeed = 400;
+    };
 }
 
 function random(min, max) {
@@ -179,18 +190,18 @@ function setup() {
                 var o = new O();
                 o.init();
                 drops.push(o);
-            }, j * 400)
+            }, j * rainSpeed)
         }(i));
     }
 }
 
-function anim() {
+function animateRain() {
     ctx.fillStyle = clearColor;
     ctx.fillRect(0, 0, w, h);
     for (var i in drops) {
         drops[i].draw();
     }
-    animationReq = requestAnimationFrame(anim);
+    animationReq = requestAnimationFrame(animateRain);
 }
 
 // Void
@@ -231,7 +242,7 @@ var particles = new THREE.ParticleSystem(geometry, material);
 caveScene.add(particles);
 
 var caveRenderer = new THREE.WebGLRenderer();
-caveRenderer.setSize(document.body.clientWidth / 1.5, document.body.clientHeight / 2);
+caveRenderer.setSize(caveWidth, caveHeight);
 caveContainer.appendChild(caveRenderer.domElement);
 
 var controls = new THREE.TrackballControls(caveCamera, caveRenderer.domElement);
@@ -281,8 +292,6 @@ function createFeathers() {
         return;
     }
     let yellowOrange = 0xF5CC70;
-    $("#feathers").append("<canvas id='featherScene' class='removable'></canvas>");
-
     center = new THREE.Vector3(0, 100, 0);
     canvas = document.getElementById("featherScene");
     renderer = new THREE.WebGLRenderer({
@@ -316,10 +325,14 @@ function createFeathers() {
     animationReq = window.requestAnimationFrame(renderFeathers);
 }
 
-function onWindowResize() {
-
+function resetFeatherHeightWidth()
+{
     ww = document.body.clientWidth;
-    wh = window.innerHeight;
+    wh = 500;
+}
+
+function onWindowResize() {
+    resetFeatherHeightWidth();
 
     renderer.setSize(ww, wh);
     featherCamera.aspect = ww / wh;
@@ -540,8 +553,6 @@ Wave.loop = () => {
    Start
    ========================================*/
 function createCalmWaves() {
-    //$("body").css("background-color", "white");
-    $("#calm").append("<canvas id='calmCanvas' class = 'removable'></canvas>");
     $("body").addClass("calmWaves");
     Wave.init();
 }
