@@ -246,7 +246,6 @@ caveRenderer.setSize(caveWidth, caveHeight);
 caveContainer.appendChild(caveRenderer.domElement);
 
 var controls = new THREE.TrackballControls(caveCamera, caveRenderer.domElement);
-console.log("Controls: " + controls);
 controls.rotateSpeed = 1.0;
 controls.zoomSpeed = 1.2;
 controls.panSpeed = 0.8;
