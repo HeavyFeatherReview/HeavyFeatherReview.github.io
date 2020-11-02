@@ -14,10 +14,10 @@ body {
 
 /* -- Egg --*/
 #egg {
-    display: block;
+/*    display: block;
     margin: auto;
     margin-top: 20px;
-    top: 1vh;
+    top: 1vh;*/
     width: 126px;
     height: 180px;
     background-color: var(--egg);
