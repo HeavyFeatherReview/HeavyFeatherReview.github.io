@@ -428,10 +428,10 @@ var waterValue = 7;
 function createWater() {
     $("body").mousemove(function(event) {
         let relX = event.pageX;
-        let relY = event.pageY;
+        let relY = event.screenY;
         let relBoxCoords = "(" + relX + "," + relY + ")";
         //console.debug("Rel box coord: " + relBoxCoords + ", Total: " + $(this).offset().top+ ", " + event.pageY);
-        waterValue = Math.round(100 - ((relY / $(this).height()) * 100));
+        waterValue = Math.round(100 - ((relY / screen.height) * 100));
 
         $(".progress").parent().removeClass();
         $(".progress .water").css("top", waterValue + "%");
