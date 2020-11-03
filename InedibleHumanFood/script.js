@@ -560,10 +560,12 @@ function createCalmWaves() {
 }
 
 
-
-
-/// RUN EVERYTHING
 // Do everything
+AOS.init({
+  duration: 1200,
+  once: false,
+  mirror: true, 
+})
 createEgg();
 rain();
 createVoid();

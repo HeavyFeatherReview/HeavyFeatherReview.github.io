@@ -3,13 +3,14 @@
 
 <head>
     <script src="../Resources/jquery-3.5.1.min.js"></script>
+     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Inedible Human Food</title>
 </head>
 
 <body>
     <div id="inediblehumanfood">
-        <div class="section">
+        <div class="section" data-aos="fade-left">
             <div class="flex-container hover-container" id="egg-container">
                 <div class="flex-child">
                     <p class="paragraph">The farmer's market is hard going. Marjorie's chickens lay valuable eggs no one wants. Jade eggs, mother of pearl, porcelain trinkets mislabeled as heirlooms&mdash;perhaps, Leo says, it hinges on the cycle of the moon. He hasn't slept for weeks, determined to win his video game.</p>
@@ -29,13 +30,13 @@
                 </div>
             </div>
         </div>
-        <div class="section">
+        <div class="section" data-aos="fade-left">
             <div id="rain-container">
                 <p class="paragraph" id="rainsnakes">But he's wrong. There's no telling because of the weather. Suitable buyers exist. When the eclipse dips low over prairie wilds, hiding funnel clouds stalking nearby hamlets, the chickens drop Styrofoam peanuts. Rain: black licorice. Another rain: the skulls of baby snakes.</p>
                 <canvas class="removable" id="canvas-rain"></canvas>
             </div>
         </div>
-        <div class="section" id="void-container">
+        <div class="section" id="void-container" data-aos="fade-left">
             <!--             <div class="flex-container" id="void-container">
                 <div class="flex-child"> -->
             <p class="paragraph" id="void">What goes in never comes out. There's no rhyme or reason, but Marjorie, thinking always of her nephew Simon&mdash;and sometimes of Leo warfighting at home&mdash;cares for these chickens. She returns to the market Saturday after next with her wares, sale or no sale, weekend after weekend after weekend. But she will never eat the thin chickens, excreting untold lives from unknown worlds. Each one has a name, a different personality.</p>
@@ -46,14 +47,14 @@
             <!--                 </div> -->
         </div>
     </div>
-    <div class="section">
+    <div class="section" data-aos="fade-left">
         <div id="feathers">
             <p class="paragraph feathers">It goes like this until Frankie the Silkie collapses mid-roost. In the morning, his frayed feathers have been ceremoniously plucked off. Not long after, Henrietta the Australorp croaks mid-crow. She had been more vocal recently, leaving the coop over and over without reason as if testing predators to strike out from behind cover. It was never clear where in the fence Henrietta escaped, the border undamaged, the dirt unraked. Mute Rebecca across the way, miles over, walked her back like a child's lost toy every afternoon&mdash;limply but noticeably tender.</p>
             <p class="paragraph feathers">Then the stink of death when the rest of the flock runs squawking flat into the side of an unfinished parking structure. They fall off the edge of the pit, dug for support beams, and into a mess of metal and wires. The viral video captures them howling furiously like menaced senators, probably chased but it is too hard to tell. The position of the poster causes glares from the sun. Leo recruits Simon for war: He laughs and laughs every time Simon says something hilarious on the game about chicken brains. The shrill joy of dumb boys cuts so deep into Marjorie she has to lie down. She can hear simple anatomies falling through precious construction like murder for hours.</p>
             <canvas id='featherScene' class='removable hover-container'></canvas>
         </div>
     </div>
-    <div class="section">
+    <div class="section" data-aos="fade-left">
         <div class="flex-container">
             <div class="flex-child">
                 <p class="water">Lately even Simon rolls his eyes and pinches his nose when she comes near, taking cues from Leo. In the bedroom, she hurts alone for these chickens. Lightweight water clings to her cheeks like weather.</p>
@@ -74,7 +75,7 @@
             </div>
         </div>
     </div>
-    <div class="section">
+    <div class="section" data-aos="fade-left">
         <p class="paragraph" id="calm">She doesn't wake with a sweat. Instead she takes the first thing she can reach for out of the room. She remains at the farmer's market until after close. The boys must be hungry.</p>
         <canvas id='calmCanvas' class='removable'></canvas>
     </div>
@@ -82,6 +83,7 @@
 <script src="../Resources/three.js"></script>
 <script src="../Resources/simplex-noise.js"></script>
 <script src="../Resources/TrackballControls.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="script.js"></script>
 
 </html>
