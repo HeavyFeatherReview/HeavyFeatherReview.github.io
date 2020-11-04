@@ -46,6 +46,12 @@ var colorInc = 100 / 3;
 var animationReq;
 var rainAnimationReq;
 
+var isMobile = navigator.userAgent.toLowerCase().match(/mobile/i),
+    isTablet = navigator.userAgent.toLowerCase().match(/tablet/i),
+    isAndroid = navigator.userAgent.toLowerCase().match(/android/i),
+    isiPhone = navigator.userAgent.toLowerCase().match(/iphone/i),
+    isiPad = navigator.userAgent.toLowerCase().match(/ipad/i);
+
 function cancelAnimations(element) {
     let id = element.id;
     console.debug("Cancel for " + id);
@@ -283,6 +289,11 @@ var mY = 0;
 
 function createVoid() {
     var voidContainer = document.getElementById("void-container");
+    if (isMobile)
+    {
+        console.log("Use larger voidMove");
+        voidMove = 200;
+    }
     voidContainer.onmouseover = function() {
         voidMove = 150;
     };
