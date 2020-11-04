@@ -116,7 +116,7 @@ function rain() {
         let y = event.clientY - rect.top;
         var o = new O();
         o.init();
-        o.x = x; 
+        o.x = x;
         o.y = y;
         o.hue = 0;
         o.lightness = "100%";
@@ -167,7 +167,7 @@ O.prototype = {
             ctx.closePath();
 
         } else {
-            ctx.fillStyle = 'hsl(' + this.hue + ', 100%, '+ this.lightness + ')';
+            ctx.fillStyle = 'hsl(' + this.hue + ', 100%, ' + this.lightness + ')';
             ctx.fillRect(this.x, this.y, this.size, this.size * 5);
         }
         this.update();
@@ -289,8 +289,7 @@ var mY = 0;
 
 function createVoid() {
     var voidContainer = document.getElementById("void-container");
-    if (isMobile)
-    {
+    if (isMobile) {
         console.log("Use larger voidMove");
         voidMove = 200;
     }
@@ -579,6 +578,12 @@ function createCalmWaves() {
 
 
 // Do everything
+
+if (isMobile) {
+    console.log("No flex for mobile");
+    $(".flex-container").removeClass("flex-container");
+    $(".flex-child").removeClass("flex-child");
+}
 AOS.init({
     duration: 1200,
     once: false,
