@@ -502,7 +502,7 @@ Wave.reset = () => {
     Wave.yinc = 0.003;
     Wave.goff = 0;
     Wave.ginc = 0.003;
-    Wave.y = Wave.h * 0.66;
+    Wave.y = Wave.h * 0.3;
     Wave.length = Wave.w + 10;
     Wave.amp = 40;
 };
