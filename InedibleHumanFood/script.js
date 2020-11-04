@@ -187,8 +187,8 @@ O.prototype = {
 }
 
 function resize() {
-    w = c.width = window.innerWidth;
-    h = c.height = window.innerHeight;
+    w = c.width = document.body.clientWidth;
+    h = c.height = rainHeight;
 }
 
 function setup() {
