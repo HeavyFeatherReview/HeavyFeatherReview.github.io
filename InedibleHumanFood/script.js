@@ -112,7 +112,8 @@ function rain() {
         o.init();
         o.x = x; 
         o.y = y;
-        o.hue = 108;
+        o.hue = 0;
+        o.lightness = "100%";
         o.draw();
         drops.push(o);
     }
@@ -138,6 +139,7 @@ O.prototype = {
         this.a = 1;
         this.va = .96;
         this.hue = 180;
+        this.lightness = "50%";
     },
     draw: function() {
         if (this.y > this.hit) {
@@ -154,12 +156,12 @@ O.prototype = {
                 this.x - this.w / 2, this.y - this.h / 2,
                 this.x, this.y - this.h / 2);
 
-            ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, 50%, ' + this.a + ')';
+            ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, ' + this.lightness + ', ' + this.a + ')';
             ctx.stroke();
             ctx.closePath();
 
         } else {
-            ctx.fillStyle = 'hsl(' + this.hue + ', 100%, 50%)';
+            ctx.fillStyle = 'hsl(' + this.hue + ', 100%, '+ this.lightness + ')';
             ctx.fillRect(this.x, this.y, this.size, this.size * 5);
         }
         this.update();
