@@ -44,7 +44,7 @@ var colorInc = 100 / 3;
 
 // Animation
 var animationReq;
-
+var rainAnimationReq;
 
 function cancelAnimations(element) {
     let id = element.id;
@@ -104,12 +104,18 @@ function rain() {
 
     // Move faster on hover
     var rainContainer = document.getElementById("rain-container");
-    rainContainer.onmouseover = function() {
-        rainSpeed = 800;
-    };
-    rainContainer.onmouseout = function() {
-        rainSpeed = 400;
-    };
+    rainContainer.onclick = function() {
+        let rect = c.getBoundingClientRect();
+        let x = event.clientX - rect.left;
+        let y = event.clientY - rect.top;
+        var o = new O();
+        o.init();
+        o.x = x; 
+        o.y = y;
+        o.hue = 108;
+        o.draw();
+        drops.push(o);
+    }
 }
 
 function random(min, max) {
@@ -122,7 +128,6 @@ O.prototype = {
     init: function() {
         this.x = random(0, w);
         this.y = 0;
-        this.color = 'hsl(180, 100%, 50%)';
         this.w = 2;
         this.h = 1;
         this.vy = random(4, 5);
@@ -132,6 +137,7 @@ O.prototype = {
         this.hit = random(h * .8, h * .9);
         this.a = 1;
         this.va = .96;
+        this.hue = 180;
     },
     draw: function() {
         if (this.y > this.hit) {
@@ -148,12 +154,12 @@ O.prototype = {
                 this.x - this.w / 2, this.y - this.h / 2,
                 this.x, this.y - this.h / 2);
 
-            ctx.strokeStyle = 'hsla(180, 100%, 50%, ' + this.a + ')';
+            ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, 50%, ' + this.a + ')';
             ctx.stroke();
             ctx.closePath();
 
         } else {
-            ctx.fillStyle = this.color;
+            ctx.fillStyle = 'hsl(' + this.hue + ', 100%, 50%)';
             ctx.fillRect(this.x, this.y, this.size, this.size * 5);
         }
         this.update();
@@ -201,7 +207,7 @@ function animateRain() {
     for (var i in drops) {
         drops[i].draw();
     }
-    animationReq = requestAnimationFrame(animateRain);
+    rainAnimationReq = requestAnimationFrame(animateRain);
 }
 
 // Void
@@ -324,8 +330,7 @@ function createFeathers() {
     animationReq = window.requestAnimationFrame(renderFeathers);
 }
 
-function resetFeatherHeightWidth()
-{
+function resetFeatherHeightWidth() {
     ww = document.body.clientWidth;
     wh = 500;
 }
@@ -562,9 +567,9 @@ function createCalmWaves() {
 
 // Do everything
 AOS.init({
-  duration: 1200,
-  once: false,
-  mirror: true, 
+    duration: 1200,
+    once: false,
+    mirror: true,
 })
 createEgg();
 rain();
