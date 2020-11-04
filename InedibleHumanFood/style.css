@@ -5,9 +5,9 @@
 
 body {
     background-color: var(--background);
-    margin: 100px;
-    margin-left: 200px;
-    margin-right: 200px;
+    margin: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
     color: lightgrey;
     font-family: "Work Sans", sans-serif;
     font-weight: normal;
