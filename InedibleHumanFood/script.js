@@ -445,23 +445,38 @@ featherImage.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAA
 var waterValue = 7;
 
 function createWater() {
-    $("body").mousemove(function(event) {
-        let relX = event.pageX;
-        let relY = event.screenY;
-        let relBoxCoords = "(" + relX + "," + relY + ")";
-        //console.debug("Rel box coord: " + relBoxCoords + ", Total: " + $(this).offset().top+ ", " + event.pageY);
-        waterValue = Math.round(100 - ((relY / screen.height) * 100));
-
-        $(".progress").parent().removeClass();
-        $(".progress .water").css("top", waterValue + "%");
-        $(".progress .percent").text((100 - waterValue) + "%")
-        if (waterValue < colorInc * 1)
-            $(".progress").parent().addClass("red");
-        else if (waterValue < colorInc * 2)
-            $(".progress").parent().addClass("orange");
-        else
-            $(".progress").parent().addClass("green");
+    $(window).scroll(function() {
+        let waterContainer = document.getElementById("water");
+        let rect = waterContainer.getBoundingClientRect();
+        console.debug(rect.top, rect.right, rect.bottom, rect.left);
+        if (rect.top < 0 || rect.top > screen.height) {
+            return;
+        }
+        waterValue = Math.round((rect.top / screen.height) * 100);
+        setWaterValue(waterValue);
     });
+    if (!isMobile) {
+        $("body").mousemove(function(event) {
+            let relX = event.pageX;
+            let relY = event.screenY;
+            let relBoxCoords = "(" + relX + "," + relY + ")";
+            //console.debug("Rel box coord: " + relBoxCoords + ", Total: " + $(this).offset().top+ ", " + event.pageY);
+            waterValue = Math.round(100 - ((relY / screen.height) * 100));
+            setWaterValue(waterValue);
+        });
+    }
+}
+
+function setWaterValue(waterValue) {
+    $(".progress").parent().removeClass();
+    $(".progress .water").css("top", waterValue + "%");
+    $(".progress .percent").text((100 - waterValue) + "%")
+    if (waterValue < colorInc * 1)
+        $(".progress").parent().addClass("red");
+    else if (waterValue < colorInc * 2)
+        $(".progress").parent().addClass("orange");
+    else
+        $(".progress").parent().addClass("green");
 }
 
 
@@ -572,7 +587,6 @@ Wave.loop = () => {
    Start
    ========================================*/
 function createCalmWaves() {
-    $("body").addClass("calmWaves");
     Wave.init();
 }
 
