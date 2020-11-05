@@ -1,15 +1,15 @@
 :root {
     --egg: #CCCDCE;
-    --background: black;
+    --background: #B23A48;
 }
 
 body {
     background-color: var(--background);
-    margin: 5%;
     margin-left: 5%;
     margin-right: 5%;
-    color: lightgrey;
+    color: #C7EF00;
     font-family: "Work Sans", sans-serif;
+    font-size: 20px;
     font-weight: normal;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -215,6 +215,7 @@ body {
 /* --- Rain snakes, Cave void, feathers, water ---- */
 #canvas-rain,
 #featherScene,
+#calmCanvas
     {
     /*    position: absolute;
     top: 0;
@@ -227,15 +228,6 @@ body {
 
 #featherScene {
     min-width: 100px;
-}
-
-#calmCanvas {
-    /*	position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;*/
-    z-index: -10;
-    width: 100%;
 }
 
 /*Water*/

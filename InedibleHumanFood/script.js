@@ -517,8 +517,8 @@ Wave.init = () => {
 
 Wave.reset = () => {
     Wave.dpr = window.devicePixelRatio;
-    Wave.w = window.innerWidth;
-    Wave.h = window.innerHeight;
+    Wave.w = document.body.clientWidth;
+    Wave.h = caveHeight;
     Wave.cx = Wave.w / 2;
     Wave.cy = Wave.h / 2;
     Wave.c.width = Wave.w * Wave.dpr;
