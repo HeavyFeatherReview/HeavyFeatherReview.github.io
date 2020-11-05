@@ -15,6 +15,14 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+header {
+    margin-bottom: 5%;
+}
+
+hr {
+    border: 1px solid #C7EF00;
+}
+
 @media screen and (min-width: 960px) {
     .flex-container {
         display: -ms-flex;
@@ -34,6 +42,10 @@ body {
     .flex-child:first-child {
         margin-right: 20px;
     }
+}
+
+#note {
+    font-size: 16px;
 }
 
 .hover-container:hover {
@@ -215,8 +227,7 @@ body {
 /* --- Rain snakes, Cave void, feathers, water ---- */
 #canvas-rain,
 #featherScene,
-#calmCanvas
-    {
+#calmCanvas {
     /*    position: absolute;
     top: 0;
     left: 0;
