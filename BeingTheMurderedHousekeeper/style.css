@@ -1,21 +1,44 @@
 @import url(http://fonts.googleapis.com/css?family=EB+Garamond);
-.clipText{
-	font-size: 10px;
+
+body{
 }
 
-h2{
-	font-size: 12px;
-	font-family: Garamond, EB Garamond, Georgia, serif;
+#BeingTheMurderedHousekeeper{
+	max-width: 700px;
+	margin: auto;
+}
+
+.clipText {
+    font-size: 10px;
+}
+
+h2 {
+    font-size: 12px;
+    font-family: Garamond, EB Garamond, Georgia, serif;
 }
 
 .image-container {
-    position: relative;
-    text-align: center;
+    position: absolute;
+    z-index: 1;
 }
 
 .centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
+.imageRow {
+	width: 100%;
+}
+
+#imageContainer1 {
+    transform: rotate(330deg);
+}
+
+#imageContainer2 {
+    transform: rotate(30deg);
+    left: 150px;
+}
+
