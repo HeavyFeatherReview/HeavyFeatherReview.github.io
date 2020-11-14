@@ -14,12 +14,12 @@ body {
 }
 
 .clipText {
-    font-size: 10px;
+    font-size: 10.5px;
 }
 
 h2 {
     font-family: 'Playfair Display', serif;
-    font-weight: 900;
+    font-weight: 600;
     text-transform: uppercase;
     margin-bottom: 0px;
 }
@@ -41,7 +41,7 @@ h2 {
 }
 
 .image-container p {
-    margin-top: 1px;
+    margin-top: 4px;
 }
 
 .centered {

@@ -1,5 +1,5 @@
 // Fix the widths of everything
-var textPadding = [15, 60, 60, 25, 20];
+var textPadding = [40, 80, 80, 50, 40];
 for (let i = 1; i < 6; i++) {
     let clipImageWidth = $("#clip" + i + "Image").width();
     console.debug("Set clip1Text width to" + clipImageWidth);
