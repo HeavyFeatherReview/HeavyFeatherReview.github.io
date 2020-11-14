@@ -18,6 +18,7 @@ h2 {
     font-family: 'Playfair Display', serif;
     font-weight: 900;
     text-transform: uppercase;
+    margin-bottom: 0px;
 }
 
 .image-container {
@@ -30,6 +31,10 @@ h2 {
 	transition: opacity 1s ease-in-out;
 	-webkit-transition: opacity 1s ease-in-out;
     -moz-transition: opacity 1s ease-in-out;
+}
+
+.image-container p {
+ margin-top: 2px;
 }
 
 .centered {
