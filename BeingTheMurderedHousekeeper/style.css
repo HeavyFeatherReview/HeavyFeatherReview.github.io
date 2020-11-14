@@ -4,7 +4,7 @@ body{
 }
 
 #BeingTheMurderedHousekeeper{
-	max-width: 700px;
+	max-width: 600px;
 	margin: auto;
 }
 
@@ -20,6 +20,13 @@ h2 {
 .image-container {
     position: absolute;
     z-index: 1;
+}
+
+.image-container:hover{
+	opacity: 0;
+	transition: opacity 1s ease-in-out;
+	-webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
 }
 
 .centered {
