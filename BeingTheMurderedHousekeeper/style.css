@@ -38,6 +38,7 @@ h2 {
     transition: opacity 1s ease-in-out;
     -webkit-transition: opacity 1s ease-in-out;
     -moz-transition: opacity 1s ease-in-out;
+    cursor: default;
 }
 
 .image-container p {
