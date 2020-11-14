@@ -27,6 +27,10 @@ h2 {
 .image-container {
     position: absolute;
     z-index: 1;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
 }
 
 .image-container:hover {
