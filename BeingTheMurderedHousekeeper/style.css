@@ -1,13 +1,14 @@
 @import url(http://fonts.googleapis.com/css?family=EB+Garamond);
 
-body{
-	color: #2f2f2f;
-	font-family: 'Droid Serif', serif;
+body {
+    color: #2f2f2f;
+    font-family: 'Droid Serif', serif;
+    font-size: 13px;
 }
 
-#BeingTheMurderedHousekeeper{
-	max-width: 600px;
-	margin: auto;
+#BeingTheMurderedHousekeeper {
+    max-width: 600px;
+    margin: auto;
 }
 
 .clipText {
@@ -26,15 +27,15 @@ h2 {
     z-index: 1;
 }
 
-.image-container:hover{
-	opacity: 0;
-	transition: opacity 1s ease-in-out;
-	-webkit-transition: opacity 1s ease-in-out;
+.image-container:hover {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
     -moz-transition: opacity 1s ease-in-out;
 }
 
 .image-container p {
- margin-top: 2px;
+    margin-top: 2px;
 }
 
 .centered {
@@ -45,11 +46,11 @@ h2 {
 }
 
 .imageRow {
-	width: 100%;
+    width: 100%;
 }
 
 #imageContainer1 {
-    transform: rotate(330deg);
+    transform: rotate(340deg);
 }
 
 #imageContainer2 {
