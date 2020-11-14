@@ -200,17 +200,28 @@ h1{
 }
 
 .rank-suit-bottom{
+  width: 100%;
   text-align: right;
+  bottom: 0;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .suit-rank-top{
   text-align: left;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
 }
 
 .card-design{
-  position: relative;
+  position: absolute;
   z-index: 2;
-  margin: 0 auto;
+  margin: auto;
+  font-size: 24px;
+}
+
+.suit-middle{
+  font-size: 24px;
 }
 
 @media screen and (max-width: 64rem){

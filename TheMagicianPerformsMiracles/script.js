@@ -27,12 +27,17 @@ function appendCardRankAndSuit(divID, rank, suit)
 	// Top 
 	$("#" + divID + " .suit-rank-top").html(suit +"<br>"+ rank);
 	// Center
-	$("#" + divID+ " .inner p").append("<div class='card-design suit-middle "+color+"'>"+ suit +"</div>");
+	$("#" + divID+ " .inner p").append("<div class='suit-middle "+color+"'>"+ suit +"</div>");
 	// Bottom
 	$("#" + divID + " .rank-suit-bottom").html(rank +"<br>"+ suit);
 
 	$("#" + divID + " .card-design").addClass(color);
 
+}
+
+function cureStarvation()
+{
+	console.debug("Cure starvation");
 }
 
 // What do cards look like? Where do the ranks and suits go again? top left and bottom right corner?
