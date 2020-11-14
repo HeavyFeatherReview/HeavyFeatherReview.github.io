@@ -1,6 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=EB+Garamond);
 
 body{
+	color: #2f2f2f;
+	font-family: 'Droid Serif', serif;
 }
 
 #BeingTheMurderedHousekeeper{
@@ -13,8 +15,9 @@ body{
 }
 
 h2 {
-    font-size: 12px;
-    font-family: Garamond, EB Garamond, Georgia, serif;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
 .image-container {
