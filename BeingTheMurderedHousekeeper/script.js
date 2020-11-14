@@ -9,11 +9,21 @@ for (let i = 1; i < 6; i++) {
 setImagePositions();
 
 function setImagePositions() {
+
     let totalWidth = $("#BeingTheMurderedHousekeeper").width();
     let windowDifference = $(window).width() - totalWidth;
-    // Position the elements
-    let leftPosition = totalWidth - $("#imageContainer2").width() + windowDifference/2;
+
+    // 2
+    let leftPosition = totalWidth - $("#imageContainer2").width() + windowDifference / 2;
     $("#imageContainer2").css("left", leftPosition);
+
+    // 4
+    let leftPosition4 = totalWidth - $("#imageContainer4").width() + windowDifference / 2 - 150;
+    $("#imageContainer4").css("left", leftPosition4);
+
+    // 4
+    let leftPosition5 = totalWidth - $("#imageContainer5").width() + windowDifference / 2 - 250;
+    $("#imageContainer5").css("left", leftPosition5);
 }
 
 

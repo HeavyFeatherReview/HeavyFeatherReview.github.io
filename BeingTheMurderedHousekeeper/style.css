@@ -39,6 +39,16 @@ h2 {
 
 #imageContainer2 {
     transform: rotate(30deg);
-    left: 150px;
 }
 
+#imageContainer3 {
+    transform: rotate(15deg);
+}
+
+#imageContainer4 {
+    transform: rotate(340deg);
+}
+
+#imageContainer5 {
+    transform: rotate(20deg);
+}
