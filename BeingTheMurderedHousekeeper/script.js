@@ -26,7 +26,19 @@ function setImagePositions() {
     $("#imageContainer5").css("left", leftPosition5);
 }
 
+var isMobile = navigator.userAgent.toLowerCase().match(/mobile/i),
+    isTablet = navigator.userAgent.toLowerCase().match(/tablet/i),
+    isAndroid = navigator.userAgent.toLowerCase().match(/android/i),
+    isiPhone = navigator.userAgent.toLowerCase().match(/iphone/i),
+    isiPad = navigator.userAgent.toLowerCase().match(/ipad/i);
 
 $(window).resize(function() {
     setImagePositions();
 });
+
+if (isMobile) {
+    $(".image-container").on("tap", function() {
+    	console.debug("Tapped");
+        $(this).mouseover();
+    });
+}
