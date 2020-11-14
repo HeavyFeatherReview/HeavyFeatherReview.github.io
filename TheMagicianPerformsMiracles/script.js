@@ -18,7 +18,7 @@ for (let i = 1; i<=totalCardNums; i++)
 		suitIndex = suitIndex - (suitIndex - 3);
 	}
 	console.debug("Suit: " + suitIndex);
-	appendCardRankAndSuit("cardFront" + i, ranks[i], suits[suitIndex]);
+	appendCardRankAndSuit("cardFront" + i, ranks[i-1], suits[suitIndex]);
 }
 
 function appendCardRankAndSuit(divID, rank, suit)
@@ -35,29 +35,33 @@ function appendCardRankAndSuit(divID, rank, suit)
 
 }
 
-function cureStarvation()
-{
+function cureStarvation(){
 	console.debug("Cure starvation");
 }
 
-// What do cards look like? Where do the ranks and suits go again? top left and bottom right corner?
-// what about number?
-/*
-shape
-number
+function grandmotherDead(){
+	console.debug("Grandmother dead");
+}
 
+function president(){
+	console.debug("president");
+}
 
+function cardTrick(){
+	console.debug("Card trick");
+}
 
+function sweep(){
+	console.debug("Sweep");
+}
 
+function bow(){
+	console.debug("Takes a bow");
+	$("#backgroundElements").append("<canvas id = 'canv'></canvas>");
+	drawBirds();
+} 
 
-         more shapes
-
-
-
-
-
-
-
-                   number
-                   shape (inverted)
-*/
+function cancelBow(){
+	cancelBirds();
+	$("#canv").remove();
+}

@@ -5,6 +5,9 @@
           box-sizing: border-box;
 }
 
+canvas {
+  position: absolute;
+}
 h1{
   font-size: 2.5rem;
   font-family: 'Montserrat';

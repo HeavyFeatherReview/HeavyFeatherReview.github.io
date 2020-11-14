@@ -13,9 +13,10 @@
             <h1>The Magician Performs Miracles</h1>
 <!--             <i>Text by Cathy Ulrich, Interactives by Lucy Zhang</i> -->
         </header>
+        <div id="backgroundElements"></div>
         <div class="wrapper">
   <div class="cols">
-            <div class="col" ontouchstart="this.classList.toggle('hover');cureStarvation();">
+            <div class="col" onmouseenter="cureStarvation();">
                 <div class="container">
                     <div id = "cardFront1" class="front">
                         <div class="card-design suit-rank-top"></div>
@@ -31,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col" ontouchstart="this.classList.toggle('hover');">
+            <div class="col" onmouseenter="grandmotherDead();">
                 <div class="container">
                     <div id = "cardFront2" class="front">
                         <div class="card-design suit-rank-top"></div>
@@ -49,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col" ontouchstart="this.classList.toggle('hover');">
+            <div class="col" onmouseenter="president();">
                 <div class="container">
                     <div id = "cardFront3" class="front">
                         <div class="card-design suit-rank-top"></div>
@@ -60,15 +61,15 @@
                     </div>
                     <div class="back">
                         <div class="inner">
-                            <p>He says: <i>I can only do it if you believe.</i>
-He says: <i>Clap if you believe.</i>
+                            <p>He says: <i>I can only do it if you believe.</i><br>
+He says: <i>Clap if you believe.</i><br>
 His voice is like a child forest god calling a fading tinker fairy back from the dark, he says <i>clap</i>, he says <i>clap, clap, clap</i>, and the audience roar startles up doves, everywhere, black-eye, white-wing doves.
 </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col" ontouchstart="this.classList.toggle('hover');">
+            <div class="col" onmouseenter="cardTrick();">
                 <div class="container">
                     <div id = "cardFront4" class="front">
                         <div class="card-design suit-rank-top"></div>
@@ -84,7 +85,7 @@ His voice is like a child forest god calling a fading tinker fairy back from the
                     </div>
                 </div>
             </div>
-            <div class="col" ontouchstart="this.classList.toggle('hover');">
+            <div class="col" onmouseenter="sweep();">
                 <div class="container">
                     <div id = "cardFront5" class="front" >
                         <div class="card-design suit-rank-top"></div>
@@ -100,7 +101,7 @@ His voice is like a child forest god calling a fading tinker fairy back from the
                     </div>
                 </div>
             </div>
-            <div class="col" ontouchstart="this.classList.toggle('hover');">
+            <div class="col" onmouseenter="bow();" onmouseleave="cancelBow();">
                 <div class="container">
                     <div id = "cardFront6" class="front">
                         <div class="card-design suit-rank-top"></div>
@@ -125,6 +126,7 @@ His voice is like a child forest god calling a fading tinker fairy back from the
 
 </body>
 <script src="../Resources/jquery-3.5.1.min.js"></script>
+<script src="birds.js"></script>
 <script src="script.js"></script>
 
 </html>
