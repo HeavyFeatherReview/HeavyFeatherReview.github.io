@@ -548,6 +548,7 @@ path {
 }
 
 #cards {
+    opacity: 0;
     margin-right: 110px;
     position: absolute;
 }

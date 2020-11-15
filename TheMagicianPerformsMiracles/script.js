@@ -22,14 +22,6 @@ for (let i = 1; i <= totalCardNums; i++) {
     appendCardRankAndSuit("cardFront" + i, ranks[i - 1], suits[suitIndex]);
 }
 
-// $(".container").click(function() {
-//     if ($(this).is('.hover')) {
-//         $(this).removeClass("hover");
-//     } else {
-//         $(this).addClass("hover");
-//     }
-// })
-
 function appendCardRankAndSuit(divID, rank, suit) {
     let color = suitColors[suit];
     // Top 
@@ -64,15 +56,6 @@ function grandmotherDead() {
     for (let i = 0; i < 300; i++) {
         $("#cinnamon-wrap").append("<div class='c'></div>");
     }
-
-    // if (!fadedOut) {
-    //     fadedOut = true;
-    //     setTimeout(() => {
-    //         console.debug("Fade out!");
-    //         $("#cinnamon-wrap").fadeOut(5000);
-    //         fadedOut = false;
-    //     }, 14000);
-    // }
 }
 
 function cancelGrandmotherDead() {
@@ -127,7 +110,7 @@ function cardTrick() {
 }
 
 function cancelCardTricks() {
-	$("#cards").remove();
+    $("#cards").remove();
     $(".container").animate({ opacity: '1' });
     // if (displayCardsInterval) {
     //     window.clearInterval(displayCardsInterval);
@@ -232,8 +215,10 @@ function createDeck() {
     for (i = 0; i < d.order.length; i++) {
         $('#cards').prepend(cardDOM(d.order[i]));
     }
-    $("#cards .card").animate({ marginRight: "-107px" }, 5000, function() {
-        $("#cards .card:last").click();
+    $("#cards").animate({ opacity: "1" }, 2000, function() {
+        $("#cards .card").animate({ marginRight: "-107px" }, 5000, function() {
+            $("#cards .card:last").click();
+        });
     });
     listenToLastMouseClick();
 }
