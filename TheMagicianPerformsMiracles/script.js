@@ -57,14 +57,14 @@ function grandmotherDead() {
         $("#cinnamon-wrap").append("<div class='c'></div>");
     }
 
-    if (!fadedOut) {
-        fadedOut = true;
-        setTimeout(() => {
-            console.debug("Fade out!");
-            $("#cinnamon-wrap").fadeOut(5000);
-            fadedOut = false;
-        }, 14000);
-    }
+    // if (!fadedOut) {
+    //     fadedOut = true;
+    //     setTimeout(() => {
+    //         console.debug("Fade out!");
+    //         $("#cinnamon-wrap").fadeOut(5000);
+    //         fadedOut = false;
+    //     }, 14000);
+    // }
 }
 
 function cancelGrandmotherDead() {
