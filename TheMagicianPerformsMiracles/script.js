@@ -65,18 +65,27 @@ function cancelGrandmotherDead() {
     fadedOut = false;
 }
 
+var twinkleInterval = null;
 function president() {
     console.debug("president");
     console.debug("Make sparkle visible");
     $("#presidentInnerBack").css("background", "black");
     $("#presidentInnerBack").css("color", "white");
     $("#sparkle").css("visibility", "visible");
+    twinkleInterval = window.setInterval(function() {
+    	let randomPercentLeft = getRandomInt(0, 100);
+    	let randomPercentTop = getRandomInt(0, 100);
+    	console.debug("New coords: " + randomPercentLeft + ", " + randomPercentTop);
+        $("svg").css("left", randomPercentLeft + "%");
+        $("svg").css("top", randomPercentTop + "%");
+    }, 1000);
 }
 
 function cancelPresident() {
     $("#sparkle").css("visibility", "hidden");
     $("#presidentInnerBack").css("background", "");
     $("#presidentInnerBack").css("color", "");
+    window.clearInterval(twinkleInterval);
 }
 
 var displayCardsInterval = null;
