@@ -42,13 +42,11 @@ function appendCardRankAndSuit(divID, rank, suit) {
 function cureStarvation() {
     console.debug("Cure starvation");
     $("#cureStarvation").css("display", "block");
-    $("body").css("background-color", "grey");
 }
 
 function cancelCureStarvation() {
     console.debug("Cancel cure starvation");
     $("#cureStarvation").css("display", "none");
-    $("body").css("background-color", "white");
 }
 
 var fadedOut = false;
@@ -71,12 +69,14 @@ function president() {
     console.debug("president");
     console.debug("Make sparkle visible");
     $("#presidentInnerBack").css("background", "black");
+    $("#presidentInnerBack").css("color", "white");
     $("#sparkle").css("visibility", "visible");
 }
 
 function cancelPresident() {
     $("#sparkle").css("visibility", "hidden");
     $("#presidentInnerBack").css("background", "");
+    $("#presidentInnerBack").css("color", "");
 }
 
 var displayCardsInterval = null;
