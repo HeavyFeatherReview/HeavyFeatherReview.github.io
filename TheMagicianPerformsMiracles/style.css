@@ -109,7 +109,9 @@ h1 {
 }
 
 .container:hover .front,
-.container:hover .back {
+.container:hover .back,
+.container.hover .front,
+.container.hover .back {
     -webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
     transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
     -o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
@@ -117,7 +119,8 @@ h1 {
     transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 
-.container:hover .back .inner {
+.container:hover .back .inner,
+.container.hover .back .inner {
     opacity: 1;
 }
 
@@ -163,14 +166,16 @@ h1 {
     transform-style: preserve-3d;
 }
 
-.container:hover .back {
+.container:hover .back,
+.container.hover .back {
     -webkit-transform: rotateY(0deg);
     transform: rotateY(0deg);
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
 }
 
-.container:hover .front {
+.container:hover .front,
+.container.hover .front {
     -webkit-transform: rotateY(-180deg);
     transform: rotateY(-180deg);
     -webkit-transform-style: preserve-3d;

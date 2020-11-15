@@ -83,8 +83,42 @@ function cancelPresident() {
     $("#sparkle").css("visibility", "hidden");
 }
 
+var displayCardsInterval = null;
+var addHover = true;
+
 function cardTrick() {
     console.debug("Card trick");
+    var i = 0;
+    displayCardsInterval = window.setInterval(function() {
+    	if (i > 5){
+    		i = 0;
+    		if (addHover)
+    			addHover = false;
+    		else 
+    			addHover = true;
+    	}
+    	if (i == 3){
+    		i+=1;
+    	}
+    	if (addHover)
+    	{
+    		console.debug("Add hover class to " + i);
+    		$(".container").eq( i ).addClass("hover");
+    	}
+    	else
+    	{
+    		console.debug("Remove hover class to " + i);
+    		$(".container").eq( i ).removeClass("hover");
+    	}
+        i += 1;
+    }, 250);
+}
+
+function cancelCardTricks() {
+    if (displayCardsInterval) {
+        window.clearInterval(displayCardsInterval);
+    }
+    $(".container").removeClass("hover");
 }
 
 function sweep() {
@@ -111,12 +145,17 @@ function cancelBow() {
     $("#canv").remove();
 }
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function addWindowEventListener() {
     window.addEventListener('resize', function() {
         let c = document.getElementById('canv');
-        if (!c)
-        {
-        	return;
+        if (!c) {
+            return;
         }
         c.width = w = document.body.clientWidth;
         c.height = h = document.body.clientHeight;
