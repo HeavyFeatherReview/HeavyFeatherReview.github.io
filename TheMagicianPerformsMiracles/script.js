@@ -70,12 +70,13 @@ function cancelGrandmotherDead() {
 function president() {
     console.debug("president");
     console.debug("Make sparkle visible");
+    $("#presidentInnerBack").css("background", "black");
     $("#sparkle").css("visibility", "visible");
 }
 
 function cancelPresident() {
-    $("#presidentInnerBack").removeClass("black-background");
     $("#sparkle").css("visibility", "hidden");
+    $("#presidentInnerBack").css("background", "");
 }
 
 var displayCardsInterval = null;
@@ -90,6 +91,8 @@ function cardTrick() {
     // createDeck();
     $(".container .back .inner").not("#cardFrontContainer4").append("<p class='trickText'>It is a very good card trick.</p>");
     $(".backText").css("display", "none");
+    //$("#presidentInnerBack").removeAttr('style');
+    //.css({"background": "", "background-color":""});
     var i = 0;
     displayCardsInterval = window.setInterval(function() {
         if (i > 5) {
@@ -110,13 +113,10 @@ function cardTrick() {
             $(".container").eq(i).removeClass("hover");
         }
         i += 1;
-    }, 250);
+    }, 200);
 }
 
 function cancelCardTricks() {
-    // $("#cards").remove();
-    // $(".container").animate({ opacity: '1' });
-
     if (displayCardsInterval) {
         window.clearInterval(displayCardsInterval);
     }
