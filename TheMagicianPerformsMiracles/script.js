@@ -99,7 +99,7 @@ function cardTrick() {
     $("#backgroundElements").append('<div id="cards"></div>');
     $(".container").each(function(index) {
         if (index != 3) {
-            $(this).css("visibility", "hidden");
+            $(this).animate({ opacity: '0' }, "slow");
         }
     });
     createDeck();
@@ -127,12 +127,12 @@ function cardTrick() {
 }
 
 function cancelCardTricks() {
-    $(".container").css("visibility", "visible");
+	$("#cards").remove();
+    $(".container").animate({ opacity: '1' });
     // if (displayCardsInterval) {
     //     window.clearInterval(displayCardsInterval);
     // }
     // $(".container").removeClass("hover");
-    $("#cards").remove();
 }
 
 function sweep() {
