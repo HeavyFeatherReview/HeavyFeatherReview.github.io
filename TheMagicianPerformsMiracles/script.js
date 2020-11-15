@@ -27,7 +27,7 @@ function appendCardRankAndSuit(divID, rank, suit) {
     // Top 
     $("#" + divID + " .suit-rank-top").html(suit + "<br>" + rank);
     // Center
-    $("#" + divID + " .inner p").append("<div class='suit-middle " + color + "'>" + suit + "</div>");
+    //$("#" + divID + " .inner p").append("<div class='suit-middle " + color + "'>" + suit + "</div>");
     // Bottom
     $("#" + divID + " .rank-suit-bottom").html(rank + "<br>" + suit);
 
@@ -45,12 +45,12 @@ function grandmotherDead() {
     console.debug("Grandmother dead");
     // Create cinnamon
     $("#cardFront2").append("<div id='cinnamon-wrap'></div>");
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 400; i++) {
         $("#cinnamon-wrap").append("<div class='c'></div>");
     }
 
     if (!fadedOut) {
-    	fadedOut = true;
+        fadedOut = true;
         setTimeout(() => {
             console.debug("Fade out!");
             $("#cinnamon-wrap").fadeOut(1000);
@@ -66,6 +66,13 @@ function cancelGrandmotherDead() {
 
 function president() {
     console.debug("president");
+    console.debug("Make sparkle visible");
+    $("#sparkle").css("visibility", "visible");
+}
+
+function cancelPresident() {
+    $("#presidentInnerBack").removeClass("black-background");
+    $("#sparkle").css("visibility", "hidden");
 }
 
 function cardTrick() {

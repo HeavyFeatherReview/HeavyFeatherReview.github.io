@@ -253,3 +253,109 @@ h1 {
         margin: 0 0 2rem 0;
     }
 }
+
+
+
+/* Twinkle/Sparkle/President */
+
+#sparkle {
+  visibility: hidden;
+}
+
+svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.group {
+    transform: translate(42.5px, 42.5px);
+}
+
+path {
+    transform: translate(-42.50px, -42.50px);
+}
+
+.large {
+    opacity: 0;
+    animation: large 8s linear infinite;
+}
+
+.large-2 {
+    opacity: 0;
+    animation: large-2 8s linear infinite;
+}
+
+.small {
+    opacity: 0;
+    animation: small 8s linear infinite;
+}
+
+@keyframes large {
+    0% {
+        opacity: 0;
+        transform: rotate(0deg) scale(0);
+    }
+
+    16.667% {
+        opacity: 1;
+    }
+
+    33.333% {
+        opacity: 0;
+        transform: rotate(360deg) scale(1.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(0deg) scale(0);
+    }
+}
+
+@keyframes large-2 {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) scale(0);
+    }
+
+    16.667% {
+        opacity: 1;
+    }
+
+    33.333% {
+        opacity: 0;
+        transform: rotate(405deg) scale(1.1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) scale(0);
+    }
+}
+
+@keyframes small {
+    0% {
+        opacity: 0;
+        transform: rotate(0deg) scale(0);
+    }
+
+    16.667% {
+        opacity: 1;
+    }
+
+    33.333% {
+        opacity: 0;
+        transform: rotate(-360deg) scale(1.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(0deg) scale(0);
+    }
+}
+
+/* President background */
+#presidentInnerBack {
+    background: black;
+}
