@@ -15,21 +15,13 @@
             <!--             <i>Text by Cathy Ulrich, Interactives by Lucy Zhang</i> -->
         </header>
         <div id="backgroundElements">
-            <div id="cureStarvation" class="room">
-                <div class="bread">
-                    <span class="bread__strip bread__strip--1"></span>
-                    <span class="bread__strip bread__strip--2"></span>
-                    <span class="bread__strip bread__strip--3"></span>
-                </div>
-                <div class="steam">
-                    <span class="steam__ring steam__ring--1"></span>
-                    <span class="steam__ring steam__ring--2"></span>
-                    <span class="steam__ring steam__ring--3"></span>
-                </div>
-                <div class="mouse">
-                    <span class="mouse__ear"></span>
-                    <span class="mouse__eye"></span>
-                </div>
+            <div id="cureStarvation">
+                <svg width="0" height="0">
+                    <filter id="fog">
+                        <feTurbulence type="fractalNoise" baseFrequency=".01" numOctaves="10" />
+                        <feDisplacementMap in="SourceGraphic" scale="180" />
+                    </filter>
+                </svg>
             </div>
         </div>
         <div class="wrapper">

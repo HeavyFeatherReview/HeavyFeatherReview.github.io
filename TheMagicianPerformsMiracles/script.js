@@ -41,12 +41,14 @@ function appendCardRankAndSuit(divID, rank, suit) {
 
 function cureStarvation() {
     console.debug("Cure starvation");
-    $("#cureStarvation").css("display", "block");
+    $("#cureStarvation").append('<div id="steamWrapper">'+
+                    '<div id="steam"></div>'+
+                '</div>');
 }
 
 function cancelCureStarvation() {
     console.debug("Cancel cure starvation");
-    $("#cureStarvation").css("display", "none");
+    //$("#steamWrapper").remove();
 }
 
 var fadedOut = false;

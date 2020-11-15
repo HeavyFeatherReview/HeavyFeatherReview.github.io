@@ -13,6 +13,10 @@ body {
     background-color: black;
 }
 
+body {
+  align-items: center;
+}
+
 canvas {
     position: absolute;
 }
@@ -370,144 +374,62 @@ path {
 
 /* Cure starvation */
 
-#cureStarvation {
-    display: none;
+/* Cure starvation steam */
+@keyframes steamAnimation {
+  0% {
+    transform: translate(30%, -70%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(60%, -90%);
+    opacity: 0;
+  }
 }
 
-.room {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    width: 100%;
-    height: 400px;
-    max-width: 700px;
-    margin: auto;
-    overflow: hidden;
+#steamWrapper {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.room::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 80px;
-    /*  background-color: #f6874b;*/
+#steam {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: -156px 492px 123px -252px #fff;
+  filter: url(#fog);
+  min-width: 600px;
+  min-height: 600px;
+  animation-name: steamAnimation;
+  animation-duration: 4s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  will-change: transform, opacity;
+}
+@media (max-width: 600px) {
+  #steam {
+    top: -80%;
+    box-shadow: -156px 492px 123px -252px #fff;
+  }
+}
+@media (max-width: 480px) {
+  #steam {
+    top: -160%;
+    box-shadow: -166px 492px 53px -272px #fff;
+  }
 }
 
-.bread {
-    position: absolute;
-    width: 200px;
-    height: 115px;
-    background-color: #ffce72;
-    border-radius: 50%;
-    border-bottom: 30px solid #f6874b;
-    background-image: linear-gradient(to bottom, #ffce72, #ffa821);
-    z-index: 1;
-    overflow: hidden;
-    bottom: 20px;
-    margin-left: 20px;
-}
-
-.bread__strip {
-    position: absolute;
-    top: -30px;
-    width: 20px;
-    height: 60px;
-    background-color: #e0881e;
-    border-radius: 50%;
-}
-
-.bread__strip--1 {
-    left: 40px;
-    transform: rotate(-16deg);
-}
-
-.bread__strip--2 {
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-
-.bread__strip--3 {
-    right: 40px;
-    transform: rotate(16deg);
-}
-
-.steam {
-    position: absolute;
-    top: 100px;
-    left: 10px;
-    /*  right: 0;*/
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 180px;
-    margin: auto;
-    animation: steamMoves 1.2s infinite linear;
-    z-index: 2;
-}
-
-.steam__ring {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    border: 2px solid #ffffff;
-    border-radius: 50%;
-    border-bottom: 0;
-    border-left: 0;
-    animation: steamRingRotates 1.2s infinite linear;
-}
-
-.steam__ring--2 {
-    top: -16px;
-    left: -12px;
-    animation-delay: -1s;
-}
-
-.steam__ring--3 {
-    top: -32px;
-    right: -12px;
-    animation-delay: -2s;
-}
-
-@keyframes steamMoves {
-    0% {
-        opacity: 0;
-        transform: translateY(0);
-    }
-
-    50% {
-        opacity: 1;
-        transform: translateY(-30px);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(-60px);
-    }
-}
-
-@keyframes steamRingRotates {
-    0% {
-        opacity: 0;
-        transform: rotate(0);
-    }
-
-    50% {
-        opacity: 1;
-        transform: rotate(180deg);
-    }
-
-    100% {
-        opacity: 0;
-        transform: rotate(359deg);
-    }
-}
 
 /*Card trick*/
 
