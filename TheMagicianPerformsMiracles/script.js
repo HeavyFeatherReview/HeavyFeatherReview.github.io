@@ -37,6 +37,14 @@ function appendCardRankAndSuit(divID, rank, suit) {
 
 function cureStarvation() {
     console.debug("Cure starvation");
+    $("#cureStarvation").css("display", "block");
+    $("body").css("background-color", "grey");
+}
+
+function cancelCureStarvation() {
+    console.debug("Cancel cure starvation");
+    $("#cureStarvation").css("display", "none");
+    $("body").css("background-color", "white");
 }
 
 var fadedOut = false;
@@ -45,7 +53,7 @@ function grandmotherDead() {
     console.debug("Grandmother dead");
     // Create cinnamon
     $("#cardFront2").append("<div id='cinnamon-wrap'></div>");
-    for (let i = 0; i < 400; i++) {
+    for (let i = 0; i < 300; i++) {
         $("#cinnamon-wrap").append("<div class='c'></div>");
     }
 
@@ -53,7 +61,7 @@ function grandmotherDead() {
         fadedOut = true;
         setTimeout(() => {
             console.debug("Fade out!");
-            $("#cinnamon-wrap").fadeOut(1000);
+            $("#cinnamon-wrap").fadeOut(5000);
             fadedOut = false;
         }, 14000);
     }
@@ -106,6 +114,10 @@ function cancelBow() {
 function addWindowEventListener() {
     window.addEventListener('resize', function() {
         let c = document.getElementById('canv');
+        if (!c)
+        {
+        	return;
+        }
         c.width = w = document.body.clientWidth;
         c.height = h = document.body.clientHeight;
     }, false);

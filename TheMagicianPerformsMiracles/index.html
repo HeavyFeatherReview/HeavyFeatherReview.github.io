@@ -14,10 +14,27 @@
             <h1>The Magician Performs Miracles</h1>
             <!--             <i>Text by Cathy Ulrich, Interactives by Lucy Zhang</i> -->
         </header>
-        <div id="backgroundElements"></div>
+        <div id="backgroundElements">
+            <div id="cureStarvation" class="room">
+                <div class="bread">
+                    <span class="bread__strip bread__strip--1"></span>
+                    <span class="bread__strip bread__strip--2"></span>
+                    <span class="bread__strip bread__strip--3"></span>
+                </div>
+                <div class="steam">
+                    <span class="steam__ring steam__ring--1"></span>
+                    <span class="steam__ring steam__ring--2"></span>
+                    <span class="steam__ring steam__ring--3"></span>
+                </div>
+                <div class="mouse">
+                    <span class="mouse__ear"></span>
+                    <span class="mouse__eye"></span>
+                </div>
+            </div>
+        </div>
         <div class="wrapper">
             <div class="cols">
-                <div class="col" onmouseenter="cureStarvation();">
+                <div class="col" onmouseenter="cureStarvation();" onmouseleave="cancelCureStarvation()">
                     <div class="container">
                         <div id="cardFront1" class="front">
                             <div class="card-design suit-rank-top"></div>
@@ -144,7 +161,7 @@
         </div>
 </body>
 <script src="../Resources/jquery-3.5.1.min.js"></script>
-<script src="http://code.jquery.com/color/jquery.color-2.2.0.min.js"   integrity="sha256-aSe2ZC5QeunlL/w/7PsVKmV+fa0eDbmybn/ptsKHR6I="   crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/color/jquery.color-2.2.0.min.js" integrity="sha256-aSe2ZC5QeunlL/w/7PsVKmV+fa0eDbmybn/ptsKHR6I=" crossorigin="anonymous"></script>
 <script src="birds.js"></script>
 <script src="wind.js"></script>
 <script src="script.js"></script>
