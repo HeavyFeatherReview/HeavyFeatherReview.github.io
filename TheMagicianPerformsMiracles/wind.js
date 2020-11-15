@@ -7,7 +7,7 @@ var drawWind = function(a, b, t) {
   SweepWind.fillStyle = 'hsla(0, 0%, 0%, 0)';
   SweepWind.fillRect(0, 0, w, h);
   for (var i = -60; i < 60; i += 1) {
-    SweepWind.strokeStyle = 'hsla(200, 75%, 15%, .15)';
+    SweepWind.strokeStyle = 'hsla(200, 75%, 15%, .75)';
     SweepWind.beginPath();
     SweepWind.moveTo(0, h / 2);
     for (var j = 0; j < w; j += 10) {

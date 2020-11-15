@@ -73,13 +73,13 @@ h1 {
     min-height: 280px;
     height: auto;
     border-radius: 10px;
-/*    color: #fff;*/
+    /*    color: #fff;*/
     font-size: 1.5rem;
 }
 
 .back {
-    background: grey;
-/*    background: -webkit-linear-gradient(45deg, #cedce7 0%, #596a72 100%);
+    background: lightgrey;
+    /*    background: -webkit-linear-gradient(45deg, #cedce7 0%, #596a72 100%);
     background: -o-linear-gradient(45deg, #cedce7 0%, #596a72 100%);
     background: linear-gradient(45deg, #cedce7 0%, #596a72 100%);*/
     font-size: 13px;
@@ -187,6 +187,7 @@ h1 {
     font-size: 1rem;
     margin-bottom: 2rem;
     position: relative;
+    font-style: italic;
 }
 
 .front .inner p:after {
@@ -271,7 +272,7 @@ h1 {
 svg {
     position: absolute;
     left: 50%;
-    top: 50%;
+/*    top: 50%;*/
     transform: translate(-50%, -50%);
 }
 
