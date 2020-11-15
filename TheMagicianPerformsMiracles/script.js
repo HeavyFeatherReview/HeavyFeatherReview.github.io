@@ -83,42 +83,46 @@ var addHover = true;
 
 function cardTrick() {
     console.debug("Card trick");
-    $("#backgroundElements").append('<div id="cards"></div>');
-    $(".container").not("#cardFrontContainer4").each(function(index) {
-        $(this).animate({ opacity: '0' }, "slow");
-    });
-    createDeck();
-    // var i = 0;
-    // displayCardsInterval = window.setInterval(function() {
-    //     if (i > 5) {
-    //         i = 0;
-    //         if (addHover)
-    //             addHover = false;
-    //         else
-    //             addHover = true;
-    //     }
-    //     if (i == 3) {
-    //         i += 1;
-    //     }
-    //     if (addHover) {
-    //         console.debug("Add hover class to " + i);
-    //         $(".container").eq(i).addClass("hover");
-    //     } else {
-    //         console.debug("Remove hover class to " + i);
-    //         $(".container").eq(i).removeClass("hover");
-    //     }
-    //     i += 1;
-    // }, 250);
+    // $("#backgroundElements").append('<div id="cards"></div>');
+    // $(".container").not("#cardFrontContainer4").each(function(index) {
+    //     $(this).animate({ opacity: '0' }, "slow");
+    // });
+    // createDeck();
+    $(".container .back .inner").not("#cardFrontContainer4").append("<p class='trickText'>It is a very good card trick.</p>");
+    $(".backText").css("display", "none");
+    var i = 0;
+    displayCardsInterval = window.setInterval(function() {
+        if (i > 5) {
+            i = 0;
+            if (addHover)
+                addHover = false;
+            else
+                addHover = true;
+        }
+        if (i == 3) {
+            i += 1;
+        }
+        if (addHover) {
+            console.debug("Add hover class to " + i);
+            $(".container").eq(i).addClass("hover");
+        } else {
+            console.debug("Remove hover class to " + i);
+            $(".container").eq(i).removeClass("hover");
+        }
+        i += 1;
+    }, 250);
 }
 
 function cancelCardTricks() {
-    $("#cards").remove();
-    $(".container").animate({ opacity: '1' });
-    
-    // if (displayCardsInterval) {
-    //     window.clearInterval(displayCardsInterval);
-    // }
-    // $(".container").removeClass("hover");
+    // $("#cards").remove();
+    // $(".container").animate({ opacity: '1' });
+
+    if (displayCardsInterval) {
+        window.clearInterval(displayCardsInterval);
+    }
+    $(".trickText").remove();
+    $(".container .back .inner p").css("display", "block");
+    $(".container").removeClass("hover");
 }
 
 function sweep() {
