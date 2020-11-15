@@ -377,32 +377,32 @@ path {
 /* Cure starvation steam */
 @keyframes steamAnimation {
   0% {
-    transform: translate(30%, -70%);
+    transform: translate(20%, -70%);
     opacity: 0;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.8;
   }
   100% {
-    transform: translate(60%, -90%);
+    transform: translate(40%, -90%);
     opacity: 0;
   }
 }
 
 #steamWrapper {
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #steam {
+   z-index: 10;
   width: 100%;
   height: 100%;
   border-radius: 50%;

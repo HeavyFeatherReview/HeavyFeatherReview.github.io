@@ -48,7 +48,7 @@ function cureStarvation() {
 
 function cancelCureStarvation() {
     console.debug("Cancel cure starvation");
-    //$("#steamWrapper").remove();
+    $("#steamWrapper").remove();
 }
 
 var fadedOut = false;
