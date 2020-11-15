@@ -33,8 +33,8 @@ for (let i = 1; i <= totalCardNums; i++) {
     appendCardRankAndSuit("cardFront" + i, cardInfo['rank'], cardInfo['suit']);
 }
 
-if (isMobile  || isiPad || isiPhone || isAndroid) {
-	console.debug("On mobile!");
+if (isMobile || isiPad || isiPhone || isAndroid) {
+    console.debug("On mobile!");
     $(".container").on("tap", function() {
         console.debug("Tapped");
         if ($(this).hasClass("hover")) {
@@ -197,90 +197,91 @@ function addWindowEventListener() {
     }, false);
 }
 
+/// This stuff is unused!
 
-function deck() {
+// function deck() {
 
-    function card(r, s) {
-        this.rank = r;
-        this.suit = s;
-    }
+//     function card(r, s) {
+//         this.rank = r;
+//         this.suit = s;
+//     }
 
-    this.order = [
-        new card('A', 'spades'), new card('2', 'spades'), new card('3', 'spades'), new card('4', 'spades'), new card('5', 'spades'),
-        new card('6', 'spades'), new card('7', 'spades'), new card('8', 'spades'), new card('9', 'spades'), new card('10', 'spades'),
-        new card('J', 'spades'), new card('Q', 'spades'), new card('K', 'spades'),
-        new card('A', 'clubs'), new card('2', 'clubs'), new card('3', 'clubs'), new card('4', 'clubs'), new card('5', 'clubs'),
-        new card('6', 'clubs'), new card('7', 'clubs'), new card('8', 'clubs'), new card('9', 'clubs'), new card('10', 'clubs'),
-        new card('J', 'clubs'), new card('Q', 'clubs'), new card('K', 'clubs'),
-        new card('A', 'hearts'), new card('2', 'hearts'), new card('3', 'hearts'), new card('4', 'hearts'), new card('5', 'hearts'),
-        new card('6', 'hearts'), new card('7', 'hearts'), new card('8', 'hearts'), new card('9', 'hearts'), new card('10', 'hearts'),
-        new card('J', 'hearts'), new card('Q', 'hearts'), new card('K', 'hearts'),
-        new card('A', 'diams'), new card('2', 'diams'), new card('3', 'diams'), new card('4', 'diams'), new card('5', 'diams'),
-        new card('6', 'diams'), new card('7', 'diams'), new card('8', 'diams'), new card('9', 'diams'), new card('10', 'diams'),
-        new card('J', 'diams'), new card('Q', 'diams'), new card('K', 'diams')
-    ];
+//     this.order = [
+//         new card('A', 'spades'), new card('2', 'spades'), new card('3', 'spades'), new card('4', 'spades'), new card('5', 'spades'),
+//         new card('6', 'spades'), new card('7', 'spades'), new card('8', 'spades'), new card('9', 'spades'), new card('10', 'spades'),
+//         new card('J', 'spades'), new card('Q', 'spades'), new card('K', 'spades'),
+//         new card('A', 'clubs'), new card('2', 'clubs'), new card('3', 'clubs'), new card('4', 'clubs'), new card('5', 'clubs'),
+//         new card('6', 'clubs'), new card('7', 'clubs'), new card('8', 'clubs'), new card('9', 'clubs'), new card('10', 'clubs'),
+//         new card('J', 'clubs'), new card('Q', 'clubs'), new card('K', 'clubs'),
+//         new card('A', 'hearts'), new card('2', 'hearts'), new card('3', 'hearts'), new card('4', 'hearts'), new card('5', 'hearts'),
+//         new card('6', 'hearts'), new card('7', 'hearts'), new card('8', 'hearts'), new card('9', 'hearts'), new card('10', 'hearts'),
+//         new card('J', 'hearts'), new card('Q', 'hearts'), new card('K', 'hearts'),
+//         new card('A', 'diams'), new card('2', 'diams'), new card('3', 'diams'), new card('4', 'diams'), new card('5', 'diams'),
+//         new card('6', 'diams'), new card('7', 'diams'), new card('8', 'diams'), new card('9', 'diams'), new card('10', 'diams'),
+//         new card('J', 'diams'), new card('Q', 'diams'), new card('K', 'diams')
+//     ];
 
-    this.shuffle = function() {
-        for (var i = 0; i < this.order.length; i++) {
-            var j = i;
-            while (j == i) {
-                j = Math.floor(Math.random() * this.order.length);
-            }
-            var tmp = this.order[i];
-            this.order[i] = this.order[j];
-            this.order[j] = tmp;
-        }
-    };
+//     this.shuffle = function() {
+//         for (var i = 0; i < this.order.length; i++) {
+//             var j = i;
+//             while (j == i) {
+//                 j = Math.floor(Math.random() * this.order.length);
+//             }
+//             var tmp = this.order[i];
+//             this.order[i] = this.order[j];
+//             this.order[j] = tmp;
+//         }
+//     };
 
-    this.shuffle();
+//     this.shuffle();
 
-    this.top_card = function() {
-        if (this.order.length == 0)
-            return false;
-        this.order.shift();
-        return true;
-    };
-}
+//     this.top_card = function() {
+//         if (this.order.length == 0)
+//             return false;
+//         this.order.shift();
+//         return true;
+//     };
+// }
 
-var d = null;
+// var d = null;
 
-var shuffled = true;
+// var shuffled = true;
 
-function createDeck() {
-    $("#cards").html('');
-    d = new deck();
-    console.debug(d.order);
-    for (i = 0; i < d.order.length; i++) {
-        $('#cards').prepend(cardDOM(d.order[i]));
-    }
-    $("#cards").animate({ opacity: "1" }, 2000, function() {
-        $("#cards .card").animate({ marginRight: "-107px" }, 5000, function() {
-            $("#cards .card:last").click();
-        });
-    });
-    listenToLastMouseClick();
-}
+// function createDeck() {
+//     $("#cards").html('');
+//     d = new deck();
+//     console.debug(d.order);
+//     for (i = 0; i < d.order.length; i++) {
+//         $('#cards').prepend(cardDOM(d.order[i]));
+//     }
+//     $("#cards").animate({ opacity: "1" }, 2000, function() {
+//         $("#cards .card").animate({ marginRight: "-107px" }, 5000, function() {
+//             $("#cards .card:last").click();
+//         });
+//     });
+//     listenToLastMouseClick();
+// }
 
-function listenToLastMouseClick() {
-    $("#cards .card:last").css("pointer", "cursor");
-    $("#cards .card:last").click(function() {
-        console.debug("Final card clicked: ");
-        var topCard = d.order[0];
-        console.log(d.order);
-        $('#cards').html('');
-        for (i = 0; i < d.order.length; i++) {
-            $('#cards').prepend(cardDOM(topCard));
-        }
-        $("#cards .card").animate({ marginRight: "-107px" }, 2000, "swing");
-    });
-}
+// function listenToLastMouseClick() {
+//     $("#cards .card:last").css("pointer", "cursor");
+//     $("#cards .card:last").click(function() {
+//         console.debug("Final card clicked: ");
+//         var topCard = d.order[0];
+//         console.log(d.order);
+//         $('#cards').html('');
+//         for (i = 0; i < d.order.length; i++) {
+//             $('#cards').prepend(cardDOM(topCard));
+//         }
+//         $("#cards .card").animate({ marginRight: "-107px" }, 2000, "swing");
+//     });
+// }
 
-function cancelDeck() {
-    $("#cards").html('');
-}
+// function cancelDeck() {
+//     $("#cards").html('');
+// }
 
-function cardDOM(c, m) {
-    if (c) {
-        return $('<div class="card ' + c.suit + '"' + (m ? ' style="margin-right:' + m + ';"' : '') + '><div class="top_rank">' + c.rank + '</div><div class="top_suit">&' + c.suit + ';</div><div class="suit">&' + c.suit + ';</div><div class="bottom_suit">&' + c.suit + ';</div><div class="bottom_rank">' + c.rank + '</div></div>');
-    }
-}
+// function cardDOM(c, m) {
+//     if (c) {
+//         return $('<div class="card ' + c.suit + '"' + (m ? ' style="margin-right:' + m + ';"' : '') + '><div class="top_rank">' + c.rank + '</div><div class="top_suit">&' + c.suit + ';</div><div class="suit">&' + c.suit + ';</div><div class="bottom_suit">&' + c.suit + ';</div><div class="bottom_rank">' + c.rank + '</div></div>');
+//     }
+//}
