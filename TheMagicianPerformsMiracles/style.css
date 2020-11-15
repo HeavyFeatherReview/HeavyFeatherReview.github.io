@@ -10,7 +10,7 @@ body {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    background-color: grey;
+    background-color: black;
 }
 
 canvas {
@@ -21,7 +21,7 @@ h1 {
     font-size: 2.5rem;
     font-family: 'Montserrat';
     font-weight: normal;
-    color: #444;
+    color: white;
     text-align: center;
     margin: 2rem 0;
 }
@@ -78,7 +78,7 @@ h1 {
 }
 
 .back {
-    background: #cedce7;
+    background: grey;
 /*    background: -webkit-linear-gradient(45deg, #cedce7 0%, #596a72 100%);
     background: -o-linear-gradient(45deg, #cedce7 0%, #596a72 100%);
     background: linear-gradient(45deg, #cedce7 0%, #596a72 100%);*/
