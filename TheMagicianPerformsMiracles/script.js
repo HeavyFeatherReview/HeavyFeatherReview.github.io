@@ -33,10 +33,15 @@ for (let i = 1; i <= totalCardNums; i++) {
     appendCardRankAndSuit("cardFront" + i, cardInfo['rank'], cardInfo['suit']);
 }
 
-if (isMobile) {
+if (isMobile  || isiPad || isiPhone || isAndroid) {
+	console.debug("On mobile!");
     $(".container").on("tap", function() {
         console.debug("Tapped");
-        $(this).mouseover();
+        if ($(this).hasClass("hover")) {
+            $(this).removeClass("hover");
+        } else {
+            $(this).addClass("hover");
+        }
     });
 }
 
