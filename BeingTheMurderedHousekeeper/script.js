@@ -6,8 +6,6 @@ for (let i = 1; i < 6; i++) {
     $("#clip" + i + "Text").width(clipImageWidth - textPadding[i - 1]);
 }
 
-setImagePositions();
-
 function setImagePositions() {
 
     let totalWidth = $("#BeingTheMurderedHousekeeper").width();
@@ -32,13 +30,17 @@ var isMobile = navigator.userAgent.toLowerCase().match(/mobile/i),
     isiPhone = navigator.userAgent.toLowerCase().match(/iphone/i),
     isiPad = navigator.userAgent.toLowerCase().match(/ipad/i);
 
+$(document).ready(function() {
+    setImagePositions();
+});
+
 $(window).resize(function() {
     setImagePositions();
 });
 
 if (isMobile) {
     $(".image-container").on("tap", function() {
-    	console.debug("Tapped");
+        console.debug("Tapped");
         $(this).mouseover();
     });
 }
