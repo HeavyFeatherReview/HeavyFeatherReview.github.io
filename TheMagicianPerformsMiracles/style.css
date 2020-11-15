@@ -14,7 +14,9 @@ body {
 }
 
 body {
-  align-items: center;
+    padding-top: 20px;
+    align-items: center;
+    font-family: 'Playfair Display', serif;
 }
 
 canvas {
@@ -23,7 +25,6 @@ canvas {
 
 h1 {
     font-size: 2.5rem;
-    font-family: 'Montserrat';
     font-weight: normal;
     color: white;
     text-align: center;
@@ -194,12 +195,6 @@ h1 {
     font-style: italic;
 }
 
-.front .inner span {
-    color: rgba(255, 255, 255, 0.7);
-    font-family: 'Montserrat';
-    font-weight: 300;
-}
-
 .red {
     color: red;
 }
@@ -359,58 +354,62 @@ path {
 
 /* Cure starvation steam */
 @keyframes steamAnimation {
-  0% {
-    transform: translate(30%, -70%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    transform: translate(60%, -90%);
-    opacity: 0;
-  }
+    0% {
+        transform: translate(30%, -70%);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translate(60%, -90%);
+        opacity: 0;
+    }
 }
 
 #steamWrapper {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #steam {
-   z-index: 10;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  box-shadow: -156px 492px 123px -252px #fff;
-  filter: url(#fog);
-  min-width: 600px;
-  min-height: 600px;
-  animation-name: steamAnimation;
-  animation-duration: 4s;
-  animation-direction: normal;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  will-change: transform, opacity;
-}
-@media (max-width: 600px) {
-  #steam {
-    top: -80%;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
     box-shadow: -156px 492px 123px -252px #fff;
-  }
+    filter: url(#fog);
+    min-width: 600px;
+    min-height: 600px;
+    animation-name: steamAnimation;
+    animation-duration: 4s;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    will-change: transform, opacity;
 }
+
+@media (max-width: 600px) {
+    #steam {
+        top: -80%;
+        box-shadow: -156px 492px 123px -252px #fff;
+    }
+}
+
 @media (max-width: 480px) {
-  #steam {
-    top: -160%;
-    box-shadow: -166px 492px 53px -272px #fff;
-  }
+    #steam {
+        top: -160%;
+        box-shadow: -166px 492px 53px -272px #fff;
+    }
 }
 
 
