@@ -7,6 +7,14 @@ const suitColors = {
     '&hearts;': 'red',
 };
 
+const indexToCardNums = {
+    '1': { 'rank': 'A' /*Desire*/ , 'suit': '&hearts;' /*childhood*/ },
+    '2' /* grandmother */: { 'rank': '5' /*Change*/ , 'suit': '&spades;' },
+    '3' /*president*/: { 'rank': '9' /*new beginnings*/ , 'suit': '&spades;' },
+    '4' /*card trick*/: { 'rank': '4' /*satisfaction*/ , 'suit': '&hearts;' /*spring*/ },
+    '5' /*sweep*/: { 'rank': '6' /*adjustments*/ , 'suit': '&diams;' /*growth*/ },
+    '6' /*bow*/: { 'rank': 'K' /*new beginnings*/ , 'suit': '&clubs;' },
+};
 var w;
 var h;
 
@@ -14,12 +22,8 @@ var h;
 const totalCardNums = 6;
 for (let i = 1; i <= totalCardNums; i++) {
     console.debug("Adding to " + i);
-    let suitIndex = i - 1;
-    if (suitIndex > 3) {
-        suitIndex = suitIndex - (suitIndex - 3);
-    }
-    console.debug("Suit: " + suitIndex);
-    appendCardRankAndSuit("cardFront" + i, ranks[i - 1], suits[suitIndex]);
+    let cardInfo = indexToCardNums[i];
+    appendCardRankAndSuit("cardFront" + i, cardInfo['rank'], cardInfo['suit']);
 }
 
 function appendCardRankAndSuit(divID, rank, suit) {
