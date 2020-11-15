@@ -1,11 +1,3 @@
-// Fix the widths of everything
-var textPadding = [40, 80, 80, 50, 40];
-for (let i = 1; i < 6; i++) {
-    let clipImageWidth = $("#clip" + i + "Image").width();
-    console.debug("Set clip1Text width to" + clipImageWidth);
-    $("#clip" + i + "Text").width(clipImageWidth - textPadding[i - 1]);
-}
-
 function setImagePositions() {
 
     let totalWidth = $("#BeingTheMurderedHousekeeper").width();
@@ -31,6 +23,14 @@ var isMobile = navigator.userAgent.toLowerCase().match(/mobile/i),
     isiPad = navigator.userAgent.toLowerCase().match(/ipad/i);
 
 $(document).ready(function() {
+    // Fix the widths of everything
+    var textPadding = [40, 80, 80, 50, 40];
+    for (let i = 1; i < 6; i++) {
+        let clipImageWidth = $("#clip" + i + "Image").width();
+        console.debug("Set clip1Text width to" + clipImageWidth);
+        $("#clip" + i + "Text").width(clipImageWidth - textPadding[i - 1]);
+    }
+
     setImagePositions();
 });
 
