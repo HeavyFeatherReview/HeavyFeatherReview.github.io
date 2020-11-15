@@ -1,10 +1,10 @@
 const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-const suits = ['♥', '♦', '♠', '♣'];
+const suits = ['&hearts;', '&diams;', '&spades;', '&clubs;'];
 const suitColors = {
-    '♠': 'black',
-    '♣': 'black',
-    '♦': 'red',
-    '♥': 'red',
+    '&spades;': 'black',
+    '&clubs;': 'black',
+    '&diams;': 'red',
+    '&hearts;': 'red',
 };
 
 var w;
