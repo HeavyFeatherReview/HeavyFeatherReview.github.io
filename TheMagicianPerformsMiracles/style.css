@@ -550,5 +550,6 @@ path {
 #cards {
     opacity: 0;
     margin-right: 110px;
-    position: absolute;
+    position: fixed;
+    top: 10px;
 }

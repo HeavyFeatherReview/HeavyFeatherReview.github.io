@@ -84,10 +84,8 @@ var addHover = true;
 function cardTrick() {
     console.debug("Card trick");
     $("#backgroundElements").append('<div id="cards"></div>');
-    $(".container").each(function(index) {
-        if (index != 3) {
-            $(this).animate({ opacity: '0' }, "slow");
-        }
+    $(".container").not("#cardFrontContainer4").each(function(index) {
+        $(this).animate({ opacity: '0' }, "slow");
     });
     createDeck();
     // var i = 0;
@@ -116,6 +114,7 @@ function cardTrick() {
 function cancelCardTricks() {
     $("#cards").remove();
     $(".container").animate({ opacity: '1' });
+    
     // if (displayCardsInterval) {
     //     window.clearInterval(displayCardsInterval);
     // }
