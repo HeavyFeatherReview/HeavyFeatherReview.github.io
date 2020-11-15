@@ -53,6 +53,13 @@ function cardTrick(){
 
 function sweep(){
 	console.debug("Sweep");
+	$("#backgroundElements").append("<canvas id = 'canv'></canvas>");
+	runWind();
+}
+
+function cancelSweep(){
+	cancelWind();
+	$("#canv").remove();
 }
 
 function bow(){

@@ -592,6 +592,8 @@ window.addEventListener('resize',function(){
 
 function cancelBirds(){
   let canvas = document.getElementById('canv');
+  if (!canvas)
+    return;
   let context = canvas.getContext("2d");
   context.clearRect(0, 0, window.innerWidth, window.innerHeight);
   window.cancelAnimationFrame(birdAnimationID);
