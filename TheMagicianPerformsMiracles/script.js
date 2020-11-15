@@ -1,74 +1,105 @@
 const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-const suits = ['♥','♦','♠','♣'];
+const suits = ['♥', '♦', '♠', '♣'];
 const suitColors = {
-      '♠': 'black',
-      '♣': 'black',
-      '♦': 'red',
-      '♥': 'red',
+    '♠': 'black',
+    '♣': 'black',
+    '♦': 'red',
+    '♥': 'red',
 };
+
+var w;
+var h;
 
 // Display cards
 const totalCardNums = 6;
-for (let i = 1; i<=totalCardNums; i++)
-{
-	console.debug("Adding to " + i);
-	let suitIndex = i - 1;
-	if (suitIndex > 3)
-	{
-		suitIndex = suitIndex - (suitIndex - 3);
-	}
-	console.debug("Suit: " + suitIndex);
-	appendCardRankAndSuit("cardFront" + i, ranks[i-1], suits[suitIndex]);
+for (let i = 1; i <= totalCardNums; i++) {
+    console.debug("Adding to " + i);
+    let suitIndex = i - 1;
+    if (suitIndex > 3) {
+        suitIndex = suitIndex - (suitIndex - 3);
+    }
+    console.debug("Suit: " + suitIndex);
+    appendCardRankAndSuit("cardFront" + i, ranks[i - 1], suits[suitIndex]);
 }
 
-function appendCardRankAndSuit(divID, rank, suit)
-{
-	let color = suitColors[suit];
-	// Top 
-	$("#" + divID + " .suit-rank-top").html(suit +"<br>"+ rank);
-	// Center
-	$("#" + divID+ " .inner p").append("<div class='suit-middle "+color+"'>"+ suit +"</div>");
-	// Bottom
-	$("#" + divID + " .rank-suit-bottom").html(rank +"<br>"+ suit);
+function appendCardRankAndSuit(divID, rank, suit) {
+    let color = suitColors[suit];
+    // Top 
+    $("#" + divID + " .suit-rank-top").html(suit + "<br>" + rank);
+    // Center
+    $("#" + divID + " .inner p").append("<div class='suit-middle " + color + "'>" + suit + "</div>");
+    // Bottom
+    $("#" + divID + " .rank-suit-bottom").html(rank + "<br>" + suit);
 
-	$("#" + divID + " .card-design").addClass(color);
+    $("#" + divID + " .card-design").addClass(color);
 
 }
 
-function cureStarvation(){
-	console.debug("Cure starvation");
+function cureStarvation() {
+    console.debug("Cure starvation");
 }
 
-function grandmotherDead(){
-	console.debug("Grandmother dead");
+var fadedOut = false;
+
+function grandmotherDead() {
+    console.debug("Grandmother dead");
+    // Create cinnamon
+    $("#backgroundElements").append("<div id='cinnamon-wrap'></div>");
+    for (let i = 0; i < 200; i++) {
+        $("#cinnamon-wrap").append("<div class='c'></div>");
+    }
+
+    if (!fadedOut) {
+    	fadedOut = true;
+        setTimeout(() => {
+            console.debug("Fade out!");
+            $("#cinnamon-wrap").fadeOut(1000);
+            fadedOut = false;
+        }, 14000);
+    }
 }
 
-function president(){
-	console.debug("president");
+function cancelGrandmotherDead() {
+    $("#cinnamon-wrap").remove();
+    fadedOut = false;
 }
 
-function cardTrick(){
-	console.debug("Card trick");
+function president() {
+    console.debug("president");
 }
 
-function sweep(){
-	console.debug("Sweep");
-	$("#backgroundElements").append("<canvas id = 'canv'></canvas>");
-	runWind();
+function cardTrick() {
+    console.debug("Card trick");
 }
 
-function cancelSweep(){
-	cancelWind();
-	$("#canv").remove();
+function sweep() {
+    console.debug("Sweep");
+    $("#backgroundElements").append("<canvas id = 'canv'></canvas>");
+    runWind();
+    addWindowEventListener();
 }
 
-function bow(){
-	console.debug("Takes a bow");
-	$("#backgroundElements").append("<canvas id = 'canv'></canvas>");
-	drawBirds();
-} 
+function cancelSweep() {
+    cancelWind();
+    $("#canv").remove();
+}
 
-function cancelBow(){
-	cancelBirds();
-	$("#canv").remove();
+function bow() {
+    console.debug("Takes a bow");
+    $("#backgroundElements").append("<canvas id = 'canv'></canvas>");
+    drawBirds();
+    addWindowEventListener();
+}
+
+function cancelBow() {
+    cancelBirds();
+    $("#canv").remove();
+}
+
+function addWindowEventListener() {
+    window.addEventListener('resize', function() {
+        let c = document.getElementById('canv');
+        c.width = w = document.body.clientWidth;
+        c.height = h = document.body.clientHeight;
+    }, false);
 }

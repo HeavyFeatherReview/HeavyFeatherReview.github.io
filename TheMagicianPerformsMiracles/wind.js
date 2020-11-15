@@ -1,8 +1,5 @@
 var c;
 var SweepWind; 
-
-var w;
-var h;
 var windAnimationReq;
 
 var drawWind = function(a, b, t) {
@@ -10,7 +7,7 @@ var drawWind = function(a, b, t) {
   SweepWind.fillStyle = 'hsla(0, 0%, 0%, 0)';
   SweepWind.fillRect(0, 0, w, h);
   for (var i = -60; i < 60; i += 1) {
-    SweepWind.strokeStyle = 'hsla(200, 95%, 15%, .15)';
+    SweepWind.strokeStyle = 'hsla(180, 95%, 15%, .15)';
     SweepWind.beginPath();
     SweepWind.moveTo(0, h / 2);
     for (var j = 0; j < w; j += 10) {
@@ -24,12 +21,6 @@ var drawWind = function(a, b, t) {
   }
 }
 var t = 0;
-
-window.addEventListener('resize', function() {
-  c.width = w = document.body.clientWidth;
-  c.height = h = document.body.clientHeight;
-  SweepWind.fillStyle = 'hsla(277, 95%, 55%, 1)';
-}, false);
 
 function runWind() {
   c = document.getElementById('canv');

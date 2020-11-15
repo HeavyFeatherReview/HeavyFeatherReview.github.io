@@ -581,20 +581,12 @@ function drawBirds() {
     });
   }
 };
-window.addEventListener('resize',function(){
-   if(c.width!==window.innerWidth && c.height!==window.innerHeight){
-     Bird.canv = {
-      w: c.width = document.body.clientWidth,
-      h: c.height = document.body.clientHeight
-    };
-   }
-});
 
 function cancelBirds(){
   let canvas = document.getElementById('canv');
   if (!canvas)
     return;
   let context = canvas.getContext("2d");
-  context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  context.clearRect(0, 0, document.body.clientWidth, document.body.clientHeight);
   window.cancelAnimationFrame(birdAnimationID);
 }
