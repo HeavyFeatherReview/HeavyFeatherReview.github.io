@@ -44,7 +44,7 @@ var fadedOut = false;
 function grandmotherDead() {
     console.debug("Grandmother dead");
     // Create cinnamon
-    $("#backgroundElements").append("<div id='cinnamon-wrap'></div>");
+    $("#cardFront2").append("<div id='cinnamon-wrap'></div>");
     for (let i = 0; i < 200; i++) {
         $("#cinnamon-wrap").append("<div class='c'></div>");
     }
