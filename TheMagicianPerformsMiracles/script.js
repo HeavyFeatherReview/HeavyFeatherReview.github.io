@@ -73,12 +73,12 @@ function president() {
     $("#presidentInnerBack").css("color", "white");
     $("#sparkle").css("visibility", "visible");
     twinkleInterval = window.setInterval(function() {
-    	let randomPercentLeft = getRandomInt(0, 100);
-    	let randomPercentTop = getRandomInt(0, 100);
-    	console.debug("New coords: " + randomPercentLeft + ", " + randomPercentTop);
+    	let randomPercentLeft = getRandomInt(30, 80);
+    	let randomPercentTop = getRandomInt(30, 80);
+    	console.debug("New coords: left:" + randomPercentLeft + ", top" + randomPercentTop);
         $("svg").css("left", randomPercentLeft + "%");
         $("svg").css("top", randomPercentTop + "%");
-    }, 1000);
+    }, 7000);
 }
 
 function cancelPresident() {
