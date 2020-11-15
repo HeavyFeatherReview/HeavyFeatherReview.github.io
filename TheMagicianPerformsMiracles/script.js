@@ -15,6 +15,13 @@ const indexToCardNums = {
     '5' /*sweep*/: { 'rank': '6' /*adjustments*/ , 'suit': '&diams;' /*growth*/ },
     '6' /*bow*/: { 'rank': 'K' /*new beginnings*/ , 'suit': '&clubs;' },
 };
+
+var isMobile = navigator.userAgent.toLowerCase().match(/mobile/i),
+    isTablet = navigator.userAgent.toLowerCase().match(/tablet/i),
+    isAndroid = navigator.userAgent.toLowerCase().match(/android/i),
+    isiPhone = navigator.userAgent.toLowerCase().match(/iphone/i),
+    isiPad = navigator.userAgent.toLowerCase().match(/ipad/i);
+
 var w;
 var h;
 
@@ -24,6 +31,13 @@ for (let i = 1; i <= totalCardNums; i++) {
     console.debug("Adding to " + i);
     let cardInfo = indexToCardNums[i];
     appendCardRankAndSuit("cardFront" + i, cardInfo['rank'], cardInfo['suit']);
+}
+
+if (isMobile) {
+    $(".container").on("tap", function() {
+        console.debug("Tapped");
+        $(this).mouseover();
+    });
 }
 
 function appendCardRankAndSuit(divID, rank, suit) {
@@ -41,9 +55,9 @@ function appendCardRankAndSuit(divID, rank, suit) {
 
 function cureStarvation() {
     console.debug("Cure starvation");
-    $("#cureStarvation").append('<div id="steamWrapper">'+
-                    '<div id="steam"></div>'+
-                '</div>');
+    $("#cureStarvation").append('<div id="steamWrapper">' +
+        '<div id="steam"></div>' +
+        '</div>');
 }
 
 function cancelCureStarvation() {
@@ -68,6 +82,7 @@ function cancelGrandmotherDead() {
 }
 
 var twinkleInterval = null;
+
 function president() {
     console.debug("president");
     console.debug("Make sparkle visible");
@@ -75,9 +90,9 @@ function president() {
     $("#presidentInnerBack").css("color", "white");
     $("#sparkle").css("visibility", "visible");
     twinkleInterval = window.setInterval(function() {
-    	let randomPercentLeft = getRandomInt(30, 80);
-    	let randomPercentTop = getRandomInt(30, 80);
-    	console.debug("New coords: left:" + randomPercentLeft + ", top" + randomPercentTop);
+        let randomPercentLeft = getRandomInt(30, 80);
+        let randomPercentTop = getRandomInt(30, 80);
+        console.debug("New coords: left:" + randomPercentLeft + ", top" + randomPercentTop);
         $("svg").css("left", randomPercentLeft + "%");
         $("svg").css("top", randomPercentTop + "%");
     }, 7000);
