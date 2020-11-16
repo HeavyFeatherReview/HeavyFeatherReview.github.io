@@ -25,13 +25,16 @@ var isMobile = navigator.userAgent.toLowerCase().match(/mobile/i),
 var w;
 var h;
 
+
 // Display cards
 const totalCardNums = 6;
-for (let i = 1; i <= totalCardNums; i++) {
-    console.debug("Adding to " + i);
-    let cardInfo = indexToCardNums[i];
-    appendCardRankAndSuit("cardFront" + i, cardInfo['rank'], cardInfo['suit']);
-}
+$(document).ready(function() {
+    for (let i = 1; i <= totalCardNums; i++) {
+        console.debug("Adding to " + i);
+        let cardInfo = indexToCardNums[i];
+        appendCardRankAndSuit("cardFront" + i, cardInfo['rank'], cardInfo['suit']);
+    }
+});
 
 if (isMobile || isiPad || isiPhone || isAndroid) {
     console.debug("On mobile!");
