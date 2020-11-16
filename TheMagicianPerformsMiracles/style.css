@@ -110,6 +110,11 @@ h1 {
     border-radius: 10px;
 }
 
+.container {
+   width: 50%;
+    margin: 0 auto;
+}
+
 .container:hover .front,
 .container:hover .back,
 .container.hover .front,
