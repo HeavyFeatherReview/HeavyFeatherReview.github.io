@@ -63,14 +63,13 @@ function appendCardRankAndSuit(divID, rank, suit) {
 
 function cureStarvation() {
     console.debug("Cure starvation");
-    $("#cureStarvation").append('<div id="steamWrapper">' +
-        '<div id="steam"></div>' +
-        '</div>');
+    $(".smoke").css("visibility", "visible");
+    renderSmoke();
 }
 
 function cancelCureStarvation() {
     console.debug("Cancel cure starvation");
-    $("#steamWrapper").remove();
+    cancelSmoke();
 }
 
 var fadedOut = false;
