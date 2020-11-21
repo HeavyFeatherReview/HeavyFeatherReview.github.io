@@ -93,10 +93,11 @@ var twinkleInterval = null;
 
 function president() {
     console.debug("president");
-    console.debug("Make sparkle visible");
     $("#presidentInnerBack").css("background", "black");
     $("#presidentInnerBack").css("color", "white");
-    $("#starshine").css("visibility", "visible");
+    $("#presidentInnerBack").append('<div id="starshine">'+
+                                '<div class="template shine"></div>'+
+                            '</div>');
     startTwinkle();
 }
 
@@ -105,14 +106,15 @@ function cancelPresident() {
     // $("#presidentInnerBack").css("background", "");
     // $("#presidentInnerBack").css("color", "");
     // window.clearInterval(twinkleInterval);
-    $("#starshine").css("visibility", "hidden");
+    
+    $("#starshine").remove();
 }
 
 function startTwinkle() {
     var body = $('#starshine'),
         template = $('.template.shine'),
-        stars = 500,
-        sparkle = 20;
+        stars = 50,
+        sparkle = 40;
 
 
     var size = 'small';
