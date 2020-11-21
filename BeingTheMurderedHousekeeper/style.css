@@ -6,6 +6,10 @@ body {
     font-size: 13px;
 }
 
+#bios{
+    margin: 20px;
+}
+
 #BeingTheMurderedHousekeeper {
     max-width: 600px;
     margin: auto;

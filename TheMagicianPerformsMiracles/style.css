@@ -25,6 +25,13 @@ h1 {
     text-align: center;
 }
 
+#bios{
+    margin: 20px;
+    padding-bottom: 20px;
+    color: white;
+}
+
+
 .wrapper {
     width: 90%;
     margin: 0 auto;
