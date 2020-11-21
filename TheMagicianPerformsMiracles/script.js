@@ -63,7 +63,6 @@ function appendCardRankAndSuit(divID, rank, suit) {
 
 function cureStarvation() {
     console.debug("Cure starvation");
-    $(".smoke").css("visibility", "visible");
     renderSmoke();
 }
 
