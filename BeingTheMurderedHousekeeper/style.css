@@ -6,6 +6,11 @@ body {
     font-size: 13px;
 }
 
+header {
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
 #bios{
     margin: 20px;
 }

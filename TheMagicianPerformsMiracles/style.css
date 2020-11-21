@@ -19,7 +19,7 @@ canvas {
     position: absolute;
 }
 
-h1 {
+h1, header {
     font-weight: normal;
     color: white;
     text-align: center;
