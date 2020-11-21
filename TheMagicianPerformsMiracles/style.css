@@ -111,7 +111,7 @@ h1 {
 }
 
 .container {
-   width: 50%;
+    width: 50%;
     margin: 0 auto;
 }
 
@@ -274,16 +274,19 @@ path {
 .large {
     opacity: 0;
     animation: large 7s linear infinite;
+    -webkit-animation-name: large 7s linear infinite;
 }
 
 .large-2 {
     opacity: 0;
     animation: large-2 7s linear infinite;
+    -webkit-animation-name: large-2 7s linear infinite;
 }
 
 .small {
     opacity: 0;
     animation: small 7s linear infinite;
+    -webkit-animation-name: small 7s linear infinite;
 }
 
 @keyframes large {
@@ -304,6 +307,49 @@ path {
     100% {
         opacity: 0;
         transform: rotate(0deg) scale(0);
+    }
+}
+
+@-webkit-keyframes large {
+    0% {
+        opacity: 0;
+        transform: rotate(0deg) scale(0);
+    }
+
+    16.667% {
+        opacity: 1;
+    }
+
+    33.333% {
+        opacity: 0;
+        transform: rotate(360deg) scale(2);
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(0deg) scale(0);
+    }
+}
+
+
+@-webkit-keyframes large-2 {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) scale(0);
+    }
+
+    16.667% {
+        opacity: 1;
+    }
+
+    33.333% {
+        opacity: 0;
+        transform: rotate(405deg) scale(1.1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) scale(0);
     }
 }
 
@@ -349,12 +395,49 @@ path {
     }
 }
 
+@-webkit-keyframes small {
+    0% {
+        opacity: 0;
+        transform: rotate(0deg) scale(0);
+    }
+
+    16.667% {
+        opacity: 1;
+    }
+
+    33.333% {
+        opacity: 0;
+        transform: rotate(-360deg) scale(1.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(0deg) scale(0);
+    }
+}
+
 /* President background */
 
 /* Cure starvation */
 
 /* Cure starvation steam */
 @keyframes steamAnimation {
+    0% {
+        transform: translate(30%, -70%);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translate(60%, -90%);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes steamAnimation {
     0% {
         transform: translate(30%, -70%);
         opacity: 0;
