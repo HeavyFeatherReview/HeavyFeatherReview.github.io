@@ -102,11 +102,8 @@ function president() {
 }
 
 function cancelPresident() {
-    // $("#sparkle").css("visibility", "hidden");
-    // $("#presidentInnerBack").css("background", "");
-    // $("#presidentInnerBack").css("color", "");
-    // window.clearInterval(twinkleInterval);
-    
+    $("#presidentInnerBack").css("background", "");
+    $("#presidentInnerBack").css("color", "");
     $("#starshine").remove();
 }
 
