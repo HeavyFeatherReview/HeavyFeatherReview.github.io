@@ -16,6 +16,7 @@ var radius = 5,
 
 var textureLoader = new THREE.TextureLoader();
 
+// TODO: fix loading texture for clouds & stars
 function createClouds(radius, segments) {
     return new THREE.Mesh(
         new THREE.SphereGeometry(radius + 0.003, segments, segments),
@@ -43,7 +44,7 @@ function init() {
     console.debug("background set: " + scene.background);
 
     camera = new THREE.PerspectiveCamera(45, WIDTH / HEIGHT, 1, 1000);
-    camera.position.set( - 100, 100, 0 );
+    camera.position.set(-100, 100, 0);
     //camera.position.z = 1.5;
 
     renderer = new THREE.WebGLRenderer();
@@ -52,12 +53,34 @@ function init() {
     scene.add(new THREE.AmbientLight(0x333333));
 
     var light = new THREE.DirectionalLight(0xffffff, 1);
-	light.position.set(5,3,5);
-	scene.add(light);
+    light.position.set(5, 3, 5);
+    scene.add(light);
 
-    // var clouds = createClouds(radius, segments);
-    // clouds.rotation.y = rotation;
-    // scene.add(clouds)
+    textureLoader.load('images/fair_clouds_4k.png', function(clouds) {
+        let cloudMesh = new THREE.Mesh(
+            new THREE.SphereGeometry(radius + 0.003, segments, segments),
+            new THREE.MeshPhongMaterial({
+                map: clouds,
+                transparent: true
+            })
+        );
+        cloudMesh.rotation.y = rotation;
+        console.debug("Add clouds");
+        scene.add(cloudMesh);
+    });
+
+    textureLoader.load('images/galaxy_starfield.png', function(stars) {
+        let starMesh = new THREE.Mesh(
+            new THREE.SphereGeometry(90 + 0.003, 64, 64),
+            new THREE.MeshPhongMaterial({
+                map: stars,
+                side: THREE.BackSide
+            })
+        );
+        console.debug("Add stars");
+        scene.add(starMesh);
+    });
+
 
     // var stars = createStars(90, 64);
     // scene.add(stars);
