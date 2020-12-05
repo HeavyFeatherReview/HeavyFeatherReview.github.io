@@ -22,8 +22,7 @@ var radius = 5,
     segments = 32,
     rotation = 6;
 
-let verticalMirror, groundMirror;
-
+let verticalMirror;
 var textureLoader = new THREE.TextureLoader();
 
 // Zoom out of earth
@@ -155,16 +154,6 @@ function onWindowResize() {
 
 function createMirror() {
     // reflectors/mirrors
-    groundMirror = new THREE.Reflector(sphereGeometry, {
-        clipBias: 0.003,
-        textureWidth: WIDTH * window.devicePixelRatio,
-        textureHeight: HEIGHT * window.devicePixelRatio,
-        color: 0x777777
-    });
-    groundMirror.position.y = 100;
-    groundMirror.rotateX(-Math.PI / 2);
-    scene.add(groundMirror);
-
     verticalMirror = new THREE.Reflector(sphereGeometry, {
         clipBias: 0.003,
         textureWidth: WIDTH * window.devicePixelRatio,
@@ -213,7 +202,7 @@ function animate() {
             showMirror = true;
         }
     } else if (showMirror) {
-        rotateAboutPoint(camera, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1, 0, 0), THREE.Math.degToRad(1));
+        rotateAboutPoint(camera, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1, 0, 0), THREE.Math.degToRad(0.5));
     }
     camera.updateProjectionMatrix();
     //earthMesh.rotation.y += 0.005;
