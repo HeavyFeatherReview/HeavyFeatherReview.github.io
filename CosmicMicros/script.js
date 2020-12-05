@@ -42,14 +42,18 @@ function init() {
     scene.background = new THREE.Color(0x000000);
     console.debug("background set: " + scene.background);
 
-    camera = new THREE.PerspectiveCamera(45, WIDTH / HEIGHT, 0.01, 1000);
+    camera = new THREE.PerspectiveCamera(45, WIDTH / HEIGHT, 1, 1000);
+    camera.position.set( - 100, 100, 0 );
     //camera.position.z = 1.5;
-    camera.position.set(-100, 100, 200);
 
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(WIDTH, HEIGHT);
 
     scene.add(new THREE.AmbientLight(0x333333));
+
+    var light = new THREE.DirectionalLight(0xffffff, 1);
+	light.position.set(5,3,5);
+	scene.add(light);
 
     // var clouds = createClouds(radius, segments);
     // clouds.rotation.y = rotation;
@@ -89,12 +93,6 @@ function init() {
 
                 const container = document.getElementById('container');
                 container.appendChild(renderer.domElement);
-
-                console.debug("Finished loading everything");
-                console.debug(clouds);
-                console.debug(elev_bump);
-                console.debug(water);
-
                 controls = new THREE.TrackballControls(camera, renderer.domElement);
 
                 animate();
