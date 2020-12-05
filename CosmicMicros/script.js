@@ -213,7 +213,7 @@ function animate() {
             showMirror = true;
         }
     } else if (showMirror) {
-        rotateAboutPoint(verticalMirror, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1, 0, 0), THREE.Math.degToRad(1));
+        rotateAboutPoint(camera, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1, 0, 0), THREE.Math.degToRad(1));
     }
     camera.updateProjectionMatrix();
     //earthMesh.rotation.y += 0.005;
