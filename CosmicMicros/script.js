@@ -204,6 +204,14 @@ function animate() {
         }
     } else if (showMirror) {
         rotateAboutPoint(camera, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1, 0, 0), THREE.Math.degToRad(0.5));
+        //camera.position.y += 0.5;
+        verticalMirror.position.y += 0.1;
+        if (Math.abs(verticalMirror.position.y - earthMesh.position.y) > 100)
+        {
+        	console.debug("Explode the earth");
+        	showMirror = false;
+        	shouldExplode = true;
+        }
     }
     camera.updateProjectionMatrix();
     //earthMesh.rotation.y += 0.005;
