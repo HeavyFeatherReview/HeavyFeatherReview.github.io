@@ -154,14 +154,15 @@ function onWindowResize() {
 
 function createMirror() {
     // reflectors/mirrors
-    verticalMirror = new THREE.Reflector(sphereGeometry, {
+    let geometry = new THREE.PlaneBufferGeometry( 100, 100 );
+    verticalMirror = new THREE.Reflector(geometry, {
         clipBias: 0.003,
         textureWidth: WIDTH * window.devicePixelRatio,
         textureHeight: HEIGHT * window.devicePixelRatio,
         color: 0x889999
     });
     verticalMirror.position.y = 0;
-    verticalMirror.position.z = -30;
+    verticalMirror.position.z = -70;
     scene.add(verticalMirror);
 }
 
