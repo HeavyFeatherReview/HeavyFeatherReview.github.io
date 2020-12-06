@@ -21,3 +21,8 @@ body {
     color: white;
     bottom: 0px;
 }
+
+#pause {
+    position: absolute;
+    font-family: 'Space Mono', monospace;
+}

@@ -18,6 +18,7 @@ var getFurtherForever = false;
 var showMirror = false;
 var pauseAnimation = false;
 
+var mirrorCounter = 0;
 var explodeCounter = 0;
 
 // Text
@@ -78,7 +79,7 @@ function init() {
     scene.background = new THREE.Color(0x000000);
 
     camera = new THREE.PerspectiveCamera(45, WIDTH / HEIGHT, 1, 1000);
-    camera.position.set(0, 500, 0);
+    camera.position.set(0, 0, 0);
     camera.position.setLength(50);
     //camera.position.z = 1.5;
 
@@ -196,7 +197,9 @@ function animate() {
     //console.debug(camera.position);
     // Camera diffs
     var yDistanceDiff = Math.abs(camera.position.y - earthMesh.position.y);
-    if (shouldExplode) {
+    if (pauseAnimation) {
+        console.debug("pausing animation");
+    } else if (shouldExplode) {
         explodeCounter += 1;
         console.debug("explode");
         for (var i = 0; i < sphereGeometry.vertices.length - 3; i += 2) {
@@ -240,7 +243,7 @@ function animate() {
         } else {
             camera.position.y -= 0.25;
         }
-        if (yDistanceDiff > 150 && !getFurtherForever) {
+        if (yDistanceDiff > 200 && !getFurtherForever) {
             console.debug("Too far from earth! Add mirror");
             getCloser = false;
             getFurther = false;
@@ -248,15 +251,17 @@ function animate() {
             addText("BigScreen");
         }
     } else if (showMirror) {
-        rotateAboutPoint(camera, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1, 0, 0), THREE.Math.degToRad(0.1));
+        mirrorCounter += 1;
+        rotateAboutPoint(camera, earthMesh.position, new THREE.Vector3(1, 0, 0), THREE.Math.degToRad(-0.2));
         //camera.position.y += 0.5;
         //verticalMirror.position.y += 0.1;
         //y = 100, z = -20, x = 0
-        if (((camera.position.y - 100) < 10) && ((camera.position.z + 20) < 10) && (camera.position.x == 0)) {
+        if (mirrorCounter > 1000) {
             console.debug("Explode the earth");
             showMirror = false;
             shouldExplode = true;
             addText("BuildingBack");
+            mirrorCounter = 0;
         }
     } else {
 
@@ -290,9 +295,14 @@ function render() {
     renderer.render(scene, camera);
 }
 
-// document.getElementById("reset").onclick = function() {
-//     console.debug("Resetting");
-//     shouldExplode = false;
-// }
+var pauseButton = document.getElementById("pause");
+pauseButton.onclick = function() {
+    pauseAnimation = !pauseAnimation;
+    if (pauseAnimation) {
+        pauseButton.innerHTML = "Resume";
+    } else {
+        pauseButton.innerHTML = "Pause";
+    }
+}
 
 init();
