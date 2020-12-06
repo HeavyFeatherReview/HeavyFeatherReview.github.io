@@ -12,10 +12,13 @@ let earthMesh, uniforms;
 var sphereGeometry;
 
 var shouldExplode = false;
-
 var getCloser = true;
 var getFurther = false;
 var showMirror = false;
+var pauseAnimation = false;
+
+// Text
+var textElement = document.getElementById("microtext");
 
 // Earth params
 var radius = 5,
@@ -41,20 +44,21 @@ var text = {
     }
 };
 
-function addText(key, top, left) {
-    var text2 = document.createElement('div');
-    text2.id = key;
-    text2.style.position = 'absolute';
-    //text2.style.zIndex = 1;    // if you still don't see the label, try uncommenting this
-    text2.style.width = 50;
-    text2.style.height = 100;
-    //text2.style.backgroundColor = "blue";
-    text2.style.color = "white";
-    text2.innerHTML = text[key]["text"];
-    text2.style.top = top + 'px';
-    text2.style.left = left + 'px';
-    text2.className = "cosmic-micro";
-    document.body.appendChild(text2);
+function addText(key) {
+    textElement.innerHTML = text[key]["text"];
+    // var text2 = document.createElement('div');
+    // text2.id = key;
+    // text2.style.position = 'absolute';
+    // //text2.style.zIndex = 1;    // if you still don't see the label, try uncommenting this
+    // text2.style.width = 50;
+    // text2.style.height = 100;
+    // //text2.style.backgroundColor = "blue";
+    // text2.style.color = "white";
+    // text2.innerHTML = text[key]["text"];
+    // text2.style.top = top + 'px';
+    // text2.style.left = left + 'px';
+    // text2.className = "cosmic-micro";
+    // document.body.appendChild(text2);
 }
 
 function showElement(divID) {
@@ -144,9 +148,7 @@ function init() {
 
                 animate();
 
-                let vector = createVector(earthMesh.x, earthMesh.y, earthMesh.z, camera);
-                console.debug(vector);
-                addText("AllIEverWanted", top = vector.y, left = (vector.x + 50));
+                addText("AllIEverWanted");
             });
         });
     });
@@ -186,11 +188,11 @@ function createMirror() {
 }
 
 function animate() {
-    console.debug("Camera diff from earth: x: " + Math.abs(camera.position.x - earthMesh.position.x) + ", y: " + Math.abs(camera.position.y - earthMesh.position.y) + ", z: " + Math.abs(camera.position.z - earthMesh.position.z));
-
+    //console.debug("Camera diff from earth: x: " + Math.abs(camera.position.x - earthMesh.position.x) + ", y: " + Math.abs(camera.position.y - earthMesh.position.y) + ", z: " + Math.abs(camera.position.z - earthMesh.position.z));
+    //console.debug("Camera: ");
+    //console.debug(camera.position);
     // Camera diffs
     var yDistanceDiff = Math.abs(camera.position.y - earthMesh.position.y);
-
 
     if (shouldExplode) {
         for (var i = 0; i < sphereGeometry.vertices.length - 3; i += 2) {
@@ -225,23 +227,18 @@ function animate() {
             getCloser = false;
             getFurther = false;
             showMirror = true;
-            let text = document.getElementById("AllIEverWanted");
-            text.style.visibility = "hidden";
-            let vector = createVector(earthMesh.x, earthMesh.y, earthMesh.z, camera);
-            addText("BigScreen", vector.y + 50, vector.x);
+            addText("BigScreen");
         }
     } else if (showMirror) {
         rotateAboutPoint(camera, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1, 0, 0), THREE.Math.degToRad(0.5));
         //camera.position.y += 0.5;
         verticalMirror.position.y += 0.1;
-        if (Math.abs(verticalMirror.position.y - earthMesh.position.y) > 100) {
+        //y = 100, z = -20, x = 0
+        if (((camera.position.y - 100) < 10) && ((camera.position.z + 20) < 10) && (camera.position.x == 0)) {
             console.debug("Explode the earth");
             showMirror = false;
             shouldExplode = true;
-            let text = document.getElementById("BigScreen");
-            text.style.visibility = "hidden";
-            let vector = createVector(earthMesh.x, earthMesh.y, earthMesh.z, camera);
-            addText("BuildingBack", vector.y + 50, vector.x + 50);
+            addText("BuildingBack");
         }
     } else {
 
@@ -274,5 +271,10 @@ function render() {
     controls.update();
     renderer.render(scene, camera);
 }
+
+// document.getElementById("reset").onclick = function() {
+//     console.debug("Resetting");
+//     shouldExplode = false;
+// }
 
 init();
