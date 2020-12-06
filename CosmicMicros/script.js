@@ -27,23 +27,42 @@ var textureLoader = new THREE.TextureLoader();
 
 // Zoom out of earth
 var text = {
-    "All I Ever Wanted": "<p>Because I only ever wanted to be an astronaut, I never cared much for Earth. My head was always in the sky.</p><p>When I finally reached space and looked back at my planet, the urban landscapes looked like constellations.</p><p>Now, as I drift further into the stars, all I want is to be in amongst those city lights.</p>",
-    "Big Screen": "I reached the edge of the universe, where there was a mirrored wall. I'm not one to reflect on my achievements, so I climbed over. Turned out the mirror was one of those two-way ones, like a window from the other side. In front of it was a row of aliens, eating popcorn.",
-    "Building Back": "When I returned from deep space, the globe had shattered into a million pieces. Now I circle the Sun, gathering the fragments. When I have enough, I will make a mosaic of Earth on the Moon."
+    "AllIEverWanted": {
+        "title": "All I Ever Wanted",
+        "text": "<p>Because I only ever wanted to be an astronaut, I never cared much for Earth. My head was always in the sky.</p><p>When I finally reached space and looked back at my planet, the urban landscapes looked like constellations.</p><p>Now, as I drift further into the stars, all I want is to be in amongst those city lights.</p>"
+    },
+    "BigScreen": {
+        "text": "<p>I reached the edge of the universe, where there was a mirrored wall.</p><p>I'm not one to reflect on my achievements, so I climbed over.</p><p>Turned out the mirror was one of those two-way ones, like a window from the other side.</p><p>In front of it was a row of aliens, eating popcorn.</p>",
+        "title": "Big Screen"
+    },
+    "BuildingBack": {
+        "text": "<p>When I returned from deep space, the globe had shattered into a million pieces.</p><p>Now I circle the Sun, gathering the fragments.</p><p>When I have enough, I will make a mosaic of Earth on the Moon.</p>",
+        "title": "Building Back"
+    }
 };
 
 function addText(key, top, left) {
     var text2 = document.createElement('div');
+    text2.id = key;
     text2.style.position = 'absolute';
     //text2.style.zIndex = 1;    // if you still don't see the label, try uncommenting this
     text2.style.width = 50;
     text2.style.height = 100;
     //text2.style.backgroundColor = "blue";
     text2.style.color = "white";
-    text2.innerHTML = text[key];
+    text2.innerHTML = text[key]["text"];
     text2.style.top = top + 'px';
     text2.style.left = left + 'px';
+    text2.className = "cosmic-micro";
     document.body.appendChild(text2);
+}
+
+function showElement(divID) {
+    let micros = document.getElementsByClassName("cosmic-micro");
+    for (let i = 0; i < micros.length; i++) {
+        micros[i].style.visibility = "none";
+    }
+    document.getElementById(divID).style.visibility = "visible";
 }
 
 function init() {
@@ -127,7 +146,7 @@ function init() {
 
                 let vector = createVector(earthMesh.x, earthMesh.y, earthMesh.z, camera);
                 console.debug(vector);
-                addText("All I Ever Wanted", top = vector.y, left = (vector.x + 50));
+                addText("AllIEverWanted", top = vector.y, left = (vector.x + 50));
             });
         });
     });
@@ -154,7 +173,7 @@ function onWindowResize() {
 
 function createMirror() {
     // reflectors/mirrors
-    let geometry = new THREE.PlaneBufferGeometry( 100, 100 );
+    let geometry = new THREE.PlaneBufferGeometry(100, 100);
     verticalMirror = new THREE.Reflector(geometry, {
         clipBias: 0.003,
         textureWidth: WIDTH * window.devicePixelRatio,
@@ -167,13 +186,17 @@ function createMirror() {
 }
 
 function animate() {
+    console.debug("Camera diff from earth: x: " + Math.abs(camera.position.x - earthMesh.position.x) + ", y: " + Math.abs(camera.position.y - earthMesh.position.y) + ", z: " + Math.abs(camera.position.z - earthMesh.position.z));
+
+    // Camera diffs
+    var yDistanceDiff = Math.abs(camera.position.y - earthMesh.position.y);
+
+
     if (shouldExplode) {
         for (var i = 0; i < sphereGeometry.vertices.length - 3; i += 2) {
             var rand = Math.random() > 0.5 ? 1 : -1;
-            //var rand = 1;
-
-            sphereGeometry.vertices[i].x += rand * 0.00005;
-            sphereGeometry.vertices[i].y += rand * 0.00005;
+            sphereGeometry.vertices[i].x += rand * 0.0005;
+            sphereGeometry.vertices[i].y += rand * 0.005;
             sphereGeometry.vertices[i].z += rand * 0.00005;
             sphereGeometry.verticesNeedUpdate = true;
             var A = sphereGeometry.vertices[i + 0]
@@ -185,10 +208,11 @@ function animate() {
             B.multiplyScalar(scale);
             C.multiplyScalar(scale);
         }
+        earthMesh.position.x += 0.2;
     } else if (getCloser) {
         camera.position.y -= 0.5;
         console.debug("Closer");
-        if (Math.abs(camera.position.y - earthMesh.position.y) < 10) {
+        if (yDistanceDiff < 10) {
             console.debug("Too close to earth! Reverse direction");
             getCloser = false;
             getFurther = true;
@@ -196,22 +220,31 @@ function animate() {
     } else if (getFurther) {
         console.debug("Further");
         camera.position.y += 0.5;
-        if (Math.abs(camera.position.y - earthMesh.position.y) > 100) {
+        if (yDistanceDiff > 100) {
             console.debug("Too far from earth! Add mirror");
             getCloser = false;
             getFurther = false;
             showMirror = true;
+            let text = document.getElementById("AllIEverWanted");
+            text.style.visibility = "hidden";
+            let vector = createVector(earthMesh.x, earthMesh.y, earthMesh.z, camera);
+            addText("BigScreen", vector.y + 50, vector.x);
         }
     } else if (showMirror) {
         rotateAboutPoint(camera, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1, 0, 0), THREE.Math.degToRad(0.5));
         //camera.position.y += 0.5;
         verticalMirror.position.y += 0.1;
-        if (Math.abs(verticalMirror.position.y - earthMesh.position.y) > 100)
-        {
-        	console.debug("Explode the earth");
-        	showMirror = false;
-        	shouldExplode = true;
+        if (Math.abs(verticalMirror.position.y - earthMesh.position.y) > 100) {
+            console.debug("Explode the earth");
+            showMirror = false;
+            shouldExplode = true;
+            let text = document.getElementById("BigScreen");
+            text.style.visibility = "hidden";
+            let vector = createVector(earthMesh.x, earthMesh.y, earthMesh.z, camera);
+            addText("BuildingBack", vector.y + 50, vector.x + 50);
         }
+    } else {
+
     }
     camera.updateProjectionMatrix();
     //earthMesh.rotation.y += 0.005;
