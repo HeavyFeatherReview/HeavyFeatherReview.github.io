@@ -18,6 +18,7 @@ var getFurtherForever = false;
 var showMirror = false;
 var pauseAnimation = false;
 
+var furtherCounter = 0;
 var mirrorCounter = 0;
 var explodeCounter = 0;
 
@@ -225,9 +226,9 @@ function animate() {
         }
     } else if (getCloser) {
         if (camera.position.y > earthMesh.position.y) {
-            camera.position.y -= 0.25;
+            camera.position.y -= 0.2;
         } else {
-            camera.position.y += 0.25;
+            camera.position.y += 0.2;
         }
         console.debug("Closer");
         if (yDistanceDiff < 1) {
@@ -238,21 +239,23 @@ function animate() {
         }
     } else if (getFurther || getFurtherForever) {
         console.debug("Further");
+        furtherCounter += 1;
         if (camera.position.y > earthMesh.position.y) {
-            camera.position.y += 0.25;
+            camera.position.y += 0.2;
         } else {
-            camera.position.y -= 0.25;
+            camera.position.y -= 0.2;
         }
-        if (yDistanceDiff > 200 && !getFurtherForever) {
+        if ((yDistanceDiff > 200 && furtherCounter > 600) && !getFurtherForever) {
             console.debug("Too far from earth! Add mirror");
             getCloser = false;
             getFurther = false;
             showMirror = true;
+            furtherCounter = 0;
             addText("BigScreen");
         }
     } else if (showMirror) {
         mirrorCounter += 1;
-        rotateAboutPoint(camera, earthMesh.position, new THREE.Vector3(1, 0, 0), THREE.Math.degToRad(-0.2));
+        rotateAboutPoint(camera, earthMesh.position, new THREE.Vector3(1, 0, 0), THREE.Math.degToRad(-0.1));
         //camera.position.y += 0.5;
         //verticalMirror.position.y += 0.1;
         //y = 100, z = -20, x = 0
