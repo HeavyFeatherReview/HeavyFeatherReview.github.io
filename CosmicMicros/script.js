@@ -12,10 +12,13 @@ let earthMesh, uniforms;
 var sphereGeometry;
 
 var shouldExplode = false;
-var getCloser = true;
-var getFurther = false;
+var getCloser = false;
+var getFurther = true;
+var getFurtherForever = false;
 var showMirror = false;
 var pauseAnimation = false;
+
+var explodeCounter = 0;
 
 // Text
 var textElement = document.getElementById("microtext");
@@ -75,7 +78,7 @@ function init() {
     scene.background = new THREE.Color(0x000000);
 
     camera = new THREE.PerspectiveCamera(45, WIDTH / HEIGHT, 1, 1000);
-    camera.position.set(0, 100, 0);
+    camera.position.set(0, 500, 0);
     camera.position.setLength(50);
     //camera.position.z = 1.5;
 
@@ -193,13 +196,14 @@ function animate() {
     //console.debug(camera.position);
     // Camera diffs
     var yDistanceDiff = Math.abs(camera.position.y - earthMesh.position.y);
-
     if (shouldExplode) {
+        explodeCounter += 1;
+        console.debug("explode");
         for (var i = 0; i < sphereGeometry.vertices.length - 3; i += 2) {
             var rand = Math.random() > 0.5 ? 1 : -1;
-            sphereGeometry.vertices[i].x += rand * 0.0005;
-            sphereGeometry.vertices[i].y += rand * 0.005;
-            sphereGeometry.vertices[i].z += rand * 0.00005;
+            sphereGeometry.vertices[i].x += rand * 0.00005;
+            sphereGeometry.vertices[i].y += rand * 0.0005;
+            sphereGeometry.vertices[i].z += rand * 0.000005;
             sphereGeometry.verticesNeedUpdate = true;
             var A = sphereGeometry.vertices[i + 0]
             var B = sphereGeometry.vertices[i + 1]
@@ -211,18 +215,32 @@ function animate() {
             C.multiplyScalar(scale);
         }
         earthMesh.position.x += 0.2;
+        if (explodeCounter > 400) {
+            getCloser = true;
+            explodeCounter = 0;
+            shouldExplode = false;
+        }
     } else if (getCloser) {
-        camera.position.y -= 0.5;
+        if (camera.position.y > earthMesh.position.y) {
+            camera.position.y -= 0.25;
+        } else {
+            camera.position.y += 0.25;
+        }
         console.debug("Closer");
-        if (yDistanceDiff < 10) {
+        if (yDistanceDiff < 1) {
             console.debug("Too close to earth! Reverse direction");
             getCloser = false;
             getFurther = true;
+            getFurtherForever = true;
         }
-    } else if (getFurther) {
+    } else if (getFurther || getFurtherForever) {
         console.debug("Further");
-        camera.position.y += 0.5;
-        if (yDistanceDiff > 100) {
+        if (camera.position.y > earthMesh.position.y) {
+            camera.position.y += 0.25;
+        } else {
+            camera.position.y -= 0.25;
+        }
+        if (yDistanceDiff > 150 && !getFurtherForever) {
             console.debug("Too far from earth! Add mirror");
             getCloser = false;
             getFurther = false;
@@ -230,9 +248,9 @@ function animate() {
             addText("BigScreen");
         }
     } else if (showMirror) {
-        rotateAboutPoint(camera, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1, 0, 0), THREE.Math.degToRad(0.5));
+        rotateAboutPoint(camera, new THREE.Vector3(0, 0, 0), new THREE.Vector3(1, 0, 0), THREE.Math.degToRad(0.1));
         //camera.position.y += 0.5;
-        verticalMirror.position.y += 0.1;
+        //verticalMirror.position.y += 0.1;
         //y = 100, z = -20, x = 0
         if (((camera.position.y - 100) < 10) && ((camera.position.z + 20) < 10) && (camera.position.x == 0)) {
             console.debug("Explode the earth");
