@@ -37,14 +37,14 @@ var textureLoader = new THREE.TextureLoader();
 var text = {
     "AllIEverWanted": {
         "title": "All I Ever Wanted",
-        "text": "<p>Because I only ever wanted to be an astronaut, I never cared much for Earth. My head was always in the sky.</p><p>When I finally reached space and looked back at my planet, the urban landscapes looked like constellations.</p><p>Now, as I drift further into the stars, all I want is to be in amongst those city lights.</p>"
+        "text": "<p>Because I only ever wanted to be an astronaut, I never cared much for Earth. My head was always in the sky.</p><p>When I finally reached space and looked back at my planet, the urban landscapes looked like constellations.</p><p>As I drifted further into the stars, all I wanted was to be in amongst those city lights.</p>"
     },
     "BigScreen": {
         "text": "<p>I reached the edge of the universe, where there was a mirrored wall.</p><p>I'm not one to reflect on my achievements, so I climbed over.</p><p>Turned out the mirror was one of those two-way ones, like a window from the other side.</p><p>In front of it was a row of aliens, eating popcorn.</p>",
         "title": "Big Screen"
     },
     "BuildingBack": {
-        "text": "<p>When I returned from deep space, the globe had shattered into a million pieces.</p><p>Now I circle the Sun, gathering the fragments.</p><p>When I have enough, I will make a mosaic of Earth on the Moon.</p>",
+        "text": "<p>When I returned to our Solar System, the globe had shattered into a million pieces.</p><p>Now I circle the Sun, gathering the fragments.</p><p>When I have enough, I will make a mosaic of Earth on the Moon.</p>",
         "title": "Building Back"
     }
 };
