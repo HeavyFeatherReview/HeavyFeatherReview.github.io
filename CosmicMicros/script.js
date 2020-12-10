@@ -49,6 +49,17 @@ var text = {
     }
 };
 
+var isMobile = navigator.userAgent.toLowerCase().match(/mobile/i),
+    isTablet = navigator.userAgent.toLowerCase().match(/tablet/i),
+    isAndroid = navigator.userAgent.toLowerCase().match(/android/i),
+    isiPhone = navigator.userAgent.toLowerCase().match(/iphone/i),
+    isiPad = navigator.userAgent.toLowerCase().match(/ipad/i);
+
+if (isMobile)
+{
+    alert("This story is best viewed on desktop.");
+}
+
 function addText(key) {
     textElement.innerHTML = "<h2>" + text[key]["title"] + "</h2>" + "<p>" + text[key]["text"] + "</p>";
 }
@@ -295,4 +306,11 @@ pauseButton.onclick = function() {
     }
 }
 
-init();
+window.onload = function(){
+    init();
+    setTimeout(function() {
+        let message = document.getElementById("message")
+        message.className = "top-right fade-out";
+    }, 2000);
+    
+}
