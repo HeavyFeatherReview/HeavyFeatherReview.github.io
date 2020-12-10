@@ -69,7 +69,6 @@ button:hover {
   width: 300px;
   margin: 20px;
   padding: 10px;
-  cursor: pointer;
   font-size: 18px;
   -webkit-animation-duration: 10s;
   animation-duration: 10s;
