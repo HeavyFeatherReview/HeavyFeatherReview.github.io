@@ -50,20 +50,7 @@ var text = {
 };
 
 function addText(key) {
-    textElement.innerHTML = text[key]["text"];
-    // var text2 = document.createElement('div');
-    // text2.id = key;
-    // text2.style.position = 'absolute';
-    // //text2.style.zIndex = 1;    // if you still don't see the label, try uncommenting this
-    // text2.style.width = 50;
-    // text2.style.height = 100;
-    // //text2.style.backgroundColor = "blue";
-    // text2.style.color = "white";
-    // text2.innerHTML = text[key]["text"];
-    // text2.style.top = top + 'px';
-    // text2.style.left = left + 'px';
-    // text2.className = "cosmic-micro";
-    // document.body.appendChild(text2);
+    textElement.innerHTML = "<h2>" + text[key]["title"] + "</h2>" + "<p>" + text[key]["text"] + "</p>";
 }
 
 function showElement(divID) {
