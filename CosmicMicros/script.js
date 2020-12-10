@@ -306,11 +306,9 @@ pauseButton.onclick = function() {
     }
 }
 
-window.onload = function(){
-    init();
-    setTimeout(function() {
-        let message = document.getElementById("message")
-        message.className = "top-right fade-out";
-    }, 2000);
-    
-}
+
+init();
+setTimeout(function() {
+    let message = document.getElementById("message")
+    message.className = "top-right fade-out";
+}, 2000);   
