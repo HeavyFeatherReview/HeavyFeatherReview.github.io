@@ -27,3 +27,25 @@ body {
     position: absolute;
     font-family: 'Space Mono', monospace;
 }
+
+button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  border: 0;
+  padding: 10px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 3px;
+  width: 200px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.35);
+}
