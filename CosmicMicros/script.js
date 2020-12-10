@@ -55,8 +55,7 @@ var isMobile = navigator.userAgent.toLowerCase().match(/mobile/i),
     isiPhone = navigator.userAgent.toLowerCase().match(/iphone/i),
     isiPad = navigator.userAgent.toLowerCase().match(/ipad/i);
 
-if (isMobile)
-{
+if (isMobile) {
     alert("This story is best viewed on desktop.");
 }
 
@@ -311,4 +310,4 @@ init();
 setTimeout(function() {
     let message = document.getElementById("message")
     message.className = "top-right fade-out";
-}, 2000);   
+}, 2000);
