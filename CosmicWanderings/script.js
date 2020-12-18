@@ -55,8 +55,7 @@ var isMobile = navigator.userAgent.toLowerCase().match(/mobile/i),
     isiPhone = navigator.userAgent.toLowerCase().match(/iphone/i),
     isiPad = navigator.userAgent.toLowerCase().match(/ipad/i);
 
-if (isMobile)
-{
+if (isMobile) {
     alert("This story is best viewed on desktop.");
 }
 
@@ -228,6 +227,15 @@ function animate() {
         } else {
             camera.position.y += 0.2;
         }
+
+        // Hide the buttons
+        pauseButton.style.display = "none";
+
+        // Show bios
+        var bios = document.getElementById("bios");
+        bios.style.display = "block";
+        bios.className = "fade-in";
+
         console.debug("Closer");
         if (yDistanceDiff < 1) {
             console.debug("Too close to earth! Reverse direction");
@@ -309,6 +317,8 @@ pauseButton.onclick = function() {
 
 init();
 setTimeout(function() {
-    let message = document.getElementById("message")
+    let message = document.getElementById("message");
     message.className = "top-right fade-out";
-}, 2000);   
+    let attribute = document.getElementById("attribute");
+    attribute.className = "fade-out";
+}, 1500);
