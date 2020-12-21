@@ -376,6 +376,10 @@ img {
   display: none;
 }
 
+.mail-choice + label{
+  cursor: pointer;
+}
+
 .mail-choice + label:before {
   content: "";
   display: flex;
@@ -1119,3 +1123,12 @@ img {
   }
 }
 
+#browserHistory{
+  text-align: left;
+}
+
+th, td {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+}
