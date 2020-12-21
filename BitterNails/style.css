@@ -308,7 +308,7 @@ img {
 }
 
 .msg {
-  padding: 30px;
+  padding: 17px;
   background-color: var(--unselected-mail);
   border-bottom: 1px solid var(--border-color);
   display: flex;
