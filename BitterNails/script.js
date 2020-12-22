@@ -16,3 +16,7 @@ $('.mail-choice').change(function() {
         }
     });
 });
+
+var d = new Date();
+var n = d.toString();
+$("#todays-date").html(n);
