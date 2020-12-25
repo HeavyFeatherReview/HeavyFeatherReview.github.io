@@ -21,6 +21,10 @@ var d = new Date();
 var n = d.toString();
 $("#todays-date").html(n);
 
+$(".mail-time").append(n);
+
+$(".msg-date").append(n);
+
 $("#create").click(function() {
     $(this).before("<textarea class='cursive'>Define Success for Yourself</textarea>");
 });
@@ -34,7 +38,7 @@ $(".add-task .add-button").click(function() {
         '<label for="mailAdded' + addedTask + '"></label>' +
         '<div class="msg-content">' +
         '<div class="msg-title">Test task</div>' +
-        '<div class="msg-date">' + n + '</div>' +
+        '<div class="msg-date">' + Date().toAtring() + '</div>' +
         '</div>' +
         '</div>');
 
