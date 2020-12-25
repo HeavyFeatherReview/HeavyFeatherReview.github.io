@@ -22,5 +22,5 @@ var n = d.toString();
 $("#todays-date").html(n);
 
 $("#create").click(function() {
-  $(this).before("<textarea></textarea>");
+  $(this).before("<textarea class='cursive'>Define Success for Yourself</textarea>");
 });
