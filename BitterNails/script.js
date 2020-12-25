@@ -1,9 +1,9 @@
 $('.mail-choice').change(function() {
+	var selectedElement = $(this);
     if ($(this).is(":checked")) {
         $(this).parent().addClass('selected-bg');
-    } else {
-        $(this).parent().removeClass('selected-bg');
     }
+
     // Show the text
     let index = $("input").index($(this));
     console.debug("Selected: " + index);
