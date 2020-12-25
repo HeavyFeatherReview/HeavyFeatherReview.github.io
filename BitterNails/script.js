@@ -3,7 +3,6 @@ $('.mail-choice').change(function() {
     if ($(this).is(":checked")) {
         $(this).parent().addClass('selected-bg');
     }
-
     // Show the text
     let index = $("input").index($(this));
     console.debug("Selected: " + index);
@@ -15,7 +14,18 @@ $('.mail-choice').change(function() {
             $(this).css("display", "none");
         }
     });
+    updateTaskCounts();
 });
+
+function updateTaskCounts() {
+    let numberOfChecked = $('.inbox .mail-choice:checkbox:checked').length;
+    let totalCheckboxes = $('.inbox .mail-choice:checkbox').length;
+    $("#completed-count").html(numberOfChecked)
+    $("#todo-count").html(totalCheckboxes - numberOfChecked);
+    $(".progress-bar").css("width", ((numberOfChecked / totalCheckboxes) * 100) + "%");
+    $(".progress-status").html(numberOfChecked+"/"+totalCheckboxes);
+}
+
 
 var d = new Date();
 var n = d.toString();
@@ -43,5 +53,6 @@ $(".add-task .add-button").click(function() {
         '</div>');
 
     let scr = $('.inbox')[0].scrollHeight;
-    $('.inbox').animate({scrollTop: scr}, 500);
+    $('.inbox').animate({ scrollTop: scr }, 500);
+    updateTaskCounts()
 });

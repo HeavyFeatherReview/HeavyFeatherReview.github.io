@@ -166,7 +166,7 @@ img {
 .progress-bar {
     background-color: var(--button-color);
     border-radius: 4px;
-    width: 35%;
+    width: 12.5%;
     height: 100%;
     animation: progressAnimation 6s;
     transition: 0.3s linear both;
@@ -183,12 +183,12 @@ img {
 
 @keyframes progressAnimation {
     0% {
-        width: 5%;
+        width: 0%;
         background-color: #a2b6f5;
     }
 
     100% {
-        width: 35%;
+        width: 12.5%;
     }
 }
 
