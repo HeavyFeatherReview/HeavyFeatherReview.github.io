@@ -38,7 +38,7 @@ $(".add-task .add-button").click(function() {
         '<label for="mailAdded' + addedTask + '"></label>' +
         '<div class="msg-content">' +
         '<div class="msg-title">Test task</div>' +
-        '<div class="msg-date">' + Date().toAtring() + '</div>' +
+        '<div class="msg-date">' + Date().toString() + '</div>' +
         '</div>' +
         '</div>');
 
