@@ -1174,7 +1174,7 @@ img {
 /* Hamburger menu */
 .ham {
     display: none;
-    position: fixed;
+    position: relative;
     cursor: pointer;
     transition: transform 400ms;
     -moz-user-select: none;
