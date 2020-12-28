@@ -17,13 +17,19 @@ $('.mail-choice').change(function() {
     updateTaskCounts();
 });
 
+$(".msg").click(function() {
+    let mailChoice = $(this).children(".mail-choice");
+    mailChoice.attr("checked", "checked");
+    mailChoice.trigger("change");
+});
+
 function updateTaskCounts() {
     let numberOfChecked = $('.inbox .mail-choice:checkbox:checked').length;
     let totalCheckboxes = $('.inbox .mail-choice:checkbox').length;
     $("#completed-count").html(numberOfChecked)
     $("#todo-count").html(totalCheckboxes - numberOfChecked);
     $(".progress-bar").css("width", ((numberOfChecked / totalCheckboxes) * 100) + "%");
-    $(".progress-status").html(numberOfChecked+"/"+totalCheckboxes);
+    $(".progress-status").html(numberOfChecked + "/" + totalCheckboxes);
 }
 
 
