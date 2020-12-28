@@ -23,6 +23,17 @@ $(".msg").click(function() {
     mailChoice.trigger("change");
 });
 
+$(".ham").click(function() {
+    console.debug("Clicked ham");
+    console.debug($(".inbox-container").css("display"));
+    if ($(".inbox-container").css("display") == "none") {
+        console.debug("Show inbox container");
+        $(".inbox-container").css("display", "inline-block");
+    } else {
+        $(".inbox-container").css("display", "none");
+    }
+})
+
 function updateTaskCounts() {
     let numberOfChecked = $('.inbox .mail-choice:checkbox:checked').length;
     let totalCheckboxes = $('.inbox .mail-choice:checkbox').length;
