@@ -28,9 +28,9 @@ $(".ham").click(function() {
     console.debug($(".inbox-container").css("display"));
     if ($(".inbox-container").css("display") == "none") {
         console.debug("Show inbox container");
-        $(".inbox-container").css("display", "inline-block");
+        $(".inbox-container").css("display", "flex");
     } else {
-        $(".inbox-container").css("display", "none");
+        $(".inbox-container").css("display", "");
     }
 })
 
