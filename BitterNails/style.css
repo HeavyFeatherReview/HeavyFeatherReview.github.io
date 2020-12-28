@@ -336,6 +336,7 @@ img {
     display: flex;
     align-items: center;
     transition: 0.4s ease;
+    cursor: pointer;
 }
 
 .msg-title {
