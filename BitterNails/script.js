@@ -48,9 +48,9 @@ var d = new Date();
 var n = d.toString();
 $("#todays-date").html(n);
 
-$(".mail-time").append(n);
+// $(".mail-time").append(n);
 
-$(".msg-date").append(n);
+// $(".msg-date").append(n);
 
 $("#create").click(function() {
     $(this).before("<textarea class='cursive'>Define Success for Yourself</textarea>");
