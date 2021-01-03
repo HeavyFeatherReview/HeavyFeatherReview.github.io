@@ -129,11 +129,11 @@ img {
     margin-right: 25px;
 }
 
-.notify.alert {
+.notify.alert-main {
     position: relative;
 }
 
-.notify.alert:before {
+.notify.alert-main:before {
     content: "2";
     font-size: 9px;
     font-weight: 700;
@@ -150,7 +150,7 @@ img {
     color: #fff;
 }
 
-.notify.alert:last-child:before {
+.notify.alert-main:last-child:before {
     content: "5";
 }
 
