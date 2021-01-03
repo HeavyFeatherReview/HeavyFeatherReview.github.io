@@ -4,12 +4,14 @@
 <head>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Bitter Nails</title>
 </head>
 
 <body>
-    <div class="container">
+    <div class="parent-main-container">
         <div class="user-profile-area">
             <div class="task-manager">task manager</div>
             <div class="side-wrapper">
@@ -169,7 +171,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
                                     <circle cx="12" cy="12" r="10" />
                                     <path d="M12 6v6l4 2" /></svg>
-                                    Nov 1, 2019
+                                Nov 1, 2019
                             </div>
                             <div class="mail-inside" id="checklist-parent">
                                 <!--                                 <div id="checklist">
@@ -245,7 +247,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
                                     <circle cx="12" cy="12" r="10" />
                                     <path d="M12 6v6l4 2" /></svg>
-                                    Nov 10, 2019
+                                Nov 10, 2019
                             </div>
                             <div class="mail-inside">
                                 <ol>
@@ -268,14 +270,68 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
                                     <circle cx="12" cy="12" r="10" />
                                     <path d="M12 6v6l4 2" /></svg>
-                                    Nov 17, 2019
+                                Nov 17, 2019
                             </div>
                             <div class="mail-inside">
-                                <ol>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                                            <!-- Carousel Slides / Quotes -->
+                                            <div class="carousel-inner text-center">
+                                                <!-- Quote 1 -->
+                                                <div class="item active">
+                                                    <blockquote>
+<!--                                                         <div class="row"> -->
+                                                            <div class="col-sm-8 col-sm-offset-2">
+                                                                <p>The company's having a record year!</p>
+                                                                <small>Doug, while monopolizing the karaoke mic in true Sr.-Mgmt.-style.</small>
+                                                            </div>
+<!--                                                         </div> -->
+                                                    </blockquote>
+                                                </div>
+                                                <!-- Quote 2 -->
+                                                <div class="item">
+                                                    <blockquote>
+<!--                                                         <div class="row"> -->
+                                                            <div class="col-sm-8 col-sm-offset-2">
+                                                                <p>I met Lisa Kudrow when I graduated cum laude. She's <i>so</i> down to earth!</p>
+                                                                <small>Angela, peeking over the cubical wall as Katherine adds a heart emoji to her niece's commencement portrait.</small>
+                                                            </div>
+<!--                                                         </div> -->
+                                                    </blockquote>
+                                                </div>
+                                                <!-- Quote 3 -->
+                                                <div class="item">
+                                                    <blockquote>
+<!--                                                         <div class="row"> -->
+                                                            <div class="col-sm-8 col-sm-offset-2">
+                                                                <p>Of course, you're invited!</p>
+                                                                <small>Luis, on his way to happy hour at Trapper's. Katherine's still not sure why he stopped by her desk.</small>
+                                                            </div>
+<!--                                                         </div> -->
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+                                            <!-- Bottom Carousel Indicators -->
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#quote-carousel" data-slide-to="0" class="active"><img class="img-responsive " src="https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg" alt="">
+                                                </li>
+                                                <li data-target="#quote-carousel" data-slide-to="1"><img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg" alt="">
+                                                </li>
+                                                <li data-target="#quote-carousel" data-slide-to="2"><img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="">
+                                                </li>
+                                            </ol>
+                                            <!-- Carousel Buttons Next/Prev -->
+                                            <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+                                            <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--                                 <ol>
                                     <li>"The company's having a record year!"&mdash;Doug, while monopolizing the karaoke mic in true Sr.-Mgmt.-style. </li>
                                     <li>"I met Lisa Kudrow when I graduated cum laude. She's <i>so</i> down to earth!"&mdash; Angela, peeking over the cubical wall as Katherine adds a heart emoji to her niece's commencement portrait.</li>
                                     <li>"Of course, you're invited!" &mdash;Luis, on his way to happy hour at Trapper's. Katherine's still not sure why he stopped by her desk.</li>
-                                </ol>
+                                </ol> -->
                             </div>
                         </div>
                     </div>
@@ -290,7 +346,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
                                     <circle cx="12" cy="12" r="10" />
                                     <path d="M12 6v6l4 2" /></svg>
-                                    Nov 23, 2019
+                                Nov 23, 2019
                             </div>
                             <div class="mail-inside">
                                 <table id="browserHistory" style="width:100%">
@@ -342,7 +398,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
                                     <circle cx="12" cy="12" r="10" />
                                     <path d="M12 6v6l4 2" /></svg>
-                                    Dec 2, 2019
+                                Dec 2, 2019
                             </div>
                             <div class="mail-inside">
                                 <ol>
@@ -375,7 +431,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
                                     <circle cx="12" cy="12" r="10" />
                                     <path d="M12 6v6l4 2" /></svg>
-                                    Dec 3, 2019
+                                Dec 3, 2019
                             </div>
                             <div class="mail-inside">
                                 <ol>
@@ -397,7 +453,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
                                     <circle cx="12" cy="12" r="10" />
                                     <path d="M12 6v6l4 2" /></svg>
-                                    Dec 8, 2019
+                                Dec 8, 2019
                             </div>
                             <div id="post-its" class="mail-inside">
                                 <textarea>An 8X5 of a tabby kitten who sees a lion in the mirror.</textarea>
@@ -419,7 +475,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
                                     <circle cx="12" cy="12" r="10" />
                                     <path d="M12 6v6l4 2" /></svg>
-                                    Dec 15, 2019
+                                Dec 15, 2019
                             </div>
                             <div class="mail-inside">
                                 <ol>
@@ -452,7 +508,7 @@
     </div>
 </body>
 <script src="../Resources/jquery-3.5.1.min.js"></script>
-<script src="../Resources/three.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="script.js"></script>
 
 </html>
