@@ -1114,7 +1114,7 @@ img {
         display: none;
     }
 
-    .ham {
+    .ham, .header {
         display: inline-block !important;
     }
 
@@ -1184,6 +1184,10 @@ img {
 }
 
 /* Hamburger menu */
+.header {
+    display: none;
+}
+
 .ham {
     display: none;
     position: relative;
