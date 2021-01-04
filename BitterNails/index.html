@@ -281,34 +281,34 @@
                                                 <!-- Quote 1 -->
                                                 <div class="item active">
                                                     <blockquote>
-<!--                                                         <div class="row"> -->
-                                                            <div class="col-sm-8 col-sm-offset-2">
-                                                                <p>The company's having a record year!</p>
-                                                                <small>Doug, while monopolizing the karaoke mic in true Sr.-Mgmt.-style.</small>
-                                                            </div>
-<!--                                                         </div> -->
+                                                        <!--                                                         <div class="row"> -->
+                                                        <div class="col-sm-8 col-sm-offset-2">
+                                                            <p>The company's having a record year!</p>
+                                                            <small>Doug, while monopolizing the karaoke mic in true Sr.-Mgmt.-style.</small>
+                                                        </div>
+                                                        <!--                                                         </div> -->
                                                     </blockquote>
                                                 </div>
                                                 <!-- Quote 2 -->
                                                 <div class="item">
                                                     <blockquote>
-<!--                                                         <div class="row"> -->
-                                                            <div class="col-sm-8 col-sm-offset-2">
-                                                                <p>I met Lisa Kudrow when I graduated cum laude. She's <i>so</i> down to earth!</p>
-                                                                <small>Angela, peeking over the cubical wall as Katherine adds a heart emoji to her niece's commencement portrait.</small>
-                                                            </div>
-<!--                                                         </div> -->
+                                                        <!--                                                         <div class="row"> -->
+                                                        <div class="col-sm-8 col-sm-offset-2">
+                                                            <p>I met Lisa Kudrow when I graduated cum laude. She's <i>so</i> down to earth!</p>
+                                                            <small>Angela, peeking over the cubical wall as Katherine adds a heart emoji to her niece's commencement portrait.</small>
+                                                        </div>
+                                                        <!--                                                         </div> -->
                                                     </blockquote>
                                                 </div>
                                                 <!-- Quote 3 -->
                                                 <div class="item">
                                                     <blockquote>
-<!--                                                         <div class="row"> -->
-                                                            <div class="col-sm-8 col-sm-offset-2">
-                                                                <p>Of course, you're invited!</p>
-                                                                <small>Luis, on his way to happy hour at Trapper's. Katherine's still not sure why he stopped by her desk.</small>
-                                                            </div>
-<!--                                                         </div> -->
+                                                        <!--                                                         <div class="row"> -->
+                                                        <div class="col-sm-8 col-sm-offset-2">
+                                                            <p>Of course, you're invited!</p>
+                                                            <small>Luis, on his way to happy hour at Trapper's. Katherine's still not sure why he stopped by her desk.</small>
+                                                        </div>
+                                                        <!--                                                         </div> -->
                                                     </blockquote>
                                                 </div>
                                             </div>
@@ -349,41 +349,68 @@
                                 Nov 23, 2019
                             </div>
                             <div class="mail-inside">
-                                <table id="browserHistory" style="width:100%">
-                                    <tr>
-                                        <th colspan=3>Today - <span id="todays-date"></span></td>
-                                        </th>
-                                    <tr>
-                                        <td><input type="checkbox" name=""></td>
-                                        <td>12:35 PM</td>
-                                        <td class="history-item">Trapper's Bar & Grill menu</td>
-                                        <td class="history-item-description">https://www.google.com/search?q=Trapper%27s+Bar+%26+Grill+menu</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" name=""></td>
-                                        <td>12:32 PM</td>
-                                        <td class="history-item">Lisa Kudrow's 2010 commencement address at Vassar</td>
-                                        <td class="history-item-description">&mdash;no sign of Angela anywhere in the panned shots of know-it-all trust fund kids. Kudrow tells the audience when one door shuts, another door opens. Katherine writes that down, underlining "opens" three times.</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" name=""></td>
-                                        <td>12:22 PM</td>
-                                        <td class="history-item">Merriam-Webster Word of the Day: <i>buttinsky</i></td>
-                                        <td class="history-item-description">https://www.google.com/search?ei=7zrhX_SZMLiu5NoPn4W1-AU&q=Merriam-Webster+Word+of+the+Day%3A+buttinsky</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" name=""></td>
-                                        <td>12:22 PM</td>
-                                        <td class="history-item">Seven Things Nail Biting Says About Your Personality</td>
-                                        <td class="history-item-description">https://www.google.com/search?q=Seven+Things+Nail+Biting+Says+About+Your+Personality</td>
-                                    </tr>
-                                </table>
-                                <!--                                 <ol>
-                                    <li>Trapper's Bar & Grill menu</li>
-                                    <li>Lisa Kudrow's 2010 commencement address at Vassar&mdash;no sign of Angela anywhere in the panned shots of know-it-all trust fund kids. Kudrow tells the audience when one door shuts, another door opens. Katherine writes that down, underlining "opens" three times.</li>
-                                    <li>Merriam-Webster Word of the Day: <i>buttinsky</i></li>
-                                    <li>Seven Things Nail Biting Says About Your Personality</li>
-                                </ol> -->
+                                <div id="browserHistory">
+                                    <div>Today - <span id="todays-date"></span></div>
+                                    <div class="tabs">
+                                        <div class="tab">
+                                            <input type="checkbox" id="chck1">
+                                            <label class="tab-label" for="chck1"><span class="time">12:35 PM</span> Trapper's Bar & Grill menu</label>
+                                            <div class="tab-content">
+                                                <a href="https://www.google.com/search?q=Trapper%27s+Bar+%26+Grill+menu">https://www.google.com/search?q=Trapper%27s+Bar+%26+Grill+menu</a>
+                                            </div>
+                                        </div>
+                                        <div class="tab">
+                                            <input type="checkbox" id="chck2">
+                                            <label class="tab-label" for="chck2"><span class="time">12:32 PM</span>Lisa Kudrow's 2010 commencement address at Vassar</label>
+                                            <div class="tab-content">
+                                                &mdash;no sign of Angela anywhere in the panned shots of know-it-all trust fund kids. Kudrow tells the audience when one door shuts, another door opens. Katherine writes that down, underlining "opens" three times.
+                                            </div>
+                                        </div>
+                                        <div class="tab">
+                                            <input type="checkbox" id="chck3">
+                                            <label class="tab-label" for="chck3"><span class="time">12:22 PM</span>Merriam-Webster Word of the Day: <i>buttinsky</i></label>
+                                            <div class="tab-content">
+                                                <a href="https://www.google.com/search?ei=7zrhX_SZMLiu5NoPn4W1-AU&q=Merriam-Webster+Word+of+the+Day%3A+buttinsky">https://www.google.com/search?ei=7zrhX_SZMLiu5NoPn4W1-AU&q=Merriam-Webster+Word+of+the+Day%3A+buttinsky</a>
+                                            </div>
+                                        </div>
+                                        <div class="tab">
+                                            <input type="checkbox" id="chck4">
+                                            <label class="tab-label" for="chck4"><span class="time">12:22 PM</span>Seven Things Nail Biting Says About Your Personality</label>
+                                            <div class="tab-content">
+                                                <a href="https://www.google.com/search?q=Seven+Things+Nail+Biting+Says+About+Your+Personality">https://www.google.com/search?q=Seven+Things+Nail+Biting+Says+About+Your+Personality</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 
+                                <div class="browserContainer">
+                                    <table id="browserHistory" style="width:100%">
+                                        <tr>
+                                            <td><input type="checkbox" name=""></td>
+                                            <td>12:35 PM</td>
+                                            <td class="history-item">Trapper's Bar & Grill menu</td>
+                                            <td class="history-item-description">https://www.google.com/search?q=Trapper%27s+Bar+%26+Grill+menu</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" name=""></td>
+                                            <td>12:32 PM</td>
+                                            <td class="history-item">Lisa Kudrow's 2010 commencement address at Vassar</td>
+                                            <td class="history-item-description">&mdash;no sign of Angela anywhere in the panned shots of know-it-all trust fund kids. Kudrow tells the audience when one door shuts, another door opens. Katherine writes that down, underlining "opens" three times.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" name=""></td>
+                                            <td>12:22 PM</td>
+                                            <td class="history-item">Merriam-Webster Word of the Day: <i>buttinsky</i></td>
+                                            <td class="history-item-description">https://www.google.com/search?ei=7zrhX_SZMLiu5NoPn4W1-AU&q=Merriam-Webster+Word+of+the+Day%3A+buttinsky</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" name=""></td>
+                                            <td>12:22 PM</td>
+                                            <td class="history-item">Seven Things Nail Biting Says About Your Personality</td>
+                                            <td class="history-item-description">https://www.google.com/search?q=Seven+Things+Nail+Biting+Says+About+Your+Personality</td>
+                                        </tr>
+                                    </table>
+                                </div> -->
                             </div>
                         </div>
                     </div>
