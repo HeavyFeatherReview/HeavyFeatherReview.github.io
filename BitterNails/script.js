@@ -83,3 +83,7 @@ $('#flipbook').turn({
     acceleration: true,
     autoCenter: true
 });
+
+$("#flipPage").click(function() {
+    $("#flipbook").turn("next");
+});

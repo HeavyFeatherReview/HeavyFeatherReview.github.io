@@ -1385,7 +1385,14 @@ input:checked~.tab-content {
 }
 
 /* Scrapbook */
-#flipbook {}
+#flipbook {
+    padding-bottom: 1em;
+}
+
+#flipPage:hover {
+    background-color: var(--button-bg-color);
+    color: var(--button-color);
+}
 
 .thought,
 .narration {
@@ -1394,7 +1401,14 @@ input:checked~.tab-content {
 
 #flipbook .thought {
     font-family: "Indie Flower", cursive;
+    text-align: center;
 }
+
+#flipbook .page {
+    background-color: white;
+}
+
+
 
 #flipbook .page-wrapper {
     -webkit-perspective: 2000px;
@@ -1405,15 +1419,16 @@ input:checked~.tab-content {
 }
 
 #flipbook .hard {
-    background: var(--main-color) !important;
-    color: #333;
-    -webkit-box-shadow: inset 0 0 5px #666;
-    -moz-box-shadow: inset 0 0 5px #666;
-    -o-box-shadow: inset 0 0 5px #666;
-    -ms-box-shadow: inset 0 0 5px #666;
-    box-shadow: inset 0 0 5px #666;
+    background-color: var(--main-color-bg) !important;
+    color: var(--main-color);
+    /*    -webkit-box-shadow: inset 0 0 5px var(--main-color-bg);
+    -moz-box-shadow: inset 0 0 5px var(--main-color-bg);
+    -o-box-shadow: inset 0 0 5px var(--main-color-bg);
+    -ms-box-shadow: inset 0 0 5px var(--main-color-bg);
+    box-shadow: inset 0 0 5px var(--main-color-bg);*/
     font-weight: bold;
     text-align: center;
+    opacity: 1;
 }
 
 #flipbook .odd {
