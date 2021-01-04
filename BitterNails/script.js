@@ -73,3 +73,13 @@ $(".add-task .add-button").click(function() {
     $('.inbox').animate({ scrollTop: scr }, 500);
     updateTaskCounts()
 });
+
+
+// Scrapbook
+$('#flipbook').turn({
+    width: $(".mail-inside").width(),
+    height: $(".mail-inside").height(),
+    gradients: true,
+    acceleration: true,
+    autoCenter: true
+});
