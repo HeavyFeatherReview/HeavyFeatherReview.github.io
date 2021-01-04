@@ -87,3 +87,7 @@ $('#flipbook').turn({
 $("#flipPage").click(function() {
     $("#flipbook").turn("next");
 });
+
+$("#previousPage").click(function() {
+    $("#flipbook").turn("previous");
+});

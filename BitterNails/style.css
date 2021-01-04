@@ -1389,7 +1389,7 @@ input:checked~.tab-content {
     padding-bottom: 1em;
 }
 
-#flipPage:hover {
+.page-button:hover {
     background-color: var(--button-bg-color);
     color: var(--button-color);
 }
