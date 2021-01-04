@@ -1389,6 +1389,10 @@ input:checked~.tab-content {
     padding-bottom: 1em;
 }
 
+.flip-buttons {
+    text-align: center;
+}
+
 .page-button:hover {
     background-color: var(--button-bg-color);
     color: var(--button-color);
