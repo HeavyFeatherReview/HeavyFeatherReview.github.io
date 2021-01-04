@@ -1309,10 +1309,14 @@ img {
     margin-left: 1em;
 }
 
+.chrome {
+    width: 16px;
+    height: auto;
+}
+
 .tabs {
     border-radius: 8px;
     overflow: hidden;
-/*    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);*/
 }
 
 .tab {
@@ -1326,14 +1330,12 @@ img {
     justify-content: space-between;
     padding: 1em;
     background: var(--main-color);
-    /*    background: #2c3e50;*/
     font-weight: bold;
     cursor: pointer;
     /* Icon */
 }
 
 .tab-label:hover {
-    /*    background: #1a252f;*/
     background: var(--main-light-color);
 }
 
