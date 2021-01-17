@@ -58,21 +58,21 @@ $("#create").click(function() {
 
 var addedTask = 0;
 
-$(".add-task .add-button").click(function() {
-    addedTask += 1;
-    $(".inbox").append('<div class="msg selected-bg anim-y">' +
-        '<input type="checkbox" name="msg" id="mailAdded' + addedTask + '" class="mail-choice" checked>' +
-        '<label for="mailAdded' + addedTask + '"></label>' +
-        '<div class="msg-content">' +
-        '<div class="msg-title">Test task</div>' +
-        '<div class="msg-date">' + Date().toString() + '</div>' +
-        '</div>' +
-        '</div>');
+// $(".add-task .add-button").click(function() {
+//     addedTask += 1;
+//     $(".inbox").append('<div class="msg selected-bg anim-y">' +
+//         '<input type="checkbox" name="msg" id="mailAdded' + addedTask + '" class="mail-choice" checked>' +
+//         '<label for="mailAdded' + addedTask + '"></label>' +
+//         '<div class="msg-content">' +
+//         '<div class="msg-title">Test task</div>' +
+//         '<div class="msg-date">' + Date().toString() + '</div>' +
+//         '</div>' +
+//         '</div>');
 
-    let scr = $('.inbox')[0].scrollHeight;
-    $('.inbox').animate({ scrollTop: scr }, 500);
-    updateTaskCounts()
-});
+//     let scr = $('.inbox')[0].scrollHeight;
+//     $('.inbox').animate({ scrollTop: scr }, 500);
+//     updateTaskCounts();
+// });
 
 
 // Scrapbook
