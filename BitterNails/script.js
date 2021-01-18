@@ -55,39 +55,3 @@ $("#todays-date").html(n);
 $("#create").click(function() {
     $(this).before("<textarea class='cursive'>Define Success for Yourself</textarea>");
 });
-
-var addedTask = 0;
-
-// $(".add-task .add-button").click(function() {
-//     addedTask += 1;
-//     $(".inbox").append('<div class="msg selected-bg anim-y">' +
-//         '<input type="checkbox" name="msg" id="mailAdded' + addedTask + '" class="mail-choice" checked>' +
-//         '<label for="mailAdded' + addedTask + '"></label>' +
-//         '<div class="msg-content">' +
-//         '<div class="msg-title">Test task</div>' +
-//         '<div class="msg-date">' + Date().toString() + '</div>' +
-//         '</div>' +
-//         '</div>');
-
-//     let scr = $('.inbox')[0].scrollHeight;
-//     $('.inbox').animate({ scrollTop: scr }, 500);
-//     updateTaskCounts();
-// });
-
-
-// Scrapbook
-$('#flipbook').turn({
-    width: $(".mail-inside").width(),
-    height: $(".mail-inside").height(),
-    gradients: true,
-    acceleration: true,
-    autoCenter: true
-});
-
-$("#flipPage").click(function() {
-    $("#flipbook").turn("next");
-});
-
-$("#previousPage").click(function() {
-    $("#flipbook").turn("previous");
-});
