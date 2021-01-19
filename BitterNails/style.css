@@ -48,7 +48,7 @@ img {
 }
 
 .user-profile-area {
-    width: 360px;
+    width: 300px;
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
@@ -380,7 +380,7 @@ img {
 
 .inbox-container {
     border-right: 1px solid var(--border-color);
-    width: 420px;
+    width: 350px;
     display: flex;
     flex-direction: column;
     overflow: auto;
@@ -1385,21 +1385,25 @@ input:checked~.tab-content {
 
 
 /* Thoughts / bubbles */
-
 #thoughtBody {
     background-color: var(--body-bg-color);
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     margin: 0;
-/*    height: 100vh;*/
+    /*    height: 100vh;*/
     align-items: center;
     align-content: center;
-    padding: 0 8rem;
+    padding: 2rem 8rem;
+}
+
+.thought-container
+{
+    margin-bottom: 3rem;
 }
 
 .thought {
-    display: flex;
+    display: inline;
     background-color: #fff;
     padding: 20px;
     border-radius: 30px;
@@ -1444,17 +1448,42 @@ input:checked~.tab-content {
 
 }
 
-@keyframes topFadeOut {
-    0% {
-        position: absolute;
-        top: -3rem;
-        opacity: 0;
-    }
+.fade-in {
+    animation: fadeIn ease 2s;
+    -webkit-animation: fadeIn ease 2s;
+    -moz-animation: fadeIn ease 2s;
+    -o-animation: fadeIn ease 2s;
+    -ms-animation: fadeIn ease 2s;
+}
 
-    75% {
-        position: absolute;
-        top: 25%;
-        opacity: 0.5;
+.fade-in-2 {
+    animation: fadeIn ease 5s;
+    -webkit-animation: fadeIn ease 5s;
+    -moz-animation: fadeIn ease 5s;
+    -o-animation: fadeIn ease 5s;
+    -ms-animation: fadeIn ease 5s;
+}
+
+.fade-in-3 {
+    animation: fadeIn ease 8s;
+    -webkit-animation: fadeIn ease 8s;
+    -moz-animation: fadeIn ease 8s;
+    -o-animation: fadeIn ease 8s;
+    -ms-animation: fadeIn ease 8s;
+}
+
+.fade-in-4 {
+    animation: fadeIn ease 11s;
+    -webkit-animation: fadeIn ease 11s;
+    -moz-animation: fadeIn ease 11s;
+    -o-animation: fadeIn ease 11s;
+    -ms-animation: fadeIn ease 11s;
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
     }
 
     100% {
@@ -1462,116 +1491,45 @@ input:checked~.tab-content {
     }
 }
 
-@keyframes bottomFadeOut {
-    0% {
-        position: absolute;
-        bottom: -5rem;
-        opacity: 0;
-    }
-
-    75% {
-        position: absolute;
-        bottom: 25%;
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-
-}
-
-@keyframes topFadeOutVertical {
-    0% {
-        position: absolute;
-        top: -3rem;
-        opacity: 0;
-    }
-
-    75% {
-        position: absolute;
-        top: 45%;
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-@keyframes rightFadeInOut {
-    0% {
-        right: -3rem;
-        opacity: 0;
-    }
-
-    75% {
-        right: 10rem;
-        opacity: 0.5;
-    }
-
-    100% {
-        opacity: 1;
-        right: 10rem;
-    }
-}
-
-@keyframes fadeInOut {
+@-moz-keyframes fadeIn {
     0% {
         opacity: 0;
     }
 
-    45% {
+    100% {
         opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
     }
 
     100% {
-        opacity: 0%;
+        opacity: 1;
     }
 }
 
-.first-text {
-    opacity: 0;
-    animation-name: topFadeOut;
-    animation-duration: 5s;
-    color: white;
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
-.second-text {
-    opacity: 0;
-    animation-name: rightFadeInOut;
-    animation-delay: 3s;
-    animation-duration: 6s;
-}
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
 
-.third-text {
-    transform: rotate(-90deg);
-    opacity: 0;
-    animation-name: topFadeOutVertical;
-    animation-delay: 7.5s;
-    animation-duration: 6s;
-    color: #A3DDF0;
-    white-space: nowrap;
+    100% {
+        opacity: 1;
+    }
 }
-
-.fourth-text {
-    opacity: 0;
-    animation-name: fadeInOut;
-    animation-delay: 8.5s;
-    animation-duration: 9s;
-}
-
-/*.fifth-text {
-    font-size: 5rem;
-    position: absolute;
-    left: 5%;
-    bottom: 25%;
-    opacity: 0;
-    color: #F0EBA3;
-    animation-name: bottomFadeOut;
-    animation-delay: 10s;
-    animation-duration: 9s;
-}*/
 
 /* Quote carousel */
 

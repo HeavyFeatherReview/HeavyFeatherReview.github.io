@@ -43,7 +43,6 @@ function updateTaskCounts() {
     $(".progress-status").html(numberOfChecked + "/" + totalCheckboxes);
 }
 
-
 var d = new Date();
 var n = d.toString();
 $("#todays-date").html(n);
@@ -52,6 +51,29 @@ $("#todays-date").html(n);
 
 // $(".msg-date").append(n);
 
+// Katherine's thoughts
+
+$(document).ready(function() {
+    /* Every time the window is scrolled ... */
+    $(document).scroll(function() {
+        console.debug("Scroll");
+        /* Check the location of each desired element */
+        $('.thought').each(function(i) {
+
+            var bottom_of_object = $(this).position().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+            /* If the object is completely visible in the window, fade it it */
+            if (bottom_of_window > bottom_of_object) {
+                console.debug("Make it appear!");
+                $(this).animate({ 'opacity': '1' }, 1500);
+
+            }
+
+        });
+
+    });
+});
 $("#create").click(function() {
     $(this).before("<textarea class='cursive'>Define Success for Yourself</textarea>");
 });
