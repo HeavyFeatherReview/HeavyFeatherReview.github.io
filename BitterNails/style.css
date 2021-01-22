@@ -1398,7 +1398,11 @@ input:checked~.tab-content {
 }
 
 .thought-container {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+.narration {
+    margin-top: 10rem;
 }
 
 .thought {
