@@ -47,9 +47,11 @@ var d = new Date();
 var n = d.toString();
 $("#todays-date").html(n);
 
-// $(".mail-time").append(n);
-
-// $(".msg-date").append(n);
+$("#dolphinContainer").hover(function() {
+    $(".dolphins").addClass("dolphin-jump");
+}, function() {
+    $(".dolphins").removeClass("dolphin-jump");
+});
 
 // Katherine's thoughts
 

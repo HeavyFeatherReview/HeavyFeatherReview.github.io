@@ -1397,8 +1397,7 @@ input:checked~.tab-content {
     padding: 2rem 8rem;
 }
 
-.thought-container
-{
+.thought-container {
     margin-bottom: 3rem;
 }
 
@@ -2048,5 +2047,42 @@ textarea:focus {
     100% {
         opacity: 0;
         box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+    }
+}
+
+
+/* Dolphin */
+#dolphinContainer {
+    cursor: pointer;
+}
+
+.dolphins {
+    bottom: 0;
+    opacity: 0;
+    position: absolute;
+    z-index: 3;
+}
+
+.dolphin-jump {
+    animation: dolphin-jump 2s ease-in-out 1s 1 normal forwards;
+}
+
+@keyframes dolphin-jump {
+    0% {
+        height: 464px;
+        left: 60%;
+        margin: 0 0 -8em;
+        opacity: 1;
+        width: 200px;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        height: 1392px;
+        left: 10%;
+        margin: 0 0 -50em;
+        opacity: 1;
+        width: 600px;
+        transform: rotate(-360deg);
     }
 }
