@@ -1399,6 +1399,7 @@ input:checked~.tab-content {
 
 .thought-container {
     margin-bottom: 2rem;
+    width: 100%;
 }
 
 .narration {
