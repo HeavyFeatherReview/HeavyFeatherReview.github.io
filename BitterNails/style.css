@@ -48,7 +48,7 @@ img {
 }
 
 .user-profile-area {
-    width: 300px;
+    width: 320px;
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
