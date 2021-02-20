@@ -544,6 +544,7 @@ img {
 .mail {
     padding-left: 55px;
     font-size: 14px;
+    font-size-adjust: 0.78;
     color: var(--main-light-color);
 }
 
@@ -592,6 +593,39 @@ img {
 .mail-checklist-date {
     margin-left: 16px;
     font-size: 13px;
+}
+
+/*For mobile */
+@media only screen and (max-device-width: 768px) {
+
+    /*    Mail contents */
+    .mail,
+    .msg-title {
+        font-size: 28px;
+    }
+
+    .mail-contents-title {
+        font-size: 34px;
+    }
+
+    .mail-time,
+    .mail-checklist-date,
+    .mail-checklist label {
+        font-size: 26px;
+    }
+
+    /*    Side bar contents*/
+    .msg-date {
+        font-size: 22px;
+    }
+
+    .add-button {
+        font-size: 24px;
+    }
+
+    body {
+        font-size: 30px;
+    }
 }
 
 .assignee {
