@@ -626,6 +626,10 @@ img {
     body {
         font-size: 30px;
     }
+
+    #quote-carousel .carousel-control {
+        font-size: 4em;
+    }
 }
 
 .assignee {
