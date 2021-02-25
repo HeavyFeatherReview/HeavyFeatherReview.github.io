@@ -440,7 +440,7 @@ img {
     display: none;
 }
 
-@media only screen and (max-device-width: 768px){
+@media only screen and (max-device-width: 768px) {
     #reveal-profile {
         display: flex;
     }
@@ -448,6 +448,31 @@ img {
     .user-profile-area {
         width: 50%;
     }
+
+    .task-number {
+        font-size: 34px;
+    }
+
+    .task-condition {
+        font-size: 24px;
+    }
+
+    .task-tasks {
+        font-size: 20px;
+    }
+
+    .project-department {
+        font-size: 26px;
+    }
+
+    .task-manager {
+        font-size: 30px;
+    }
+
+    .progress-status {
+        font-size: 20px;
+    }
+
 }
 
 .add-task {
