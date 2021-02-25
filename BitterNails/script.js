@@ -86,9 +86,11 @@ function revealProfile() {
     if (profileRevealed) {
         console.debug("Hide profile");
         $(".user-profile-area").css("display", "none");
+         $(".inbox-container").css("width", "40%");
     } else {
         console.debug("Reveal profile");
         $(".user-profile-area").css("display", "flex");
+        $(".inbox-container").css("width", "100%");
     }
     profileRevealed = !profileRevealed;
     let updatedButtonText = profileRevealed ? "Hide Profile" : "Profile";
