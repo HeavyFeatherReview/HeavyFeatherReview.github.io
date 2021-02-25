@@ -47,9 +47,13 @@ var d = new Date();
 var n = d.toString();
 $("#todays-date").html(n);
 
+$(".dolphins").css("display", "none");
 $("#dolphinContainer").hover(function() {
+    console.debug("Display dolphins");
+    $(".dolphins").css("display", "");
     $(".dolphins").addClass("dolphin-jump");
 }, function() {
+    $(".dolphins").css("display", "none");
     $(".dolphins").removeClass("dolphin-jump");
 });
 
