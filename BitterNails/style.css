@@ -434,6 +434,22 @@ img {
     background-color: red;
 }
 
+#wrapper {}
+
+#reveal-profile {
+    display: none;
+}
+
+@media only screen and (max-device-width: 768px){
+    #reveal-profile {
+        display: flex;
+    }
+
+    .user-profile-area {
+        width: 50%;
+    }
+}
+
 .add-task {
     position: sticky;
     flex-shrink: 0;

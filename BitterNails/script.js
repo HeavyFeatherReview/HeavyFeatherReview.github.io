@@ -79,3 +79,18 @@ $(document).ready(function() {
 $("#create").click(function() {
     $(this).before("<textarea class='cursive'>Define Success for Yourself</textarea>");
 });
+
+var profileRevealed = false;
+
+function revealProfile() {
+    if (profileRevealed) {
+        console.debug("Hide profile");
+        $(".user-profile-area").css("display", "none");
+    } else {
+        console.debug("Reveal profile");
+        $(".user-profile-area").css("display", "flex");
+    }
+    profileRevealed = !profileRevealed;
+    let updatedButtonText = profileRevealed ? "Hide Profile" : "Profile";
+    $("#reveal-profile-button").text(updatedButtonText);
+}
