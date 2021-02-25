@@ -39,6 +39,13 @@ img {
     max-width: 100%;
 }
 
+#bios {
+    font-size: smaller;
+}
+.bio {
+    margin-top: 10px;
+}
+
 .parent-main-container {
     background-color: var(--theme-bg-color);
     display: flex;
