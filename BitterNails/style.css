@@ -2106,6 +2106,15 @@ textarea:focus {
     z-index: 3;
 }
 
+/*For mobile */
+@media only screen and (max-device-width: 768px) {
+
+    .dolphins {
+        position: relative;
+        display: none;
+    }
+}
+
 .dolphin-jump {
     animation: dolphin-jump 2s ease-in-out 1s 1 normal forwards;
 }
