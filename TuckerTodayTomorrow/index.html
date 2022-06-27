@@ -112,10 +112,10 @@ function shufflePhrases() {
     var todayDiv = document.getElementById("today");
     var tomorrowDiv = document.getElementById("tomorrow");
     if (phrases.length > 0) {
-        todayDiv.innerHTML += "<p>" + phrases.shift() + "</p>";
+        todayDiv.innerHTML += "<p>Today</p><p>" + phrases.shift() + "</p>";
     }
     if (phrases.length > 0) {
-        tomorrowDiv.innerHTML += "<p>" + phrases.shift() + "</p>";
+        tomorrowDiv.innerHTML += "<p>Tomorrow</p><p>" + phrases.shift() + "</p>";
     }
 }
 </script>
