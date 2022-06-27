@@ -26,6 +26,10 @@
 
 <body>
     <button onclick="shufflePhrases();">Populate</button>
+<!--     <div id="row">
+      <h2>Next phrase</h2>
+      <div id="nextPhrase"></div>
+    </div> -->
     <div class="row">
         <div class="column">
             <h1>Today</h1>
@@ -107,16 +111,18 @@ function shuffle(array) {
     return array;
 }
 
+var counter = 0;
 function shufflePhrases() {
     shuffle(phrases);
     var todayDiv = document.getElementById("today");
     var tomorrowDiv = document.getElementById("tomorrow");
-    if (phrases.length > 0) {
+    if (phrases.length > 0 && counter % 2 == 0) {
         todayDiv.innerHTML += "<p>Today</p><p>" + phrases.shift() + "</p>";
     }
-    if (phrases.length > 0) {
+    if (phrases.length > 0 && counter % 2 != 0) {
         tomorrowDiv.innerHTML += "<p>Tomorrow</p><p>" + phrases.shift() + "</p>";
     }
+    counter++;
 }
 </script>
 
