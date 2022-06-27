@@ -3,126 +3,121 @@
 
 <head>
     <style type="text/css">
+    .column {
+        float: left;
+        width: 50%;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    @media screen and (max-width: 600px) {
         .column {
-  float: left;
-  width: 50%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
-}
+            width: 100%;
+        }
+    }
     </style>
     <title>Tucker's JS story</title>
 </head>
 
 <body>
-<button onclick="shufflePhrases();">Shuffle</button>
-<div class="row">
-  <div class="column">
-    <h1>Today</h1>
-    <div id="today"></div>
-</div>
-  <div class="column">
-    <h1>Tomorrow</h1>
-    <div id="tomorrow"></div>
-
-</div>
-</div>
+    <button onclick="shufflePhrases();">Shuffle</button>
+    <div class="row">
+        <div class="column">
+            <h1>Today</h1>
+            <div id="today"></div>
+        </div>
+        <div class="column">
+            <h1>Tomorrow</h1>
+            <div id="tomorrow"></div>
+        </div>
+    </div>
 </body>
 <script src="../Resources/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-    var phrases = ["I hate my ankles.", 
-"I need a little treat.", 
-"I'll shave my head.", 
-"I'll try to pray.",
-"this time I'll mean it.",
-"my house is haunted.", 
-"I hear a constant buzzing.", 
-"I'll go for a jog.", 
-"I'll greet my neighbors.", 
-"I can sleep in.", 
-"I am scared.", 
-"my elbow thumps a doorframe.", 
-"I'll work real hard.", 
-"Taco Bell is on the way home.", 
-"one last Amazon purchase.", 
-"I'll remember our last conversation.", 
-"the heart.", 
-"I'll return that call.", 
-"I'll let my hair grow long.", 
-"I'll watch a sunrise.", 
-"I'll drink less coffee.", 
-"I'll open the blinds and sweep the floor.", 
-"I'll be kinder to spiders.", 
-"a wasp will sting me.", 
-"I'll know why.", 
-"the songs will still be there.", 
-"a Starling sings a Phoebe's song.", 
-"I might self-diagnose.", 
-"the head.", 
-"I'll throw the grapes out.", 
-"I might see a doctor.", 
-"I'll dial a random number.", 
-"I'll plan for the future.",
-"a sinkhole in my chest I can't explain.", 
-"I'll remember to water the flowers.", 
-"the light won't feel so blinding.",
-"I won't let the pain get to me.", 
-"I'll call in sick.", 
-"there is a thermometer and it is rising.", 
-"I will not be afraid of eternity.", 
-"I'll call in sick.", 
-"I'll eat the grapes in the fridge.", 
-"I'll learn from the past.", 
-"I think I'll take a long nap.", 
-"I'll visit my sister.", 
-"I'll work real hard."];
+var phrases = ["I hate my ankles.",
+    "I need a little treat.",
+    "I'll shave my head.",
+    "I'll try to pray.",
+    "this time I'll mean it.",
+    "my house is haunted.",
+    "I hear a constant buzzing.",
+    "I'll go for a jog.",
+    "I'll greet my neighbors.",
+    "I can sleep in.",
+    "I am scared.",
+    "my elbow thumps a doorframe.",
+    "I'll work real hard.",
+    "Taco Bell is on the way home.",
+    "one last Amazon purchase.",
+    "I'll remember our last conversation.",
+    "the heart.",
+    "I'll return that call.",
+    "I'll let my hair grow long.",
+    "I'll watch a sunrise.",
+    "I'll drink less coffee.",
+    "I'll open the blinds and sweep the floor.",
+    "I'll be kinder to spiders.",
+    "a wasp will sting me.",
+    "I'll know why.",
+    "the songs will still be there.",
+    "a Starling sings a Phoebe's song.",
+    "I might self-diagnose.",
+    "the head.",
+    "I'll throw the grapes out.",
+    "I might see a doctor.",
+    "I'll dial a random number.",
+    "I'll plan for the future.",
+    "a sinkhole in my chest I can't explain.",
+    "I'll remember to water the flowers.",
+    "the light won't feel so blinding.",
+    "I won't let the pain get to me.",
+    "I'll call in sick.",
+    "there is a thermometer and it is rising.",
+    "I will not be afraid of eternity.",
+    "I'll call in sick.",
+    "I'll eat the grapes in the fridge.",
+    "I'll learn from the past.",
+    "I think I'll take a long nap.",
+    "I'll visit my sister.",
+    "I'll work real hard."
+];
 
 function shuffle(array) {
-  let currentIndex = array.length,  randomIndex;
+    let currentIndex = array.length,
+        randomIndex;
 
-  // While there remain elements to shuffle.
-  while (currentIndex != 0) {
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
 
-    // Pick a remaining element.
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
 
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
-  }
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]
+        ];
+    }
 
-  return array;
+    return array;
 }
 
-function shufflePhrases()
-{
+function shufflePhrases() {
     shuffle(phrases);
-    console.debug(phrases);
     var todayDiv = document.getElementById("today");
     var tomorrowDiv = document.getElementById("tomorrow");
-    todayDiv.innerHTML = "";
-    tomorrowDiv.innerHTML = "";
-    for (let i = 0; i<phrases.length; i++)
-    {
-        if (i < phrases.length/2) {
-            todayDiv.innerHTML += "<p>"+phrases[i]+"</p>";
-        } else {
-            tomorrowDiv.innerHTML += "<p>"+phrases[i]+"</p>";
-        }
+    if (phrases.length > 0) {
+        todayDiv.innerHTML += "<p>" + phrases.shift() + "</p>";
+    }
+    if (phrases.length > 0) {
+        tomorrowDiv.innerHTML += "<p>" + phrases.shift() + "</p>";
     }
 }
-
 </script>
 
 </html>
